@@ -9,5 +9,8 @@
     "env": {
         "jest/globals": true,
         "react-native/react-native": true
+    },
+    "rules": {
+        "react/jsx-filename-extension": "off"
     }
 }
