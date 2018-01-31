@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-native';
 
 import Container from '../components/Container';
+import Button from '../components/common/Button';
 
 const Home = props => (
   <Container>

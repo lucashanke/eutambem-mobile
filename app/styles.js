@@ -7,6 +7,9 @@ const appStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  button: {
+    color: '#961687',
+  },
   input: {
     borderBottomColor: 'black',
     ...Platform.select({
