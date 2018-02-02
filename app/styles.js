@@ -3,15 +3,14 @@ import { StyleSheet, Platform } from 'react-native';
 const appStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    margin: '5%',
   },
   button: {
     color: '#961687',
   },
   input: {
-    borderBottomColor: 'black',
+    borderBottomColor: '#91508C',
     ...Platform.select({
       ios: {
         borderBottomWidth: 1,
