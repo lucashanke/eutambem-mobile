@@ -3,15 +3,16 @@ import { StyleSheet, Platform } from 'react-native';
 const appStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    margin: '5%',
   },
   button: {
     color: '#961687',
   },
   input: {
-    borderBottomColor: 'black',
+    borderBottomColor: '#91508C',
+    alignItems: 'flex-start',
+    borderWidth: 0,
     ...Platform.select({
       ios: {
         borderBottomWidth: 1,
@@ -33,6 +34,10 @@ const appStyles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  date: {
+    width: '100%',
+    height: 30,
   },
 });
 

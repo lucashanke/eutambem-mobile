@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     width: '70%',
     height: '80%',
   },
+  card: {
+    backgroundColor: '#F5FCFF',
+  },
 });
 
 const App = StackNavigator({
@@ -25,6 +28,7 @@ const App = StackNavigator({
   navigationOptions: {
     headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
   },
+  cardStyle: styles.card,
 });
 
 export default App;
