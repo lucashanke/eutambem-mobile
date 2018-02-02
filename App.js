@@ -8,13 +8,13 @@ import {
 } from 'react-navigation';
 
 import CreateReport from './app/screens/CreateReport';
-import logo from './app/img/eutambem-combr-logo.png';
+import logo from './app/img/logo.png';
 import Home from './app/screens/Home';
 
 const styles = StyleSheet.create({
   logo: {
-    width: '50%',
-    height: '100%',
+    width: '70%',
+    height: '80%',
   },
 });
 
@@ -23,9 +23,8 @@ const App = StackNavigator({
   CreateReport: { screen: CreateReport },
 }, {
   navigationOptions: {
-    headerTitle: <Image style={styles.logo} source={logo} />,
+    headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
   },
 });
 
 export default App;
-
