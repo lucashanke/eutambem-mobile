@@ -11,6 +11,8 @@ const appStyles = StyleSheet.create({
   },
   input: {
     borderBottomColor: '#91508C',
+    alignItems: 'flex-start',
+    borderWidth: 0,
     ...Platform.select({
       ios: {
         borderBottomWidth: 1,
@@ -32,6 +34,10 @@ const appStyles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  date: {
+    width: '100%',
+    height: 30,
   },
 });
 
