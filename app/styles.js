@@ -1,22 +1,29 @@
 import { StyleSheet, Platform } from 'react-native';
 
+export const SOFT_PURPLE = '#91508c';
+export const DARK_PURPLE = '#961687';
+export const RED = '#f95c69';
+export const GREEN = '#03b5aa';
+export const WHITE = '#ffffff';
+
 const appStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: WHITE,
     margin: '5%',
   },
   button: {
-    color: '#961687',
+    color: DARK_PURPLE,
   },
   input: {
-    borderBottomColor: '#91508C',
+    borderBottomColor: DARK_PURPLE,
     alignItems: 'flex-start',
     borderWidth: 0,
     ...Platform.select({
       ios: {
         borderBottomWidth: 1,
-        marginBottom: 10,
+        margin: 0,
+        marginBottom: 30,
         height: 30,
       },
       android: {
@@ -24,9 +31,19 @@ const appStyles = StyleSheet.create({
       },
     }),
   },
+  date: {
+    width: '100%',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderColor: '#eeeeee',
+    borderWidth: 1,
+    padding: 5,
+  },
   loading: {
     opacity: 0.5,
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     position: 'absolute',
     left: 0,
     right: 0,
@@ -34,10 +51,6 @@ const appStyles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  date: {
-    width: '100%',
-    height: 30,
   },
 });
 
