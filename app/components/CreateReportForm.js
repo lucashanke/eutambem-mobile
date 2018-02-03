@@ -3,6 +3,7 @@ import { View, TextInput } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 import appStyles from '../styles';
+import Picker from '../components/common/Picker';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -34,6 +35,19 @@ export default class CreateReportForm extends Component {
           onDateChange={date => this.setState({ date })}
           style={appStyles.date}
           customStyles={{ dateInput: appStyles.input }}
+        />
+        <Picker
+          placeholder="O que aconteceu"
+          items={[{
+            value: 'moral',
+            label: 'Assédio Moral',
+          }, {
+            value: 'sexual',
+            label: 'Assédio Sexual',
+          }, {
+            value: 'other',
+            label: 'Outro tipo de Assédio',
+          }]}
         />
       </View>
     );
