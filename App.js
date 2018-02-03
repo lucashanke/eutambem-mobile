@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     height: '80%',
   },
   card: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#ffffff',
   },
 });
 
