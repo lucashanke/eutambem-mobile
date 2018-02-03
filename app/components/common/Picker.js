@@ -74,12 +74,10 @@ export default class Picker extends Component {
               <View style={appStyles.modalHeader}>
                 <Button
                   type="cancel"
-                  style={[appStyles.button]}
                   onPress={() => this.closeModal()}
                   title="Cancelar"
                 />
                 <Button
-                  style={appStyles.button}
                   onPress={() => this.confirm()}
                   title="Ok"
                 />

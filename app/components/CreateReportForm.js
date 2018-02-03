@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, TextInput } from 'react-native';
-import DatePicker from 'react-native-datepicker';
 
 import appStyles from '../styles';
 import Picker from '../components/common/Picker';
+import DatePicker from '../components/common/DatePicker';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -25,16 +25,9 @@ export default class CreateReportForm extends Component {
         />
         <DatePicker
           date={this.state.date}
-          mode="date"
           placeholder="Quando ocorreu"
-          format="DD/MMM/YYYY"
           maxDate={new Date(Date.now())}
-          confirmBtnText="Ok"
-          cancelBtnText="Cancelar"
-          showIcon={false}
           onDateChange={date => this.setState({ date })}
-          style={appStyles.date}
-          customStyles={{ dateInput: appStyles.input }}
         />
         <Picker
           placeholder="O que aconteceu"

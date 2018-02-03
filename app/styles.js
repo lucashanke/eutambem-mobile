@@ -13,7 +13,7 @@ const appStyles = StyleSheet.create({
     margin: '5%',
   },
   button: {
-    color: DARK_PURPLE,
+    fontSize: 10,
   },
   input: {
     borderBottomColor: DARK_PURPLE,
@@ -23,7 +23,8 @@ const appStyles = StyleSheet.create({
       ios: {
         borderBottomWidth: 1,
         margin: 0,
-        marginBottom: 30,
+        marginBottom: 15,
+        marginTop: 15,
         height: 30,
       },
       android: {
@@ -31,15 +32,12 @@ const appStyles = StyleSheet.create({
       },
     }),
   },
-  date: {
-    width: '100%',
-  },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderColor: '#eeeeee',
     borderWidth: 1,
-    padding: 5,
+    padding: 3,
   },
   loading: {
     opacity: 0.5,
