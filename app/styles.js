@@ -24,7 +24,7 @@ const appStyles = StyleSheet.create({
         borderBottomWidth: 1,
         margin: 0,
         marginBottom: 15,
-        marginTop: 15,
+        marginTop: 10,
         height: 30,
       },
       android: {
