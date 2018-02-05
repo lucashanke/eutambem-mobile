@@ -10,7 +10,9 @@ const appStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: WHITE,
-    margin: '5%',
+  },
+  innerContainer: {
+    padding: '5%',
   },
   button: {
     fontSize: 10,
