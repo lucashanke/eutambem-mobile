@@ -27,7 +27,7 @@ export default class Picker extends Component {
     this.state = {
       modalVisible: false,
       itemSelected: {},
-      currentItem: {},
+      currentItem: this.props.items[0],
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
