@@ -15,6 +15,11 @@ export const style = StyleSheet.create({
   },
   date: {
     width: '100%',
+    marginTop: 10,
+    marginBottom: 10,
+    height: 30,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 });
 

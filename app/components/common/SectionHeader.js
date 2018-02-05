@@ -6,7 +6,7 @@ import { DARK_PURPLE } from '../../styles';
 
 const style = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: 20,
   },
   text: {
     fontSize: 16,

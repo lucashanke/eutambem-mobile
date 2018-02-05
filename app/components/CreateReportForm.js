@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 import appStyles from '../styles';
 import Picker from '../components/common/Picker';
@@ -12,6 +12,7 @@ export default class CreateReportForm extends Component {
     this.state = {
       company: '',
       date: null,
+      description: '',
     };
   }
 
@@ -78,6 +79,15 @@ export default class CreateReportForm extends Component {
             value: 'over66',
             label: 'Maior de 66 anos',
           }]}
+        />
+        <SectionHeader title="Sobre o que aconteceu" />
+        <TextInput
+          style={[appStyles.input, appStyles.multilineInput]}
+          multiline
+          autoGrow
+          placeholder="Conte-nos mais sobre o ocorrido"
+          onChangeText={description => this.setState({ description })}
+          value={this.state.description}
         />
       </View>
     );

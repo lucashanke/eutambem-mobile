@@ -25,7 +25,7 @@ const appStyles = StyleSheet.create({
       ios: {
         borderBottomWidth: 1,
         margin: 0,
-        marginBottom: 15,
+        marginBottom: 10,
         marginTop: 10,
         height: 30,
       },
@@ -33,6 +33,10 @@ const appStyles = StyleSheet.create({
         borderBottomWidth: 0,
       },
     }),
+  },
+  multilineInput: {
+    height: 'auto',
+    minHeight: 30,
   },
   modalHeader: {
     flexDirection: 'row',
