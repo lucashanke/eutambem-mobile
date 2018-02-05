@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Container from '../components/Container';
+import Container from '../components/common/Container';
 import Button from '../components/common/Button';
 
 const Home = props => (

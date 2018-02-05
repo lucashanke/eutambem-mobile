@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SafeAreaView, KeyboardAvoidingView } from 'react-native';
 
-import appStyles from '../styles';
+import appStyles from '../../styles';
 
 const Container = props => (
   <SafeAreaView style={appStyles.container}>
