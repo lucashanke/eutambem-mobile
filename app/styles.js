@@ -26,9 +26,6 @@ const appStyles = StyleSheet.create({
         marginTop: 10,
         height: 30,
       },
-      android: {
-        borderBottomWidth: 0,
-      },
     }),
   },
   multilineInput: {
