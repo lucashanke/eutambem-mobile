@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, TextInput, StyleSheet, Picker as PickerAndroid, PickerIOS, Platform } from 'react-native';
+import { Text, View, TextInput, StyleSheet, Picker as PickerAndroid, PickerIOS, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
 import appStyles from '../../styles';
@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: 'rgba(0, 0, 0, 0.1)',
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  }
 });
 
 export default class Picker extends Component {
@@ -102,20 +107,25 @@ export default class Picker extends Component {
         </View>
       ),
       android: (
-        <PickerAndroid
-          style={{ width: '100%' }}
-          placeholder={this.props.placeholder}
-          selectedValue={this.state.currentItem.value}
-          onValueChange={this.onValueChange}
-        >
-          { this.props.items.map(item => (
-            <PickerAndroid.Item
-              key={item.value}
-              label={item.label}
-              value={item.value}
-            />
-          ))}
-        </PickerAndroid>
+        <View style={styles.row}>
+          <Text style={{ width: '40%' }}>
+            {this.props.placeholder}
+          </Text>
+          <PickerAndroid
+            style={{ width: '60%' }}
+            placeholder={this.props.placeholder}
+            selectedValue={this.state.currentItem.value}
+            onValueChange={this.onValueChange}
+          >
+            { this.props.items.map(item => (
+              <PickerAndroid.Item
+                key={item.value}
+                label={item.label}
+                value={item.value}
+              />
+            ))}
+          </PickerAndroid>
+        </View>
       ),
     });
   }
