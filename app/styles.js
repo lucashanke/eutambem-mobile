@@ -14,9 +14,6 @@ const appStyles = StyleSheet.create({
   innerContainer: {
     padding: '5%',
   },
-  button: {
-    fontSize: 10,
-  },
   input: {
     borderBottomColor: DARK_PURPLE,
     alignItems: 'flex-start',
