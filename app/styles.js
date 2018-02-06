@@ -38,6 +38,7 @@ const appStyles = StyleSheet.create({
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderColor: '#eeeeee',
     borderWidth: 1,
     padding: 3,

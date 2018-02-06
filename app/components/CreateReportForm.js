@@ -4,13 +4,14 @@ import { TextInput, View } from 'react-native';
 import appStyles from '../styles';
 import Picker from '../components/common/Picker';
 import DatePicker from '../components/common/DatePicker';
+import PlacePicker from '../components/common/PlacePicker';
+
 import SectionHeader from './common/SectionHeader';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      company: '',
       date: null,
       description: '',
     };
@@ -19,11 +20,8 @@ export default class CreateReportForm extends Component {
   render() {
     return (
       <View>
-        <TextInput
-          style={appStyles.input}
+        <PlacePicker
           placeholder="Local do assédio"
-          onChangeText={company => this.setState({ company })}
-          value={this.state.company}
         />
         <DatePicker
           date={this.state.date}
