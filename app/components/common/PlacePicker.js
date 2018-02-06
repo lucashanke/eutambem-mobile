@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header } from 'react-navigation';
 
-import { SafeAreaView, View, TextInput, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, TextInput, StyleSheet, Text, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     opacity: 1,
     borderColor: 'rgba(0, 0, 0, 0.1)',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    height: Platform.select({ android: '50%' }),
   },
   listView: {
     position: 'absolute',
