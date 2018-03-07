@@ -94,7 +94,7 @@ export default class PlacePicker extends Component {
               query={{
                 key: 'AIzaSyAWu91LURMU-W5OVonOPtPSKT94jJV50wQ',
                 language: 'pt-BR',
-                types: ['establishment', 'address'],
+                types: this.props.types,
               }}
               styles={{ listView: styles.listView }}
             />
@@ -107,5 +107,6 @@ export default class PlacePicker extends Component {
 
 PlacePicker.propTypes = {
   placeholder: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
