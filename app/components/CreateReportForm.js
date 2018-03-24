@@ -22,6 +22,7 @@ export default class CreateReportForm extends Component {
       date: null,
       description: '',
       advice: '',
+      email: '',
     };
   }
 
@@ -82,6 +83,12 @@ export default class CreateReportForm extends Component {
         <Picker
           placeholder="Renda Aproximada"
           items={WAGE_OPTIONS}
+        />
+        <SectionHeader title="Saiba mais" />
+        <TextInput
+          placeholder="Email"
+          onChangeText={email => this.setState({ email })}
+          value={this.state.email}
         />
       </View>
     );
