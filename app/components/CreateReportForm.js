@@ -32,16 +32,16 @@ export default class CreateReportForm extends Component {
         <Picker
           placeholder="Tipo de assédio"
           items={[{
-            value: 'fisico',
+            value: 'physical',
             label: 'Assédio Físico',
           }, {
             value: 'verbal',
             label: 'Assédio Verbal',
           }, {
-            value: 'homofobia',
+            value: 'homophobia',
             label: 'Homofobia',
           }, {
-            value: 'racismo',
+            value: 'racism',
             label: 'Racismo',
           }, {
             value: 'transfobia',
@@ -66,20 +66,23 @@ export default class CreateReportForm extends Component {
           onDateChange={date => this.setState({ date })}
         />
         <Picker
-          placeholder="Você recomendaria essa empresa depois do ocorrido"
+          placeholder="Você recomendaria essa empresa depois do ocorrido?"
           items={[{
-            value: 'sim',
+            value: 'yes',
             label: 'Sim',
           }, {
-            value: 'nao',
+            value: 'no',
             label: 'Não',
+          }, {
+            value: 'notInformed',
+            label: 'Prefiro não responder',
           }]}
         />
         <TextInput
           style={[appStyles.input, appStyles.multilineInput]}
           multiline
           autoGrow
-          placeholder="Qual seu conselho para os gest"
+          placeholder="Qual seu conselho para os gestores?"
           onChangeText={description => this.setState({ description })}
           value={this.state.description}
         />
@@ -100,20 +103,23 @@ export default class CreateReportForm extends Component {
         <Picker
           placeholder="Cor"
           items={[{
-            value: 'negra',
+            value: 'black',
             label: 'Negra',
           }, {
-            value: 'branca',
+            value: 'white',
             label: 'Branca',
           }, {
-            value: 'parda',
+            value: 'brown',
             label: 'Parda',
           }, {
-            value: 'amarela',
+            value: 'asian',
             label: 'Amarela',
           }, {
-            value: 'indigena',
+            value: 'indian',
             label: 'Indígena',
+          }, {
+            value: 'notInformed',
+            label: 'Prefiro não dizer',
           }]}
         />
         <Picker
@@ -134,29 +140,29 @@ export default class CreateReportForm extends Component {
             value: 'between51and65',
             label: 'Entre 51 e 65 anos',
           }, {
-            value: 'over66',
-            label: 'Maior de 66 anos',
+            value: 'over65',
+            label: 'Maior de 65 anos',
           }]}
         />
         <Picker
           placeholder="Renda Aproximada"
           items={[{
-            value: 'ateUm',
+            value: 'belowOne',
             label: 'Até R$724,00',
           }, {
-            value: 'deUmATres',
+            value: 'fromOneToThree',
             label: 'De R$724,01 a R$2.172,00',
           }, {
-            value: 'deTresACinco',
+            value: 'fromThreeToFive',
             label: 'De R$2.172,01 a R$3.620,00',
           }, {
-            value: 'deCincoADez',
+            value: 'fromFiveToTen',
             label: 'De R$3.620,01 a R$7.240,00',
           }, {
-            value: 'deDezAVinte',
+            value: 'fromTenToTwenty',
             label: 'De R$7.240,01 a R$14.480,00',
           }, {
-            value: 'maisDeVinte',
+            value: 'overTwenty',
             label: 'Mais de R$14.480,01',
           }]}
         />
