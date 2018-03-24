@@ -8,6 +8,8 @@ import PlacePicker from '../components/common/PlacePicker';
 
 import SectionHeader from './common/SectionHeader';
 
+const MAX_TEXT_INPUT_LENGTH = 350;
+
 export default class CreateReportForm extends Component {
   constructor(props) {
     super(props);
@@ -82,6 +84,7 @@ export default class CreateReportForm extends Component {
           style={[appStyles.input, appStyles.multilineInput]}
           multiline
           autoGrow
+          maxLength={MAX_TEXT_INPUT_LENGTH}
           placeholder="Qual seu conselho para os gestores?"
           onChangeText={description => this.setState({ description })}
           value={this.state.description}
