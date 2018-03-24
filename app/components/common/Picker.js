@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Text, View, TextInput, StyleSheet, Picker as PickerAndroid, PickerIOS, Platform } from 'react-native';
+import { Text, View, StyleSheet, Picker as PickerAndroid, PickerIOS, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
 import appStyles from '../../styles';
 import Button from '../common/Button';
+import TextInput from '../common/TextInput';
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
 });
 
 export default class Picker extends Component {
@@ -63,7 +64,6 @@ export default class Picker extends Component {
       ios: (
         <View>
           <TextInput
-            style={appStyles.input}
             placeholder={this.props.placeholder}
             value={this.state.itemSelected.label}
             onFocus={() => this.openModal()}

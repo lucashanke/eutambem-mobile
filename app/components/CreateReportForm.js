@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { TextInput, View } from 'react-native';
+import { View } from 'react-native';
 
 import appStyles from '../styles';
 import Picker from '../components/common/Picker';
 import DatePicker from '../components/common/DatePicker';
 import PlacePicker from '../components/common/PlacePicker';
-
+import TextInput from '../components/common/TextInput';
 import SectionHeader from './common/SectionHeader';
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
@@ -21,6 +21,7 @@ export default class CreateReportForm extends Component {
     this.state = {
       date: null,
       description: '',
+      advice: '',
     };
   }
 
@@ -41,9 +42,7 @@ export default class CreateReportForm extends Component {
           items={HARASSMENT_TYPE_OPTIONS}
         />
         <TextInput
-          style={[appStyles.input, appStyles.multilineInput]}
           multiline
-          autoGrow
           placeholder="Conte-nos mais sobre o ocorrido"
           onChangeText={description => this.setState({ description })}
           value={this.state.description}
@@ -64,8 +63,8 @@ export default class CreateReportForm extends Component {
           autoGrow
           maxLength={MAX_TEXT_INPUT_LENGTH}
           placeholder="Qual seu conselho para os gestores?"
-          onChangeText={description => this.setState({ description })}
-          value={this.state.description}
+          onChangeText={advice => this.setState({ advice })}
+          value={this.state.advice}
         />
         <SectionHeader title="Sobre você" />
         <Picker

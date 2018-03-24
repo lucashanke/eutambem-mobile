@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header } from 'react-navigation';
 
-import { SafeAreaView, View, TextInput, StyleSheet, Text, Platform } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import appStyles from '../../styles';
 import Button from '../common/Button';
+import TextInput from '../common/TextInput';
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -59,7 +60,6 @@ export default class PlacePicker extends Component {
     return (
       <SafeAreaView>
         <TextInput
-          style={appStyles.input}
           placeholder={this.props.placeholder}
           value={this.state.itemSelected.label}
           onFocus={() => this.openModal()}
