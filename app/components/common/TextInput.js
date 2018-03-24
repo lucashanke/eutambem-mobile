@@ -9,6 +9,8 @@ class TextInput extends Component {
 
   inputRef = (component) => { this.input = component; }
 
+  placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
+
   render() {
     let style = [appStyles.input];
     let autoGrow = false;
@@ -19,12 +21,13 @@ class TextInput extends Component {
 
     return (
       <NativeTextInput
+        {...this.props}
         style={style}
         maxLength={MAX_TEXT_INPUT_LENGTH}
         multiline={this.props.multiline}
+        placeholder={this.placeholder()}
         autoGrow={autoGrow}
         ref={this.inputRef}
-        {...this.props}
       />
     );
   }
@@ -32,10 +35,13 @@ class TextInput extends Component {
 
 TextInput.propTypes = {
   multiline: PropTypes.bool,
+  placeholder: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
   multiline: false,
+  required: false,
 };
 
 export default TextInput;
