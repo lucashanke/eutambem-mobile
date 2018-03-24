@@ -7,6 +7,8 @@ import DatePicker from '../components/common/DatePicker';
 import PlacePicker from '../components/common/PlacePicker';
 import TextInput from '../components/common/TextInput';
 import SectionHeader from './common/SectionHeader';
+import SectionText from './common/SectionText';
+
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
   GENDER_OPTIONS,
@@ -85,6 +87,7 @@ export default class CreateReportForm extends Component {
           items={WAGE_OPTIONS}
         />
         <SectionHeader title="Saiba mais" />
+        <SectionText title="Acompanhe relatos da mesma empresa ou cidade." />
         <TextInput
           placeholder="Email"
           onChangeText={email => this.setState({ email })}

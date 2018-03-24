@@ -5,6 +5,7 @@ export const DARK_PURPLE = '#961687';
 export const RED = '#f95c69';
 export const GREEN = '#03b5aa';
 export const WHITE = '#ffffff';
+export const BLACK = '#000000';
 
 const appStyles = StyleSheet.create({
   container: {
