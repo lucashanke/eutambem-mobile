@@ -16,7 +16,7 @@ const appStyles = StyleSheet.create({
     padding: '5%',
   },
   input: {
-    borderBottomColor: DARK_PURPLE,
+    borderBottomColor: SOFT_PURPLE,
     alignItems: 'flex-start',
     borderWidth: 0,
     ...Platform.select({
