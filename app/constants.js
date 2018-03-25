@@ -101,3 +101,14 @@ export const WAGE_OPTIONS = [{
   value: 'overTwenty',
   label: 'Mais de R$14.480,01',
 }];
+
+export const FOLLOWUP_ACTIONS_OPTIONS = [{
+  key: 'talkedToAccountable',
+  label: 'Falei com algum Responsável (RH, Superior direto, etc)',
+}, {
+  key: 'gaveFeedback',
+  label: 'Dei o feedback para o envolvido',
+}, {
+  key: 'policeReport',
+  label: 'Fiz um Boletim de Ocorrência',
+}];

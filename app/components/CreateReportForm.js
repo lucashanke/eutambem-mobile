@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import appStyles from '../styles';
-import Picker from '../components/common/Picker';
-import DatePicker from '../components/common/DatePicker';
-import PlacePicker from '../components/common/PlacePicker';
-import TextInput from '../components/common/TextInput';
-import SectionHeader from './common/SectionHeader';
-import SectionText from './common/SectionText';
+
+import { Picker, DatePicker, PlacePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup } from './common';
 
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
@@ -15,7 +11,8 @@ import { HARASSMENT_TYPE_OPTIONS,
   SKIN_COLOR_OPTIONS,
   AGE_OPTIONS,
   WAGE_OPTIONS,
-  MAX_TEXT_INPUT_LENGTH } from '../constants';
+  MAX_TEXT_INPUT_LENGTH,
+  FOLLOWUP_ACTIONS_OPTIONS } from '../constants';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -55,6 +52,10 @@ export default class CreateReportForm extends Component {
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}
           onDateChange={date => this.setState({ date })}
+        />
+        <CheckBoxGroup
+          label="Você tomou alguma providência com relação ao ocorrido?"
+          options={FOLLOWUP_ACTIONS_OPTIONS}
         />
         <Picker
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
