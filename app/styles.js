@@ -52,6 +52,12 @@ const appStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  link: {
+    marginTop: 10,
+    marginBottom: 10,
+    color: SOFT_PURPLE,
+    alignSelf: 'flex-end',
+  },
 });
 
 export default appStyles;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, Text } from 'react-native';
 
 import appStyles from '../styles';
 
@@ -107,7 +108,16 @@ export default class CreateReportForm extends Component {
           isChecked={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
+        <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('Home')}>
+          Acessar Política de Privacidade
+        </Text>
       </View>
     );
   }
 }
+
+CreateReportForm.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
