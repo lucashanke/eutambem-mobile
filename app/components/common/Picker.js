@@ -27,20 +27,27 @@ const styles = StyleSheet.create({
   },
 });
 
+const UNSELECTED = -1;
+
 export default class Picker extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modalVisible: false,
       itemSelected: {},
-      currentItem: this.props.items[0],
+      currentItem: Platform.select({
+        ios: this.props.items[0],
+        android: { value: null },
+      }),
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
 
   onValueChange(itemValue) {
-    const itemLabel = this.props.items.find(item => item.value === itemValue).label;
-    this.setState({ currentItem: { value: itemValue, label: itemLabel } });
+    if (itemValue !== UNSELECTED) {
+      const itemLabel = this.props.items.find(item => item.value === itemValue).label;
+      this.setState({ currentItem: { value: itemValue, label: itemLabel } });
+    }
   }
 
   confirm() {
@@ -117,6 +124,11 @@ export default class Picker extends Component {
             selectedValue={this.state.currentItem.value}
             onValueChange={this.onValueChange}
           >
+            <PickerAndroid.Item
+              label="Selecione"
+              color="gray"
+              value={UNSELECTED}
+            />
             { this.props.items.map(item => (
               <PickerAndroid.Item
                 key={item.value}

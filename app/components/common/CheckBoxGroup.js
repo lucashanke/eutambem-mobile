@@ -8,6 +8,7 @@ import CheckBox from './CheckBox';
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
+    marginBottom: 10,
   },
   text: {
     fontSize: 14,
