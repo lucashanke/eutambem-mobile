@@ -8,6 +8,7 @@ import {
 } from 'react-navigation';
 
 import CreateReport from './app/screens/CreateReport';
+import PrivacyPolicy from './app/screens/PrivacyPolicy';
 import logo from './app/img/logo.png';
 import Home from './app/screens/Home';
 
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
 const App = StackNavigator({
   Home: { screen: Home },
   CreateReport: { screen: CreateReport },
+  PrivacyPolicy: { screen: PrivacyPolicy },
 }, {
   navigationOptions: {
     headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
