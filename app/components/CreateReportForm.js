@@ -13,6 +13,7 @@ import { HARASSMENT_TYPE_OPTIONS,
   WAGE_OPTIONS,
   MAX_TEXT_INPUT_LENGTH,
   FOLLOWUP_ACTIONS_OPTIONS } from '../constants';
+import CheckBox from './common/CheckBox';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class CreateReportForm extends Component {
       advice: '',
       email: '',
       name: '',
+      acceptedPolicies: false,
     };
   }
 
@@ -99,6 +101,11 @@ export default class CreateReportForm extends Component {
           placeholder="Nome"
           onChangeText={name => this.setState({ name })}
           value={this.state.name}
+        />
+        <CheckBox
+          onClick={() => this.setState({ acceptedPolicies: !this.state.acceptedPolicies })}
+          isChecked={this.state.acceptedPolicies}
+          label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
       </View>
     );
