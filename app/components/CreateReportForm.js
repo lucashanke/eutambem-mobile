@@ -22,6 +22,7 @@ export default class CreateReportForm extends Component {
       description: '',
       advice: '',
       email: '',
+      name: '',
     };
   }
 
@@ -93,6 +94,11 @@ export default class CreateReportForm extends Component {
           placeholder="Email"
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
+        />
+        <TextInput
+          placeholder="Nome"
+          onChangeText={name => this.setState({ name })}
+          value={this.state.name}
         />
       </View>
     );
