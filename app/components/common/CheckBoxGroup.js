@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
-import CheckBox from 'react-native-check-box';
+
 import { DARK_PURPLE } from '../../styles';
+import CheckBox from './CheckBox';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,12 +35,10 @@ export default class CheckBoxGroup extends Component {
   renderOptions() {
     return this.props.options.map(option => (
       <CheckBox
-        style={styles.checkbox}
         key={option.key}
-        checkBoxColor={DARK_PURPLE}
         onClick={() => this.onClick(option.key)}
         isChecked={this.state[option.key]}
-        rightText={option.label}
+        label={option.label}
       />
     ));
   }
