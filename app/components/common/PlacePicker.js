@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { TextInput } from '../common';
 
@@ -25,6 +26,18 @@ const style = StyleSheet.create({
   },
   itemLabel: {
     fontSize: 16,
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    margin: 10,
+    marginLeft: 0,
+    marginBottom: 0,
+  },
+  input: {
+    flex: 1,
   },
 });
 
@@ -73,12 +86,19 @@ export default class PlacePicker extends Component {
   render() {
     return (
       <View>
-        <TextInput
-          required
-          placeholder="Procurar"
-          onChangeText={this.onQueryChange}
-          value={this.state.query}
-        />
+        <View style={style.searchBar}>
+          <View style={style.icon}>
+            <Icon name="ios-search" size={20} />
+          </View>
+          <View style={style.input}>
+            <TextInput
+              required
+              placeholder="Procurar"
+              onChangeText={this.onQueryChange}
+              value={this.state.query}
+            />
+          </View>
+        </View>
         <FlatList
           data={this.state.suggestions.map(item => ({
             key: item.place_id,
