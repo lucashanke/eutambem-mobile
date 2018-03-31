@@ -18,13 +18,13 @@ export default class CreateReportForm extends Component {
       date: null,
       description: '',
       advice: '',
-      company: {},
+      establishment: {},
       address: {},
     };
   }
 
-  onCompanyChange = (item) => {
-    this.setState({ company: { value: item.id, label: item.label } });
+  onEstablishmentChange = (item) => {
+    this.setState({ establishment: { value: item.id, label: item.label } });
   }
 
   onAddressChange = (item) => {
@@ -36,8 +36,8 @@ export default class CreateReportForm extends Component {
       <View>
         <PlaceInput
           placeholder="Empresa em que ocorreu"
-          value={this.state.company.label}
-          onValueChange={this.onCompanyChange}
+          value={this.state.establishment.label}
+          onValueChange={this.onEstablishmentChange}
           types={['establishment']}
           navigation={this.props.navigation}
           placeScreenTitle="Informe a Empresa"
