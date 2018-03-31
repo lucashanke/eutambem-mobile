@@ -1,112 +1,105 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Header } from 'react-navigation';
 
-import { SafeAreaView, View, StyleSheet, Text, Platform } from 'react-native';
-import Modal from 'react-native-modal';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
-import appStyles from '../../styles';
-import Button from '../common/Button';
-import TextInput from '../common/TextInput';
+import { TextInput } from '../common';
 
-const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    top: Header.HEIGHT,
+const PLACES_AUTOCOMPLETE_URL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
+
+const fetchPlacesResults = (query, types) => {
+  const keyParam = 'key=AIzaSyAWu91LURMU-W5OVonOPtPSKT94jJV50wQ';
+  const inputParam = `input=${query}`;
+  const typesParam = `types=${types}`;
+  const languageParam = 'language=pt-BR';
+  const componentsParam = 'components=country:br';
+  return axios.get(`${PLACES_AUTOCOMPLETE_URL}?${keyParam}&${inputParam}&${typesParam}&${languageParam}&${componentsParam}`);
+};
+
+const style = StyleSheet.create({
+  item: {
+    padding: 10,
+    borderColor: 'grey',
+    borderBottomWidth: 1,
   },
-  innerContainer: {
-    backgroundColor: 'white',
-    opacity: 1,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
-    justifyContent: 'flex-start',
-    height: Platform.select({ android: '50%' }),
-  },
-  listView: {
-    position: 'absolute',
-    top: 44.5,
-    backgroundColor: 'white',
+  itemLabel: {
+    fontSize: 16,
   },
 });
+
+const Item = props => (
+  <View style={style.item}>
+    <TouchableOpacity onPress={props.onPress}>
+      <Text style={style.itemLabel}>{props.label}</Text>
+      <Text>{props.sublabel}</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+Item.propTypes = {
+  label: PropTypes.string.isRequired,
+  sublabel: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+};
 
 export default class PlacePicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false,
-      itemSelected: { value: '', label: '' },
+      query: '',
+      suggestions: [],
     };
-    this.onValueChange = this.onValueChange.bind(this);
   }
 
-  onValueChange(item) {
-    this.setState({ itemSelected: { value: item.place_id, label: item.description } });
-    this.closeModal();
+  onQueryChange = (query) => {
+    if (query.length >= 3) {
+      this.setState({
+        suggestions: [],
+      });
+      fetchPlacesResults(query, this.props.types[0]).then(((response) => {
+        this.setState({
+          suggestions: response.data.predictions,
+        });
+      }));
+    }
+    this.setState({ query });
   }
 
-  openModal() {
-    this.input.blur();
-    this.setState({ modalVisible: true });
+  onPlaceSelect = (id, label) => {
+    this.props.onPlaceChange({ id, label });
   }
-
-  closeModal() {
-    this.setState({ modalVisible: false });
-  }
-
-  inputRef(component) { this.input = component; }
 
   render() {
     return (
-      <SafeAreaView>
+      <View>
         <TextInput
-          placeholder={this.props.placeholder}
-          value={this.state.itemSelected.label}
-          onFocus={() => this.openModal()}
-          ref={this.inputRef.bind(this)}
+          required
+          placeholder="Procurar"
+          onChangeText={this.onQueryChange}
+          value={this.state.query}
         />
-        <Modal
-          isVisible={this.state.modalVisible}
-          style={styles.modalContainer}
-          onRequestClose={() => this.closeModal()}
-        >
-          <SafeAreaView style={styles.innerContainer}>
-            <View style={appStyles.modalHeader}>
-              <Button
-                type="cancel"
-                onPress={() => this.closeModal()}
-                title="Cancelar"
-              />
-              <Text style={{ fontSize: 18 }}>
-                Selecione o Local
-              </Text>
-            </View>
-            <GooglePlacesAutocomplete
-              placeholder="Procurar"
-              minLength={2}
-              autoFocus={false}
-              returnKeyType="search"
-              listViewDisplayed="auto"
-              fetchDetails
-              renderDescription={row => row.description}
-              onPress={this.onValueChange}
-              getDefaultValue={() => this.state.itemSelected.label}
-              query={{
-                key: 'AIzaSyAWu91LURMU-W5OVonOPtPSKT94jJV50wQ',
-                language: 'pt-BR',
-                types: this.props.types,
-              }}
-              styles={{ listView: styles.listView }}
+        <FlatList
+          data={this.state.suggestions.map(item => ({
+            key: item.place_id,
+            label: item.structured_formatting.main_text,
+            sublabel: item.structured_formatting.secondary_text,
+          }))}
+          renderItem={({ item }) => (
+            <Item
+              label={item.label}
+              sublabel={item.sublabel}
+              onPress={() => this.onPlaceSelect(item.key, item.label)}
             />
-          </SafeAreaView>
-        </Modal>
-      </SafeAreaView>
+          )}
+        />
+      </View>
     );
   }
 }
 
 PlacePicker.propTypes = {
-  placeholder: PropTypes.string.isRequired,
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onPlaceChange: PropTypes.func.isRequired,
 };
 

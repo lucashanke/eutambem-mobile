@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 
 import appStyles from '../styles';
 
-import { Picker, DatePicker, PlacePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup } from './common';
+import { Picker, DatePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup } from './common';
 
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
@@ -25,21 +25,28 @@ export default class CreateReportForm extends Component {
       advice: '',
       email: '',
       name: '',
+      company: {},
       acceptedPolicies: false,
     };
+  }
+
+  onCompanyChange = (item) => {
+    this.setState({ company: { value: item.id, label: item.label } });
+    this.props.navigation.goBack(null);
   }
 
   render() {
     return (
       <View>
         <SectionHeader title="Sobre o que aconteceu" />
-        <PlacePicker
+        <TextInput
           placeholder="Empresa em que ocorreu"
-          types={['establishment']}
-        />
-        <PlacePicker
-          placeholder="Endereço do ocorrido"
-          types={['address']}
+          value={this.state.company.label}
+          onFocus={() => this.props.navigation.navigate('PlaceScreen', {
+            title: 'Informe a Empresa',
+            onPlaceChange: this.onCompanyChange,
+            types: ['establishment'],
+          })}
         />
         <Picker
           placeholder="Tipo de assédio"
@@ -118,6 +125,7 @@ export default class CreateReportForm extends Component {
 
 CreateReportForm.propTypes = {
   navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
     navigate: PropTypes.func,
   }).isRequired,
 };

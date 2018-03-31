@@ -11,6 +11,7 @@ import CreateReport from './app/screens/CreateReport';
 import PrivacyPolicy from './app/screens/PrivacyPolicy';
 import logo from './app/img/logo.png';
 import Home from './app/screens/Home';
+import PlaceScreen from './app/screens/PlaceScreen';
 import { GREEN, BLACK } from './app/styles';
 
 const styles = StyleSheet.create({
@@ -27,6 +28,7 @@ const App = StackNavigator({
   Home: { screen: Home },
   CreateReport: { screen: CreateReport },
   PrivacyPolicy: { screen: PrivacyPolicy },
+  PlaceScreen: { screen: PlaceScreen },
 }, {
   navigationOptions: {
     headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
