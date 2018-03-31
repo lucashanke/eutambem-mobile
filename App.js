@@ -7,7 +7,8 @@ import {
   StackNavigator,
 } from 'react-navigation';
 
-import CreateReport from './app/screens/CreateReport';
+import AboutWhatHappened from './app/screens/AboutWhatHappened';
+import AboutYou from './app/screens/AboutYou';
 import PrivacyPolicy from './app/screens/PrivacyPolicy';
 import logo from './app/img/logo.png';
 import Home from './app/screens/Home';
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
 
 const App = StackNavigator({
   Home: { screen: Home },
-  CreateReport: { screen: CreateReport },
+  AboutWhatHappened: { screen: AboutWhatHappened },
+  AboutYou: { screen: AboutYou },
   PrivacyPolicy: { screen: PrivacyPolicy },
   PlaceScreen: { screen: PlaceScreen },
 }, {

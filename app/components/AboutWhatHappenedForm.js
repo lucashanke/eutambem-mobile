@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 import appStyles from '../styles';
 
-import { CheckBox, Picker, DatePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup, PlaceInput } from './common';
+import { Button, Picker, DatePicker, TextInput, CheckBoxGroup, PlaceInput } from './common';
 
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
-  GENDER_OPTIONS,
-  SKIN_COLOR_OPTIONS,
-  AGE_OPTIONS,
-  WAGE_OPTIONS,
   MAX_TEXT_INPUT_LENGTH,
   FOLLOWUP_ACTIONS_OPTIONS } from '../constants';
 
@@ -22,10 +18,8 @@ export default class CreateReportForm extends Component {
       date: null,
       description: '',
       advice: '',
-      email: '',
-      name: '',
       company: {},
-      acceptedPolicies: false,
+      address: {},
     };
   }
 
@@ -33,10 +27,13 @@ export default class CreateReportForm extends Component {
     this.setState({ company: { value: item.id, label: item.label } });
   }
 
+  onAddressChange = (item) => {
+    this.setState({ address: { value: item.id, label: item.label } });
+  }
+
   render() {
     return (
       <View>
-        <SectionHeader title="Sobre o que aconteceu" />
         <PlaceInput
           placeholder="Empresa em que ocorreu"
           value={this.state.company.label}
@@ -44,6 +41,14 @@ export default class CreateReportForm extends Component {
           types={['establishment']}
           navigation={this.props.navigation}
           placeScreenTitle="Informe a Empresa"
+        />
+        <PlaceInput
+          placeholder="Endereço em que ocorreu"
+          value={this.state.address.label}
+          onValueChange={this.onAddressChange}
+          types={['address']}
+          navigation={this.props.navigation}
+          placeScreenTitle="Informe o Endereço"
         />
         <Picker
           placeholder="Tipo de assédio"
@@ -78,43 +83,10 @@ export default class CreateReportForm extends Component {
           onChangeText={advice => this.setState({ advice })}
           value={this.state.advice}
         />
-        <SectionHeader title="Sobre você" />
-        <Picker
-          placeholder="Gênero"
-          items={GENDER_OPTIONS}
+        <Button
+          onPress={() => this.props.navigation.navigate('AboutYou')}
+          title="Prosseguir"
         />
-        <Picker
-          placeholder="Cor"
-          items={SKIN_COLOR_OPTIONS}
-        />
-        <Picker
-          placeholder="Idade"
-          items={AGE_OPTIONS}
-        />
-        <Picker
-          placeholder="Renda Aproximada"
-          items={WAGE_OPTIONS}
-        />
-        <SectionHeader title="Saiba mais" />
-        <SectionText title="Acompanhe relatos da mesma empresa ou cidade." />
-        <TextInput
-          placeholder="Email"
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          placeholder="Nome"
-          onChangeText={name => this.setState({ name })}
-          value={this.state.name}
-        />
-        <CheckBox
-          onClick={() => this.setState({ acceptedPolicies: !this.state.acceptedPolicies })}
-          isChecked={this.state.acceptedPolicies}
-          label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
-        />
-        <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
-          Acessar Política de Privacidade
-        </Text>
       </View>
     );
   }
