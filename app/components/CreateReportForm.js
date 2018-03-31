@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 
 import appStyles from '../styles';
 
-import { Picker, DatePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup } from './common';
+import { CheckBox, Picker, DatePicker, TextInput, SectionHeader, SectionText, CheckBoxGroup, PlaceInput } from './common';
 
 import { HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
@@ -14,7 +14,6 @@ import { HARASSMENT_TYPE_OPTIONS,
   WAGE_OPTIONS,
   MAX_TEXT_INPUT_LENGTH,
   FOLLOWUP_ACTIONS_OPTIONS } from '../constants';
-import CheckBox from './common/CheckBox';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -32,21 +31,19 @@ export default class CreateReportForm extends Component {
 
   onCompanyChange = (item) => {
     this.setState({ company: { value: item.id, label: item.label } });
-    this.props.navigation.goBack(null);
   }
 
   render() {
     return (
       <View>
         <SectionHeader title="Sobre o que aconteceu" />
-        <TextInput
+        <PlaceInput
           placeholder="Empresa em que ocorreu"
           value={this.state.company.label}
-          onFocus={() => this.props.navigation.navigate('PlaceScreen', {
-            title: 'Informe a Empresa',
-            onPlaceChange: this.onCompanyChange,
-            types: ['establishment'],
-          })}
+          onValueChange={this.onCompanyChange}
+          types={['establishment']}
+          navigation={this.props.navigation}
+          placeScreenTitle="Informe a Empresa"
         />
         <Picker
           placeholder="Tipo de assédio"
