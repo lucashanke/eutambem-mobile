@@ -6,6 +6,7 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { TextInput } from '../common';
+import { DARK_GREY, LIGHT_GREY, GREY } from '../../styles';
 
 const PLACES_AUTOCOMPLETE_URL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
 
@@ -21,20 +22,24 @@ const fetchPlacesResults = (query, types) => {
 const style = StyleSheet.create({
   item: {
     padding: 10,
-    borderColor: 'grey',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: LIGHT_GREY,
     borderBottomWidth: 1,
   },
   itemLabel: {
     fontSize: 16,
+    color: DARK_GREY,
+  },
+  itemSubLabel: {
+    color: GREY,
   },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   icon: {
-    margin: 10,
-    marginLeft: 0,
-    marginBottom: 0,
+    marginRight: 10,
   },
   input: {
     flex: 1,
@@ -42,12 +47,17 @@ const style = StyleSheet.create({
 });
 
 const Item = props => (
-  <View style={style.item}>
-    <TouchableOpacity onPress={props.onPress}>
-      <Text style={style.itemLabel}>{props.label}</Text>
-      <Text>{props.sublabel}</Text>
-    </TouchableOpacity>
-  </View>
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={style.item}>
+      <View style={style.icon}>
+        <Icon name="ios-pin" size={20} />
+      </View>
+      <View>
+        <Text style={style.itemLabel}>{props.label}</Text>
+        <Text style={style.itemSubLabel}>{props.sublabel}</Text>
+      </View>
+    </View>
+  </TouchableOpacity>
 );
 
 Item.propTypes = {

@@ -6,6 +6,9 @@ export const RED = '#f95c69';
 export const GREEN = '#03b5aa';
 export const WHITE = '#ffffff';
 export const BLACK = '#000000';
+export const DARK_GREY = '#333333';
+export const LIGHT_GREY = '#e6e6e6';
+export const GREY = '#8C8C8C';
 
 const appStyles = StyleSheet.create({
   container: {
