@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Image,
-} from 'react-native';
-import {
-  StackNavigator,
-} from 'react-navigation';
+import PropTypes from 'prop-types';
+
+import { StyleSheet, Image } from 'react-native';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import AboutWhatHappened from './app/screens/AboutWhatHappened';
 import AboutYou from './app/screens/AboutYou';
@@ -13,7 +11,7 @@ import PrivacyPolicy from './app/screens/PrivacyPolicy';
 import logo from './app/img/logo.png';
 import Home from './app/screens/Home';
 import PlaceScreen from './app/screens/PlaceScreen';
-import { GREEN, BLACK } from './app/styles';
+import { GREEN, BLACK, GREY } from './app/styles';
 
 const styles = StyleSheet.create({
   logo: {
@@ -25,19 +23,56 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = StackNavigator({
-  Home: { screen: Home },
+const stackNavigationOptions = {
+  headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
+  headerTintColor: GREEN,
+  headerTitleStyle: { color: BLACK },
+};
+
+const CreateReportStack = StackNavigator({
   AboutWhatHappened: { screen: AboutWhatHappened },
   AboutYou: { screen: AboutYou },
   PrivacyPolicy: { screen: PrivacyPolicy },
   PlaceScreen: { screen: PlaceScreen },
 }, {
-  navigationOptions: {
-    headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
-    headerTintColor: GREEN,
-    headerTitleStyle: { color: BLACK },
-  },
+  navigationOptions: { ...stackNavigationOptions, title: 'Criar Relato' },
   cardStyle: styles.card,
 });
+
+const HomeStack = StackNavigator({
+  Home: { screen: Home },
+}, {
+  navigationOptions: { ...stackNavigationOptions, title: 'Início' },
+  cardStyle: styles.card,
+});
+
+const App = TabNavigator(
+  {
+    Home: { screen: HomeStack },
+    CreateReport: { screen: CreateReportStack },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = `ios-home${focused ? '' : '-outline'}`;
+        } else if (routeName === 'CreateReport') {
+          iconName = `ios-create${focused ? '' : '-outline'}`;
+        }
+        return <Icon name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: GREEN,
+      inactiveTintColor: GREY,
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+  },
+);
 
 export default App;

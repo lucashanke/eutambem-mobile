@@ -7,7 +7,7 @@ import Button from '../components/common/Button';
 const Home = props => (
   <Container>
     <Button
-      onPress={() => props.navigation.navigate('AboutWhatHappened')}
+      onPress={() => props.navigation.navigate('CreateReport')}
       title="Criar Relato"
     />
   </Container>
