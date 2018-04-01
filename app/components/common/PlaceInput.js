@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Keyboard } from 'react-native';
+
 import TextInput from './TextInput';
 
 const PlaceInput = (props) => {
@@ -11,11 +13,14 @@ const PlaceInput = (props) => {
   return (
     <TextInput
       {...props}
-      onFocus={() => props.navigation.navigate('PlaceScreen', {
-        title: props.placeScreenTitle,
-        types: props.types,
-        onPlaceChange,
-      })}
+      onFocus={() => {
+        Keyboard.dismiss();
+        props.navigation.navigate('PlaceScreen', {
+          title: props.placeScreenTitle,
+          types: props.types,
+          onPlaceChange,
+        });
+      }}
     />
   );
 };
