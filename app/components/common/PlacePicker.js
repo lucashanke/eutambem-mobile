@@ -6,7 +6,7 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Search from 'react-native-search-box';
 
-import { DARK_GREY, LIGHT_GREY, GREY, SOFT_PURPLE } from '../../styles';
+import { DARK_GREY, LIGHT_GREY, GREY } from '../../styles';
 
 const PLACES_AUTOCOMPLETE_URL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
 
