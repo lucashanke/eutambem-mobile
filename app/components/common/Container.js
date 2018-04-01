@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView, ScrollView, KeyboardAvoidingView } from 'react-native';
 
 import appStyles from '../../styles';
 
 const Container = props => (
   <SafeAreaView style={appStyles.container}>
-    <ScrollView style={[appStyles.innerContainer, props.innerContainerStyle]}>
-      {props.children}
-    </ScrollView>
+    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={50}>
+      <ScrollView style={[appStyles.innerContainer, props.innerContainerStyle]}>
+        {props.children}
+      </ScrollView>
+    </KeyboardAvoidingView>
   </SafeAreaView>
 );
 
