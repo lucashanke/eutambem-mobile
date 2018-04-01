@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Search from 'react-native-search-box';
 
-import { TextInput } from '../common';
-import { DARK_GREY, LIGHT_GREY, GREY } from '../../styles';
+import { DARK_GREY, LIGHT_GREY, GREY, SOFT_PURPLE } from '../../styles';
 
 const PLACES_AUTOCOMPLETE_URL = 'https://maps.googleapis.com/maps/api/place/autocomplete/json';
 
@@ -70,7 +70,6 @@ export default class PlacePicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
       suggestions: [],
     };
   }
@@ -86,7 +85,6 @@ export default class PlacePicker extends Component {
         });
       }));
     }
-    this.setState({ query });
   }
 
   onPlaceSelect = (id, label) => {
@@ -96,19 +94,14 @@ export default class PlacePicker extends Component {
   render() {
     return (
       <View>
-        <View style={style.searchBar}>
-          <View style={style.icon}>
-            <Icon name="ios-search" size={20} />
-          </View>
-          <View style={style.input}>
-            <TextInput
-              required
-              placeholder="Procurar"
-              onChangeText={this.onQueryChange}
-              value={this.state.query}
-            />
-          </View>
-        </View>
+        <Search
+          backgroundColor="transparent"
+          cancelButtonTextStyle={{ color: GREY }}
+          onChangeText={this.onQueryChange}
+          searchIconCollapsedMargin={30}
+          placeholder="Procurar"
+          inputStyle={{ padding: -10 }}
+        />
         <FlatList
           data={this.state.suggestions.map(item => ({
             key: item.place_id,

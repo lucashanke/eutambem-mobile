@@ -6,7 +6,7 @@ import appStyles from '../../styles';
 
 const Container = props => (
   <SafeAreaView style={appStyles.container}>
-    <ScrollView style={appStyles.innerContainer}>
+    <ScrollView style={[appStyles.innerContainer, props.innerContainerStyle]}>
       {props.children}
     </ScrollView>
   </SafeAreaView>
@@ -17,6 +17,14 @@ Container.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]).isRequired,
+  innerContainerStyle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object,
+  ]),
+};
+
+Container.defaultProps = {
+  innerContainerStyle: {},
 };
 
 export default Container;

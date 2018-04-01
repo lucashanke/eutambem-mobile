@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { PlacePicker, Container } from '../components/common';
 
 const PlaceScreen = props => (
-  <Container>
+  <Container innerContainerStyle={{ padding: '2%' }}>
     <PlacePicker
       types={props.navigation.state.params.types}
       onPlaceChange={props.navigation.state.params.onPlaceChange}
