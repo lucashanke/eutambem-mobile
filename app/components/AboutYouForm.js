@@ -26,10 +26,12 @@ export default class AboutYouForm extends Component {
     return (
       <View>
         <Picker
+          required
           placeholder="Gênero"
           items={GENDER_OPTIONS}
         />
         <Picker
+          required
           placeholder="Cor"
           items={SKIN_COLOR_OPTIONS}
         />

@@ -40,6 +40,7 @@ export default class CreateReportForm extends Component {
           onValueChange={this.onEstablishmentChange}
           types={['establishment']}
           navigation={this.props.navigation}
+          required
           placeScreenTitle="Informe a Empresa"
         />
         <PlaceInput
@@ -51,17 +52,20 @@ export default class CreateReportForm extends Component {
           placeScreenTitle="Informe o Endereço"
         />
         <Picker
+          required
           placeholder="Tipo de assédio"
           items={HARASSMENT_TYPE_OPTIONS}
         />
         <TextInput
           multiline
+          required
           placeholder="Conte-nos mais sobre o ocorrido"
           onChangeText={description => this.setState({ description })}
           value={this.state.description}
         />
         <DatePicker
           date={this.state.date}
+          required
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}
           onDateChange={date => this.setState({ date })}
@@ -71,6 +75,7 @@ export default class CreateReportForm extends Component {
           options={FOLLOWUP_ACTIONS_OPTIONS}
         />
         <Picker
+          required
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
           items={YES_NO_OPTIONAL_OPTIONS}
         />
