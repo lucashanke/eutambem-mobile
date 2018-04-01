@@ -19,16 +19,11 @@ export default class CreateReportForm extends Component {
       description: '',
       advice: '',
       establishment: {},
-      address: {},
     };
   }
 
   onEstablishmentChange = (item) => {
     this.setState({ establishment: { value: item.id, label: item.label } });
-  }
-
-  onAddressChange = (item) => {
-    this.setState({ address: { value: item.id, label: item.label } });
   }
 
   render() {
@@ -42,14 +37,6 @@ export default class CreateReportForm extends Component {
           navigation={this.props.navigation}
           required
           placeScreenTitle="Informe a Empresa"
-        />
-        <PlaceInput
-          placeholder="Endereço em que ocorreu"
-          value={this.state.address.label}
-          onValueChange={this.onAddressChange}
-          types={['address']}
-          navigation={this.props.navigation}
-          placeScreenTitle="Informe o Endereço"
         />
         <Picker
           required
