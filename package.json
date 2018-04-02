@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "lint": "eslint --ext .js .",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -51,7 +51,6 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ],
-    "collectCoverage": true
+    ]
   }
 }
