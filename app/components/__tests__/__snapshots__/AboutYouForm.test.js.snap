@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYouForm renders correctly 1`] = `
+<View>
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Mulher",
+          "value": "woman",
+        },
+        Object {
+          "label": "Homem",
+          "value": "man",
+        },
+        Object {
+          "label": "Não binário",
+          "value": "nonbinary",
+        },
+      ]
+    }
+    placeholder="Gênero"
+    required={true}
+  />
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Negra",
+          "value": "black",
+        },
+        Object {
+          "label": "Branca",
+          "value": "white",
+        },
+        Object {
+          "label": "Parda",
+          "value": "brown",
+        },
+        Object {
+          "label": "Amarela",
+          "value": "asian",
+        },
+        Object {
+          "label": "Indígena",
+          "value": "indian",
+        },
+        Object {
+          "label": "Prefiro não dizer",
+          "value": "notInformed",
+        },
+      ]
+    }
+    placeholder="Cor"
+    required={true}
+  />
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Menor de 18 anos",
+          "value": "lessThan18",
+        },
+        Object {
+          "label": "Entre 18 e 25 anos",
+          "value": "between18and25",
+        },
+        Object {
+          "label": "Entre 26 e 35 anos",
+          "value": "between26and35",
+        },
+        Object {
+          "label": "Entre 36 e 50 anos",
+          "value": "between36and50",
+        },
+        Object {
+          "label": "Entre 51 e 65 anos",
+          "value": "between51and65",
+        },
+        Object {
+          "label": "Maior de 65 anos",
+          "value": "over65",
+        },
+      ]
+    }
+    placeholder="Idade"
+  />
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Até R$724,00",
+          "value": "belowOne",
+        },
+        Object {
+          "label": "De R$724,01 a R$2.172,00",
+          "value": "fromOneToThree",
+        },
+        Object {
+          "label": "De R$2.172,01 a R$3.620,00",
+          "value": "fromThreeToFive",
+        },
+        Object {
+          "label": "De R$3.620,01 a R$7.240,00",
+          "value": "fromFiveToTen",
+        },
+        Object {
+          "label": "De R$7.240,01 a R$14.480,00",
+          "value": "fromTenToTwenty",
+        },
+        Object {
+          "label": "Mais de R$14.480,01",
+          "value": "overTwenty",
+        },
+      ]
+    }
+    placeholder="Renda Aproximada"
+  />
+  <SectionHeader
+    title="Saiba mais"
+  />
+  <SectionText
+    title="Acompanhe relatos da mesma empresa ou cidade."
+  />
+  <TextInput
+    multiline={false}
+    onChangeText={[Function]}
+    placeholder="Email"
+    required={false}
+    value=""
+  />
+  <TextInput
+    multiline={false}
+    onChangeText={[Function]}
+    placeholder="Nome"
+    required={false}
+    value=""
+  />
+  <CheckBox
+    isChecked={false}
+    label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
+    onClick={[Function]}
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "color": "#91508c",
+        "marginBottom": 10,
+        "marginTop": 10,
+      }
+    }
+  >
+    Acessar Política de Privacidade
+  </Text>
+</View>
+`;

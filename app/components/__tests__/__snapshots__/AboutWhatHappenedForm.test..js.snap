@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutWhatHappenedForm renders correctly 1`] = `
+<View>
+  <PlaceInput
+    navigation={
+      Object {
+        "navigate": [Function],
+      }
+    }
+    onValueChange={[Function]}
+    placeScreenTitle="Informe a Empresa"
+    placeholder="Empresa em que ocorreu"
+    required={true}
+    types={
+      Array [
+        "establishment",
+      ]
+    }
+  />
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Assédio Físico",
+          "value": "physical",
+        },
+        Object {
+          "label": "Assédio Verbal",
+          "value": "verbal",
+        },
+        Object {
+          "label": "Homofobia",
+          "value": "homophobia",
+        },
+        Object {
+          "label": "Racismo",
+          "value": "racism",
+        },
+        Object {
+          "label": "Transfobia",
+          "value": "transfobia",
+        },
+        Object {
+          "label": "Outro tipo de Assédio",
+          "value": "other",
+        },
+      ]
+    }
+    placeholder="Tipo de assédio"
+    required={true}
+  />
+  <TextInput
+    multiline={true}
+    onChangeText={[Function]}
+    placeholder="Conte-nos mais sobre o ocorrido"
+    required={true}
+    value=""
+  />
+  <DatePicker
+    date={null}
+    maxDate={1970-01-18T14:58:09.340Z}
+    onDateChange={[Function]}
+    placeholder="Quando ocorreu"
+    required={true}
+  />
+  <CheckBoxGroup
+    label="Você tomou alguma providência com relação ao ocorrido?"
+    options={
+      Array [
+        Object {
+          "key": "talkedToAccountable",
+          "label": "Falei com algum Responsável (RH, Superior direto, etc)",
+        },
+        Object {
+          "key": "gaveFeedback",
+          "label": "Dei o feedback para o envolvido",
+        },
+        Object {
+          "key": "policeReport",
+          "label": "Fiz um Boletim de Ocorrência",
+        },
+      ]
+    }
+  />
+  <Picker
+    items={
+      Array [
+        Object {
+          "label": "Sim",
+          "value": "yes",
+        },
+        Object {
+          "label": "Não",
+          "value": "no",
+        },
+        Object {
+          "label": "Prefiro não responder",
+          "value": "notInformed",
+        },
+      ]
+    }
+    placeholder="Você recomendaria essa empresa depois do ocorrido?"
+    required={true}
+  />
+  <TextInput
+    autoGrow={true}
+    maxLength={350}
+    multiline={true}
+    onChangeText={[Function]}
+    placeholder="Qual seu conselho para os gestores?"
+    required={false}
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-start",
+          "borderBottomColor": "#91508c",
+          "borderBottomWidth": 1,
+          "borderWidth": 0,
+          "height": 30,
+          "margin": 0,
+          "marginBottom": 10,
+          "marginTop": 10,
+        },
+        Object {
+          "height": "auto",
+          "minHeight": 30,
+        },
+      ]
+    }
+    value=""
+  />
+  <Button
+    onPress={[Function]}
+    title="Prosseguir"
+    type="confirm"
+  />
+</View>
+`;
