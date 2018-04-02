@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBoxGroup renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 10,
+      "marginTop": 10,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#961687",
+        "fontSize": 14,
+      }
+    }
+  >
+    Test CheckBoxGroup
+  </Text>
+  <CheckBox
+    key="1"
+    label="Label 1"
+    onClick={[Function]}
+  />
+  <CheckBox
+    key="2"
+    label="Label 2"
+    onClick={[Function]}
+  />
+</View>
+`;

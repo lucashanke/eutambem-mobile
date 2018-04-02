@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlacePicker renders correctly 1`] = `
+<View>
+  <Search
+    autoFocus={true}
+    backgroundColor="transparent"
+    blurOnSubmit={true}
+    cancelButtonTextStyle={
+      Object {
+        "color": "#8C8C8C",
+      }
+    }
+    editable={true}
+    inputStyle={
+      Object {
+        "padding": -10,
+      }
+    }
+    keyboardShouldPersist={false}
+    onChangeText={[Function]}
+    placeholder="Procurar"
+    placeholderCollapsedMargin={15}
+    placeholderExpandedMargin={20}
+    searchIconCollapsedMargin={30}
+    searchIconExpandedMargin={10}
+    shadowColor="#000"
+    shadowOffsetHeightCollapsed={2}
+    shadowOffsetHeightExpanded={4}
+    shadowOffsetWidth={0}
+    shadowOpacityCollapsed={0.12}
+    shadowOpacityExpanded={0.24}
+    shadowRadius={4}
+    shadowVisible={false}
+    useClearButton={true}
+  />
+  <FlatList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</View>
+`;

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker renders correctly 1`] = `
+<View>
+  <TextInput
+    multiline={false}
+    onFocus={[Function]}
+    placeholder="Test Picker"
+    required={false}
+  />
+  <ReactNativeModal
+    animationIn="slideInUp"
+    animationInTiming={300}
+    animationOut="slideOutDown"
+    animationOutTiming={300}
+    avoidKeyboard={false}
+    backdropColor="black"
+    backdropOpacity={0.7}
+    backdropTransitionInTiming={300}
+    backdropTransitionOutTiming={300}
+    hideModalContentWhileAnimating={false}
+    isVisible={false}
+    onBackButtonPress={[Function]}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalShow={[Function]}
+    onRequestClose={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "flex-end",
+        "margin": 0,
+      }
+    }
+    swipeThreshold={100}
+    transparent={true}
+    useNativeDriver={false}
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderColor": "rgba(0, 0, 0, 0.1)",
+          "borderRadius": 4,
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderColor": "#eeeeee",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "padding": 3,
+          }
+        }
+      >
+        <Button
+          onPress={[Function]}
+          title="Cancelar"
+          type="cancel"
+        />
+        <Button
+          onPress={[Function]}
+          title="Ok"
+          type="confirm"
+        />
+      </View>
+      <View>
+        <PickerIOS
+          onValueChange={[Function]}
+          selectedValue="1"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <_class
+            key="1"
+            label="Label 1"
+            value="1"
+          />
+          <_class
+            key="2"
+            label="Label 2"
+            value="2"
+          />
+        </PickerIOS>
+      </View>
+    </View>
+  </ReactNativeModal>
+</View>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container renders correctly 1`] = `
+<SafeAreaView
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <KeyboardAvoidingView
+    behavior="position"
+    keyboardVerticalOffset={50}
+  >
+    <ScrollView
+      style={
+        Array [
+          Object {
+            "padding": "5%",
+          },
+          Object {},
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+      >
+        Testing Container
+      </Text>
+    </ScrollView>
+  </KeyboardAvoidingView>
+</SafeAreaView>
+`;

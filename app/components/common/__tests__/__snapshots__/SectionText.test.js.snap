@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionText renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 10,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#000000",
+        "fontSize": 14,
+      }
+    }
+  >
+    Test SectionText
+  </Text>
+</View>
+`;

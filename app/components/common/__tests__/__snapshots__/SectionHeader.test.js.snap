@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionHeader renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 20,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#961687",
+        "fontSize": 16,
+      }
+    }
+  >
+    TEST SECTIONHEADER
+  </Text>
+</View>
+`;

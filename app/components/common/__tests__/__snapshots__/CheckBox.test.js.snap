@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox renders correctly 1`] = `
+<CheckBox
+  checkBoxColor="#961687"
+  isChecked={false}
+  isIndeterminate={false}
+  label="Test CheckBox"
+  leftTextStyle={Object {}}
+  onClick={[Function]}
+  rightText="Test CheckBox"
+  rightTextStyle={Object {}}
+  style={
+    Object {
+      "paddingTop": 10,
+    }
+  }
+/>
+`;

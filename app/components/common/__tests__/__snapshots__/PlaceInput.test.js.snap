@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceInput renders correctly 1`] = `
+<TextInput
+  multiline={false}
+  navigation={
+    Object {
+      "goBack": [Function],
+      "navigate": [Function],
+    }
+  }
+  onFocus={[Function]}
+  onValueChange={[Function]}
+  placeScreenTitle="Inform the place"
+  placeholder="Place"
+  required={false}
+  types={
+    Array [
+      "establishment",
+    ]
+  }
+/>
+`;
