@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<Container
+  innerContainerStyle={Object {}}
+>
+  <Button
+    onPress={[Function]}
+    title="Criar Relato"
+    type="confirm"
+  />
+</Container>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutWhatHappened renders correctly 1`] = `
+<Container
+  innerContainerStyle={Object {}}
+>
+  <CreateReportForm
+    navigation={
+      Object {
+        "navigate": [Function],
+      }
+    }
+  />
+</Container>
+`;

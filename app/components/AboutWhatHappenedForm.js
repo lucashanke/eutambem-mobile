@@ -6,10 +6,12 @@ import appStyles from '../styles';
 
 import { Button, Picker, DatePicker, TextInput, CheckBoxGroup, PlaceInput } from './common';
 
-import { HARASSMENT_TYPE_OPTIONS,
+import {
+  HARASSMENT_TYPE_OPTIONS,
   YES_NO_OPTIONAL_OPTIONS,
   MAX_TEXT_INPUT_LENGTH,
-  FOLLOWUP_ACTIONS_OPTIONS } from '../constants';
+  FOLLOWUP_ACTIONS_OPTIONS,
+} from '../constants';
 
 export default class CreateReportForm extends Component {
   constructor(props) {
@@ -86,7 +88,6 @@ export default class CreateReportForm extends Component {
 
 CreateReportForm.propTypes = {
   navigation: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
     navigate: PropTypes.func,
   }).isRequired,
 };

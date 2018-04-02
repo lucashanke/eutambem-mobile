@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceScreen renders correctly 1`] = `
+<Container
+  innerContainerStyle={
+    Object {
+      "padding": "2%",
+    }
+  }
+>
+  <PlacePicker
+    onPlaceChange={[Function]}
+    types={
+      Array [
+        "establishment",
+      ]
+    }
+  />
+</Container>
+`;

@@ -10,7 +10,8 @@ import {
   GENDER_OPTIONS,
   SKIN_COLOR_OPTIONS,
   AGE_OPTIONS,
-  WAGE_OPTIONS } from '../constants';
+  WAGE_OPTIONS,
+} from '../constants';
 
 export default class AboutYouForm extends Component {
   constructor(props) {
@@ -70,7 +71,6 @@ export default class AboutYouForm extends Component {
 
 AboutYouForm.propTypes = {
   navigation: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
     navigate: PropTypes.func,
   }).isRequired,
 };
