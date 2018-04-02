@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Navigator
+  navigation={
+    Object {
+      "dispatch": [Function],
+      "goBack": [Function],
+      "navigate": [Function],
+      "setParams": [Function],
+      "state": Object {
+        "index": 0,
+        "routes": Array [
+          Object {
+            "index": 0,
+            "key": "Home",
+            "routeName": "Home",
+            "routes": Array [
+              Object {
+                "key": "Init-id-1522689340-0",
+                "routeName": "Home",
+              },
+            ],
+          },
+          Object {
+            "index": 0,
+            "key": "CreateReport",
+            "routeName": "CreateReport",
+            "routes": Array [
+              Object {
+                "key": "Init-id-1522689340-1",
+                "routeName": "AboutWhatHappened",
+              },
+            ],
+          },
+        ],
+      },
+    }
+  }
+/>
+`;

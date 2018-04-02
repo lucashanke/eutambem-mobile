@@ -4,13 +4,13 @@ import { StyleSheet, Image } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import AboutWhatHappened from './app/screens/AboutWhatHappened';
-import AboutYou from './app/screens/AboutYou';
-import PrivacyPolicy from './app/screens/PrivacyPolicy';
-import logo from './app/img/logo.png';
-import Home from './app/screens/Home';
-import PlaceScreen from './app/screens/PlaceScreen';
-import { GREEN, BLACK, GREY } from './app/styles';
+import AboutWhatHappened from './screens/AboutWhatHappened';
+import AboutYou from './screens/AboutYou';
+import PrivacyPolicy from './screens/PrivacyPolicy';
+import logo from './img/logo.png';
+import Home from './screens/Home';
+import PlaceScreen from './screens/PlaceScreen';
+import { GREEN, BLACK, GREY } from './styles';
 
 const styles = StyleSheet.create({
   logo: {

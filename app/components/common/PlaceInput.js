@@ -27,7 +27,7 @@ const PlaceInput = (props) => {
 
 PlaceInput.propTypes = {
   placeScreenTitle: PropTypes.string,
-  types: PropTypes.arrayOf(PropTypes.oneOf('establishnment', 'address')).isRequired,
+  types: PropTypes.arrayOf(PropTypes.oneOf(['establishnment', 'address'])).isRequired,
   onValueChange: PropTypes.func.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
