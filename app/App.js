@@ -12,6 +12,7 @@ import Home from './screens/Home';
 import PlaceScreen from './screens/PlaceScreen';
 import { GREEN, BLACK, GREY } from './styles';
 
+
 const styles = StyleSheet.create({
   logo: {
     width: '70%',
@@ -22,11 +23,13 @@ const styles = StyleSheet.create({
   },
 });
 
+
 const stackNavigationOptions = {
   headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
   headerTintColor: GREEN,
   headerTitleStyle: { color: BLACK },
 };
+
 
 const CreateReportStack = StackNavigator({
   AboutWhatHappened: { screen: AboutWhatHappened },
@@ -38,12 +41,14 @@ const CreateReportStack = StackNavigator({
   cardStyle: styles.card,
 });
 
+
 const HomeStack = StackNavigator({
   Home: { screen: Home },
 }, {
   navigationOptions: { ...stackNavigationOptions, title: 'Início' },
   cardStyle: styles.card,
 });
+
 
 const App = TabNavigator(
   {

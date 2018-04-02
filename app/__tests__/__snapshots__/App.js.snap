@@ -1,34 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`App renders correctly 1`] = `
 <Navigator
   navigation={
     Object {
+      "addListener": [Function],
       "dispatch": [Function],
+      "getParam": [Function],
       "goBack": [Function],
       "navigate": [Function],
+      "pop": [Function],
+      "popToTop": [Function],
+      "push": [Function],
+      "replace": [Function],
       "setParams": [Function],
       "state": Object {
         "index": 0,
+        "isTransitioning": false,
         "routes": Array [
           Object {
             "index": 0,
+            "isTransitioning": false,
             "key": "Home",
+            "params": undefined,
             "routeName": "Home",
             "routes": Array [
               Object {
-                "key": "Init-id-1522689340-0",
+                "key": "id-1522689340-0",
                 "routeName": "Home",
               },
             ],
           },
           Object {
             "index": 0,
+            "isTransitioning": false,
             "key": "CreateReport",
+            "params": undefined,
             "routeName": "CreateReport",
             "routes": Array [
               Object {
-                "key": "Init-id-1522689340-1",
+                "key": "id-1522689340-1",
                 "routeName": "AboutWhatHappened",
               },
             ],
