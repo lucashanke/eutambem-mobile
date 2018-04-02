@@ -51,6 +51,7 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "collectCoverage": true
   }
 }
