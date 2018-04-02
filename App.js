@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { StyleSheet, Image } from 'react-native';
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
@@ -53,7 +52,7 @@ const App = TabNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
+      tabBarIcon: ({ focused, tintColor }) => { // eslint-disable-line react/prop-types
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
