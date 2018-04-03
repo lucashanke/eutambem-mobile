@@ -1345,6 +1345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5JHLCV2DBL;
@@ -1361,8 +1362,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eutambem.app;
 				PRODUCT_NAME = EuTambem;
-				PROVISIONING_PROFILE = "3002e1d5-cd51-4d50-acab-afbfd930ec43";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development org.eutambem.app";
+				PROVISIONING_PROFILE = "3f078163-bf73-4626-98c3-d3c6bc6fdc42";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore org.eutambem.app";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
