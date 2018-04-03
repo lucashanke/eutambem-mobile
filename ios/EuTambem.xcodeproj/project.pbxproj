@@ -762,7 +762,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = FG22JH6CU7;
+						DevelopmentTeam = 5JHLCV2DBL;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1317,9 +1318,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = FG22JH6CU7;
+				DEVELOPMENT_TEAM = 5JHLCV2DBL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1333,6 +1335,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eutambem.app;
 				PRODUCT_NAME = EuTambem;
+				PROVISIONING_PROFILE = "3002e1d5-cd51-4d50-acab-afbfd930ec43";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development org.eutambem.app";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1341,8 +1345,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FG22JH6CU7;
+				DEVELOPMENT_TEAM = 5JHLCV2DBL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1356,6 +1361,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eutambem.app;
 				PRODUCT_NAME = EuTambem;
+				PROVISIONING_PROFILE = "3002e1d5-cd51-4d50-acab-afbfd930ec43";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development org.eutambem.app";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
