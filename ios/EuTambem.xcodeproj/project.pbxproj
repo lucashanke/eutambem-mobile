@@ -1331,7 +1331,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.euTambem;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eutambem;
 				PRODUCT_NAME = EuTambem;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1354,7 +1354,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.euTambem;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eutambem;
 				PRODUCT_NAME = EuTambem;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
