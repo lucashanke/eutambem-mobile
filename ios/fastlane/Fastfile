@@ -3,7 +3,14 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
+    install_signing
     build_app(scheme: "EuTambem")
     upload_to_testflight
+  end
+
+  desc "Install all certificates and provisioning profiles"
+  lane :install_signing do
+    sync_code_signing(type: "development", readonly: true)
+    sync_code_signing(type: "appstore", readonly: true)
   end
 end
