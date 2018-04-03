@@ -10,6 +10,9 @@ import PrivacyPolicy from './screens/PrivacyPolicy';
 import logo from './img/logo.png';
 import Home from './screens/Home';
 import PlaceScreen from './screens/PlaceScreen';
+import MapFeed from './screens/MapFeed';
+import { Button } from './components/common';
+
 import { GREEN, BLACK, GREY } from './styles';
 
 
@@ -32,7 +35,12 @@ const stackNavigationOptions = {
 
 
 const CreateReportStack = StackNavigator({
-  AboutWhatHappened: { screen: AboutWhatHappened },
+  AboutWhatHappened: {
+    screen: AboutWhatHappened,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: <Button type="cancel" title="Cancelar" onPress={() => navigation.goBack(null)} />,
+    }),
+  },
   AboutYou: { screen: AboutYou },
   PrivacyPolicy: { screen: PrivacyPolicy },
   PlaceScreen: { screen: PlaceScreen },
@@ -50,10 +58,24 @@ const HomeStack = StackNavigator({
 });
 
 
+const MapFeedStack = StackNavigator({
+  MapFeed: { screen: MapFeed },
+}, {
+  navigationOptions: { ...stackNavigationOptions, title: 'Mapa de Relatos' },
+  cardStyle: styles.card,
+});
+
+
 const App = TabNavigator(
   {
     Home: { screen: HomeStack },
-    CreateReport: { screen: CreateReportStack },
+    CreateReport: {
+      screen: CreateReportStack,
+      navigationOptions: {
+        tabBarVisible: false,
+      },
+    },
+    MapFeed: { screen: MapFeedStack },
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -63,7 +85,9 @@ const App = TabNavigator(
         if (routeName === 'Home') {
           iconName = `ios-home${focused ? '' : '-outline'}`;
         } else if (routeName === 'CreateReport') {
-          iconName = `ios-create${focused ? '' : '-outline'}`;
+          iconName = `ios-add-circle${focused ? '' : '-outline'}`;
+        } else if (routeName === 'MapFeed') {
+          iconName = `ios-navigate${focused ? '' : '-outline'}`;
         }
         return <Icon name={iconName} size={25} color={tintColor} />;
       },
