@@ -58,3 +58,5 @@ coverage
 
 *.jsbundle*
 ios/assets
+
+.ruby-version
