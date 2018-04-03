@@ -44,6 +44,19 @@ exports[`App renders correctly 1`] = `
               },
             ],
           },
+          Object {
+            "index": 0,
+            "isTransitioning": false,
+            "key": "MapFeed",
+            "params": undefined,
+            "routeName": "MapFeed",
+            "routes": Array [
+              Object {
+                "key": "id-1522689340-2",
+                "routeName": "MapFeed",
+              },
+            ],
+          },
         ],
       },
     }

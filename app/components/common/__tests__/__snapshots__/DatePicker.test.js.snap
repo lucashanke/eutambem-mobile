@@ -9,12 +9,12 @@ exports[`DatePicker renders correctly 1`] = `
   customStyles={
     Object {
       "btnTextCancel": Object {
-        "color": "#f95c69",
-        "fontSize": 18,
+        "color": "#8C8C8C",
+        "fontSize": 17,
       },
       "btnTextConfirm": Object {
         "color": "#961687",
-        "fontSize": 18,
+        "fontSize": 17,
       },
       "dateInput": Object {
         "alignItems": "flex-start",

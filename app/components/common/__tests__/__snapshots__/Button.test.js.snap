@@ -2,9 +2,17 @@
 
 exports[`Button renders correctly 1`] = `
 <Button
-  color="#961687"
   onPress={[Function]}
+  style={
+    Object {
+      "color": "#961687",
+      "fontSize": 17,
+      "padding": 7,
+    }
+  }
   title="Test Button"
   type="confirm"
-/>
+>
+  Test Button
+</Button>
 `;
