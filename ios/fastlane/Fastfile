@@ -13,4 +13,14 @@ platform :ios do
     sync_code_signing(type: "development", readonly: true)
     sync_code_signing(type: "appstore", readonly: true)
   end
+
+  desc "Generate AppIcons for ios"
+  lane :generate_app_icons do
+    appicon(
+      appicon_image_file: '../app/img/AppIcon.png',
+      appicon_path: 'EuTambem/Images.xcassets',
+      appicon_devices: [:ipad, :iphone, :ios_marketing]
+    )
+      
+  end
 end

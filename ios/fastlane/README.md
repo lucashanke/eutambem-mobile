@@ -26,6 +26,11 @@ Push a new beta build to TestFlight
 fastlane ios install_signing
 ```
 Install all certificates and provisioning profiles
+### ios generate_app_icons
+```
+fastlane ios generate_app_icons
+```
+Generate AppIcons for ios
 
 ----
 
