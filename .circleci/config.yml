@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.11
-      
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
@@ -28,9 +26,9 @@ jobs:
 
 workflows:
   version: 2
-  build_and_deploy:
+  build-and-deploy:
     jobs:
       - build
       - deploy_ios:
-        requires:
-          - build
+          requires:
+            - build
