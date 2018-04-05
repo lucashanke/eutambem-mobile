@@ -19,7 +19,7 @@ jobs:
 
   deploy_ios:
     macos:
-      xcode: "9.3"
+      xcode: "9.3.0"
     steps:
       - checkout
       - run: echo "Mac OS machine"
