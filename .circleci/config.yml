@@ -24,9 +24,7 @@ jobs:
       xcode: "9.3"
     steps:
       - checkout
-
       - run: echo "Mac OS machine"
-
 
 workflows:
   version: 2
@@ -35,4 +33,4 @@ workflows:
       - build
       - deploy_ios
         requires:
-            - build
+          - build
