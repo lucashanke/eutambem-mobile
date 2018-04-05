@@ -26,3 +26,21 @@ jobs:
       # run tests!
       - run: yarn test
 
+  deploy_ios:
+    machine:
+      xcode:
+        version: 9.3
+    steps:
+      - checkout
+
+      - run: echo "Mac OS machine"
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - deploy_ios
+        requires:
+            - build
