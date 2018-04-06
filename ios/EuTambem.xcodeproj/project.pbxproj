@@ -30,7 +30,6 @@
 		51CD019318B6411AA80D2BA4 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B027495F35834BE894C56793 /* EvilIcons.ttf */; };
 		5C16631CF35E4EF99A9424CF /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1287BB0B35F445AC812A547C /* Zocial.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		715EDE942073181900136E45 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 715EDE6D2073181900136E45 /* main.jsbundle */; };
 		71C8F4B85DCE42DDA21A4B33 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79DBF28B463E434CA0369EBF /* Ionicons.ttf */; };
 		7D62856502D64DC6A78FAA59 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C00A85C7A054D7E84B23CEE /* SimpleLineIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -342,7 +341,7 @@
 		340808A95805460892213ACE /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		3A9665FFB7404F3BAE0AC53B /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		715EDE6D2073181900136E45 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.jsbundle; path = EuTambem/main.jsbundle; sourceTree = "<group>"; };
+		715EDE6D2073181900136E45 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = main.jsbundle; path = EuTambem/main.jsbundle; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		79DBF28B463E434CA0369EBF /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		7C00A85C7A054D7E84B23CEE /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -1046,7 +1045,6 @@
 				ECC6B803661C47659CAD0137 /* Entypo.ttf in Resources */,
 				51CD019318B6411AA80D2BA4 /* EvilIcons.ttf in Resources */,
 				24F5F77EF9B3426299558B9E /* Feather.ttf in Resources */,
-				715EDE942073181900136E45 /* main.jsbundle in Resources */,
 				21BE548DD8224FC596E0BBEE /* FontAwesome.ttf in Resources */,
 				3AE8F48F2DA04EE79CDC3D07 /* Foundation.ttf in Resources */,
 				71C8F4B85DCE42DDA21A4B33 /* Ionicons.ttf in Resources */,
@@ -1178,7 +1176,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5JHLCV2DBL;
 				HEADER_SEARCH_PATHS = (
@@ -1206,7 +1204,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5JHLCV2DBL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

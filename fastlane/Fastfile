@@ -1,10 +1,17 @@
 default_platform(:ios)
 
 platform :ios do
+
+  before_all do
+    setup_circle_ci
+  end
+  
   desc "Push a new beta build to TestFlight"
   lane :beta do
     install_signing
-    build_app(scheme: "EuTambem")
+    build_app(
+      project: "./ios/EuTambem.xcodeproj",
+      scheme: "EuTambem")
     upload_to_testflight
   end
 
@@ -17,10 +24,14 @@ platform :ios do
   desc "Generate AppIcons for ios"
   lane :generate_app_icons do
     appicon(
-      appicon_image_file: '../app/img/AppIcon.png',
-      appicon_path: 'EuTambem/Images.xcassets',
+      appicon_image_file: './app/img/AppIcon.png',
+      appicon_path: './ios/EuTambem/Images.xcassets',
       appicon_devices: [:ipad, :iphone, :ios_marketing]
     )
-      
   end
+
+  lane :increment_ios_build_number do
+    increment_build_number(xcodeproj: "./ios/EuTambem.xcodeproj")
+  end
+  
 end

@@ -31,6 +31,11 @@ Install all certificates and provisioning profiles
 fastlane ios generate_app_icons
 ```
 Generate AppIcons for ios
+### ios increment_ios_build_number
+```
+fastlane ios increment_ios_build_number
+```
+
 
 ----
 
