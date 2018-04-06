@@ -21,8 +21,13 @@ jobs:
     macos:
       xcode: "9.3.0"
     steps:
+    working_directory: /Users/distiller/project
+    environment:
+    shell: /bin/bash --login -o pipefail
+    steps:
       - checkout
-      - run: echo "Mac OS machine"
+      - run: bundle install
+      - run: bundle exec fastlane beta
 
 workflows:
   version: 2
