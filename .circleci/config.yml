@@ -28,7 +28,8 @@ jobs:
       - checkout
       - run: yarn install
       - run: bundle install
-      - run: bundle exec fastlane beta
+      - run: bundle exec fastlane ios prepare_build
+      - run: bundle exec fastlane ios beta
 
 workflows:
   version: 2

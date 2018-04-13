@@ -5,7 +5,13 @@ platform :ios do
   before_all do
     setup_circle_ci
   end
-  
+
+  desc "Prepare dependencies for building app"
+  lane :prepare_build do |options|
+    update_build_number
+    push_to_git_remote unless options[:skip_push]
+  end
+
   desc "Push a new beta build to TestFlight"
   lane :beta do
     install_signing
@@ -30,8 +36,21 @@ platform :ios do
     )
   end
 
-  lane :increment_ios_build_number do
-    increment_build_number(xcodeproj: "./ios/EuTambem.xcodeproj")
+  desc "Update and tag the version/build"
+  lane :update_build_number do
+    build_number = ENV['CIRCLE_BUILD_NUM'] if ENV['CIRCLECI']
+
+    increment_build_number(
+      xcodeproj: "./ios/EuTambem.xcodeproj", 
+      build_number: build_number
+    )
+
+    build_number = get_build_number(xcodeproj: "./ios/EuTambem.xcodeproj")
+    version_number = get_version_number(xcodeproj: "./ios/EuTambem.xcodeproj")
+    tag_name = "#{version_number}/#{build_number}"
+    add_git_tag(tag: tag_name)
+
+    UI.success("Success! New version: #{tag_name}")
   end
   
 end

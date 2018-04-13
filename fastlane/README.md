@@ -16,6 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
+### ios prepare_build
+```
+fastlane ios prepare_build
+```
+Prepare dependencies for building app
 ### ios beta
 ```
 fastlane ios beta
@@ -31,11 +36,11 @@ Install all certificates and provisioning profiles
 fastlane ios generate_app_icons
 ```
 Generate AppIcons for ios
-### ios increment_ios_build_number
+### ios update_build_number
 ```
-fastlane ios increment_ios_build_number
+fastlane ios update_build_number
 ```
-
+Update and tag the version/build
 
 ----
 
