@@ -1,27 +1,21 @@
 version: 2
 
-references:
-  restore_repo: &restore_repo
-    restore_cache:
-      keys:
-        - v1-repo-{{ .Branch }}-{{ .Revision }}
-        - v1-repo-{{ .Branch }}
-        - v1-repo
-
 jobs:
   build:
     docker:
       - image: circleci/node:latest
-    working_directory: ~/repo
+    working_directory: ~/project
     steps:
       - checkout
       - run: yarn install
       - run: yarn test
+
       - run: echo $CIRCLE_BUILD_NUM > build_number.txt
-      - save_cache:
-          key: v1-repo-{{ .Branch }}-{{ .Revision }}
+      - persist_to_workspace:
+          root: .
           paths:
-            - .
+            - build_number.txt
+            - node_modules
 
   deploy_ios:
     macos:
@@ -31,10 +25,11 @@ jobs:
     environment:
     shell: /bin/bash --login -o pipefail
     steps:
-      - *restore_repo
+      - attach_workspace:
+          at: .
       - run: bundle install
       - run: bundle exec fastlane ios prepare_build
-      - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
+      - run: bundle exec fastlane ios beta build_number:$(cat workspace/build_number.txt)
 
 
 workflows:
