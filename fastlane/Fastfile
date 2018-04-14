@@ -6,14 +6,16 @@ platform :ios do
     setup_circle_ci
   end
 
-  desc "Prepare dependencies for building app"
-  lane :prepare_build do |options|
-    update_build_number
-    push_to_git_remote unless options[:skip_push]
-  end
-
   desc "Push a new beta build to TestFlight"
-  lane :beta do
+  lane :beta do |options|
+    unless options[:build_number]
+      UI.error "No build_number provided!"
+      exit(1)
+    end
+
+    update_build_number build_number:options[:build_number]
+    push_to_git_remote unless options[:skip_push]
+
     install_signing
     build_app(
       project: "./ios/EuTambem.xcodeproj",
@@ -37,12 +39,11 @@ platform :ios do
   end
 
   desc "Update and tag the version/build"
-  lane :update_build_number do
-    build_number = ENV['CIRCLE_BUILD_NUM'] if ENV['CIRCLECI']
+  lane :update_build_number do |options|
 
     increment_build_number(
       xcodeproj: "./ios/EuTambem.xcodeproj", 
-      build_number: build_number
+      build_number: options[:build_number]
     )
 
     build_number = get_build_number(xcodeproj: "./ios/EuTambem.xcodeproj")

@@ -11,14 +11,13 @@ references:
 jobs:
   build:
     docker:
-      - image: eutambem/mobile-build:latest
+      - image: circleci/node:latest
     working_directory: ~/repo
     steps:
       - checkout
-      - run: bundle install
       - run: yarn install
       - run: yarn test
-      - run: bundle exec fastlane ios prepare_build
+      - run: echo $CIRCLE_BUILD_NUM > build_number.txt
       - save_cache:
           key: v1-repo-{{ .Branch }}-{{ .Revision }}
           paths:
@@ -33,7 +32,9 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - *restore_repo
-      - run: bundle exec fastlane ios beta
+      - run: bundle install
+      - run: bundle exec fastlane ios prepare_build
+      - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
 
 
 workflows:
