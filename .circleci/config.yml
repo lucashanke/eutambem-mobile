@@ -29,7 +29,6 @@ jobs:
       - attach_workspace:
           at: .
       - run: bundle install
-      - run: bundle exec fastlane ios prepare_build
       - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
 
 
