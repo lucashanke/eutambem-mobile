@@ -25,11 +25,12 @@ jobs:
     environment:
     shell: /bin/bash --login -o pipefail
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - run: bundle install
       - run: bundle exec fastlane ios prepare_build
-      - run: bundle exec fastlane ios beta build_number:$(cat workspace/build_number.txt)
+      - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
 
 
 workflows:
