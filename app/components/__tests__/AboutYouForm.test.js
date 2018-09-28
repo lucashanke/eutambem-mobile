@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import AboutYouForm from '../AboutYouForm';
+import { AboutYouForm } from '../AboutYouForm';
 
 const props = {
   navigation: {

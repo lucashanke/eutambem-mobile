@@ -15,7 +15,7 @@ import {
 
 import { formWrapper, loading } from './hoc';
 
-class AboutWhatHappenedForm extends Component {
+export class AboutWhatHappenedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {

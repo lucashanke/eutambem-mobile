@@ -4,7 +4,7 @@ exports[`AboutYou renders correctly 1`] = `
 <Container
   innerContainerStyle={Object {}}
 >
-  <AboutYouForm
+  <_class2
     navigation={
       Object {
         "navigate": [Function],

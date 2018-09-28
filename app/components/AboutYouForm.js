@@ -14,7 +14,7 @@ import {
   WAGE_OPTIONS,
 } from '../constants';
 
-class AboutYouForm extends Component {
+export class AboutYouForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
