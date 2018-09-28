@@ -5,6 +5,7 @@ import { View, Text } from 'react-native';
 import appStyles from '../styles';
 
 import { CheckBox, Picker, TextInput, SectionHeader, SectionText } from './common';
+import { formWrapper, loading } from './hoc';
 
 import {
   GENDER_OPTIONS,
@@ -13,7 +14,7 @@ import {
   WAGE_OPTIONS,
 } from '../constants';
 
-export default class AboutYouForm extends Component {
+class AboutYouForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,3 +75,5 @@ AboutYouForm.propTypes = {
     navigate: PropTypes.func,
   }).isRequired,
 };
+
+export default formWrapper(loading(AboutYouForm));

@@ -13,7 +13,9 @@ import {
   FOLLOWUP_ACTIONS_OPTIONS,
 } from '../constants';
 
-export default class CreateReportForm extends Component {
+import { formWrapper, loading } from './hoc';
+
+class AboutWhatHappenedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,8 +88,10 @@ export default class CreateReportForm extends Component {
   }
 }
 
-CreateReportForm.propTypes = {
+AboutWhatHappenedForm.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }).isRequired,
 };
+
+export default formWrapper(loading(AboutWhatHappenedForm));
