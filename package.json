@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "prop-types": "^15.6.1",
     "react": "16.2.0",
     "react-native": "0.52.2",
