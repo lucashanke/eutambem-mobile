@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 
 import appStyles from '../styles';
 
-import { CheckBox, Picker, TextInput, SectionHeader, SectionText } from './common';
+import { Button, CheckBox, Picker, TextInput, SectionHeader, SectionText } from './common';
 import { formWrapper, loading } from './hoc';
 
 export class AboutYouForm extends Component {
@@ -58,6 +58,10 @@ export class AboutYouForm extends Component {
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
           Acessar Política de Privacidade
         </Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('SendReport')}
+          title="Enviar Relato"
+        />
       </View>
     );
   }

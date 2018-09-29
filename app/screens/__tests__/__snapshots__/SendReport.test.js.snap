@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SendReport renders correctly 1`] = `
+<Container
+  innerContainerStyle={Object {}}
+>
+  <ForwardRef(Text)>
+    Report enviado!
+  </ForwardRef(Text)>
+</Container>
+`;

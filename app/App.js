@@ -11,6 +11,7 @@ import logo from './img/logo.png';
 import Home from './screens/Home';
 import PlaceScreen from './screens/PlaceScreen';
 import MapFeed from './screens/MapFeed';
+import SendReport from './screens/SendReport';
 import { Button } from './components/common';
 
 import { GREEN, BLACK, GREY } from './styles';
@@ -42,6 +43,7 @@ const CreateReportStack = StackNavigator({
     }),
   },
   AboutYou: { screen: AboutYou },
+  SendReport: { screen: SendReport },
   PrivacyPolicy: { screen: PrivacyPolicy },
   PlaceScreen: { screen: PlaceScreen },
 }, {

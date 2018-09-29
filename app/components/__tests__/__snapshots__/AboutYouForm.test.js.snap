@@ -154,5 +154,10 @@ exports[`AboutYouForm renders correctly 1`] = `
   >
     Acessar Política de Privacidade
   </ForwardRef(Text)>
+  <Button
+    onPress={[Function]}
+    title="Enviar Relato"
+    type="confirm"
+  />
 </ForwardRef(View)>
 `;
