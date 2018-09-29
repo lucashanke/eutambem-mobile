@@ -6,12 +6,7 @@ import appStyles from '../styles';
 
 import { Button, Picker, DatePicker, TextInput, CheckBoxGroup, PlaceInput } from './common';
 
-import {
-  HARASSMENT_TYPE_OPTIONS,
-  YES_NO_OPTIONAL_OPTIONS,
-  MAX_TEXT_INPUT_LENGTH,
-  FOLLOWUP_ACTIONS_OPTIONS,
-} from '../constants';
+import { MAX_TEXT_INPUT_LENGTH } from '../constants';
 
 import { formWrapper, loading } from './hoc';
 
@@ -45,7 +40,7 @@ export class AboutWhatHappenedForm extends Component {
         <Picker
           required
           placeholder="Tipo de assédio"
-          items={HARASSMENT_TYPE_OPTIONS}
+          items={this.props.data.formOptions.harassment_type_options}
         />
         <TextInput
           multiline
@@ -63,12 +58,12 @@ export class AboutWhatHappenedForm extends Component {
         />
         <CheckBoxGroup
           label="Você tomou alguma providência com relação ao ocorrido?"
-          options={FOLLOWUP_ACTIONS_OPTIONS}
+          options={this.props.data.formOptions.followup_actions_options}
         />
         <Picker
           required
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
-          items={YES_NO_OPTIONAL_OPTIONS}
+          items={this.props.data.formOptions.yes_no_optional_options}
         />
         <TextInput
           style={[appStyles.input, appStyles.multilineInput]}
@@ -88,9 +83,21 @@ export class AboutWhatHappenedForm extends Component {
   }
 }
 
+const valueLabelShape = PropTypes.arrayOf(PropTypes.shape({
+  value: PropTypes.string,
+  label: PropTypes.string,
+})).isRequired;
+
 AboutWhatHappenedForm.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
+  }).isRequired,
+  data: PropTypes.shape({
+    formOptions: PropTypes.shape({
+      harassment_type_options: valueLabelShape,
+      followup_actions_options: valueLabelShape,
+      yes_no_optional_options: valueLabelShape,
+    }).isRequired,
   }).isRequired,
 };
 
