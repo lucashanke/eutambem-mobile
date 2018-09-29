@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlacePicker renders correctly 1`] = `
-<View>
+<ForwardRef(View)>
   <Search
     autoFocus={true}
     backgroundColor="transparent"
@@ -48,5 +48,5 @@ exports[`PlacePicker renders correctly 1`] = `
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />
-</View>
+</ForwardRef(View)>
 `;

@@ -22,5 +22,6 @@ exports[`TextInput renders correctly 1`] = `
       },
     ]
   }
+  underlineColorAndroid="transparent"
 />
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AboutWhatHappenedForm renders correctly 1`] = `
-<View>
+<ForwardRef(View)>
   <PlaceInput
     navigation={
       Object {
@@ -135,5 +135,5 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
     title="Prosseguir"
     type="confirm"
   />
-</View>
+</ForwardRef(View)>
 `;

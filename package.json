@@ -28,10 +28,9 @@
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "babel-jest": "22.1.0",
-    "metro-react-native-babel-preset": "^0.45.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.3",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.10.0",
@@ -40,6 +39,7 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
     "jest": "22.1.4",
+    "metro-react-native-babel-preset": "^0.45.0",
     "npm": "^6.4.1",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.3.0",
@@ -48,6 +48,9 @@
     "sinon": "^4.5.0"
   },
   "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
     "setupFiles": [
       "./tests/jestSetup.js"
     ],

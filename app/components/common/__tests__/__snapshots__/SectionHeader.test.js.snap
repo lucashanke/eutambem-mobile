@@ -1,17 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SectionHeader renders correctly 1`] = `
-<View
+<ForwardRef(View)
   style={
     Object {
       "marginTop": 20,
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+  <ForwardRef(Text)
     style={
       Object {
         "color": "#961687",
@@ -20,6 +17,6 @@ exports[`SectionHeader renders correctly 1`] = `
     }
   >
     TEST SECTIONHEADER
-  </Text>
-</View>
+  </ForwardRef(Text)>
+</ForwardRef(View)>
 `;
