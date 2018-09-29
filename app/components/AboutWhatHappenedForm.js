@@ -25,6 +25,12 @@ export class AboutWhatHappenedForm extends Component {
     this.setState({ establishment: { value: item.id, label: item.label } });
   }
 
+  formData() {
+    return {
+      description: this.state.description,
+    }
+  }
+
   render() {
     return (
       <View>
@@ -75,7 +81,7 @@ export class AboutWhatHappenedForm extends Component {
           value={this.state.advice}
         />
         <Button
-          onPress={() => this.props.navigation.navigate('AboutYou')}
+          onPress={() => this.props.navigation.navigate('AboutYou', { formData: this.formData() })}
           title="Prosseguir"
         />
       </View>

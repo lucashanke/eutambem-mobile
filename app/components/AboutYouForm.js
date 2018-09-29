@@ -17,6 +17,13 @@ export class AboutYouForm extends Component {
     };
   }
 
+  formData() {
+    return {
+      ...this.props.navigation.getParam('formData', {}),
+      email: this.state.email,
+    };
+  }
+
   render() {
     return (
       <View>
@@ -59,7 +66,7 @@ export class AboutYouForm extends Component {
           Acessar Política de Privacidade
         </Text>
         <Button
-          onPress={() => this.props.navigation.navigate('SendReport')}
+          onPress={() => this.props.navigation.navigate('SendReport', { formData: this.formData() })}
           title="Enviar Relato"
         />
       </View>

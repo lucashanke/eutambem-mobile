@@ -95,4 +95,27 @@ describe('AboutYouForm', () => {
     const wrapper = shallow(<AboutYouForm {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('passes the form data to the SendReport screen', () => {
+    props.navigation.getParam = (key) => {
+      if (key === 'formData') {
+        return {
+          description: 'something',
+        };
+      }
+      return null;
+    };
+
+    const wrapper = shallow(<AboutYouForm {...props} />);
+    wrapper.setState({
+      email: 'someone@example.com',
+    });
+    wrapper.find('Button').simulate('press');
+    expect(props.navigation.navigate.calledWith('SendReport', {
+      formData: {
+        description: 'something',
+        email: 'someone@example.com',
+      },
+    })).toBeTruthy();
+  });
 });

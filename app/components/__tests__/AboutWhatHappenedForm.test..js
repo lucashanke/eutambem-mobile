@@ -66,4 +66,17 @@ describe('AboutWhatHappenedForm', () => {
     const wrapper = shallow(<AboutWhatHappenedForm {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('passes the form data to the AboutYou screen', () => {
+    const wrapper = shallow(<AboutWhatHappenedForm {...props} />);
+    wrapper.setState({
+      description: 'something',
+    });
+    wrapper.find('Button').simulate('press');
+    expect(props.navigation.navigate.calledWith('AboutYou', {
+      formData: {
+        description: 'something',
+      },
+    })).toBeTruthy();
+  });
 });
