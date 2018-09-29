@@ -19,7 +19,7 @@ jobs:
 
   deploy_ios:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     steps:
     working_directory: /Users/distiller/project
     environment:
