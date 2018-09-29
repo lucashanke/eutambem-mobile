@@ -20,12 +20,12 @@ exports[`CheckBoxGroup renders correctly 1`] = `
     Test CheckBoxGroup
   </ForwardRef(Text)>
   <CheckBox
-    key="1"
+    isChecked={false}
     label="Label 1"
     onClick={[Function]}
   />
   <CheckBox
-    key="2"
+    isChecked={false}
     label="Label 2"
     onClick={[Function]}
   />
