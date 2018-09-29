@@ -3,6 +3,7 @@
 exports[`DatePicker renders correctly 1`] = `
 <DatePicker
   TouchableComponent={[Function]}
+  allowFontScaling={true}
   androidMode="default"
   cancelBtnText="Cancelar"
   confirmBtnText="Ok"
