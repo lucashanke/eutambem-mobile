@@ -23,7 +23,7 @@ export default class CheckBoxGroup extends Component {
   constructor(props) {
     super(props);
     const values = {};
-    props.options.forEach((option) => { values[option.key] = false; });
+    props.options.forEach((option) => { values[option.value] = false; });
     this.state = { values };
   }
 
@@ -36,9 +36,9 @@ export default class CheckBoxGroup extends Component {
   renderOptions() {
     return this.props.options.map(option => (
       <CheckBox
-        key={option.key}
-        onClick={() => this.onClick(option.key)}
-        isChecked={this.state[option.key]}
+        key={option.value}
+        onClick={() => this.onClick(option.value)}
+        isChecked={this.state.values[option.value]}
         label={option.label}
       />
     ));
