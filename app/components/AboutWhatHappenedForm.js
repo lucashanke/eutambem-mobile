@@ -14,22 +14,17 @@ export class AboutWhatHappenedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null,
-      description: '',
-      advice: '',
       establishment: {},
+      harassmentType: '',
+      description: '',
+      date: null,
+      followupActions: [],
+      wouldRecommend: '',
+      advice: '',
     };
   }
 
-  onEstablishmentChange = (item) => {
-    this.setState({ establishment: { value: item.id, label: item.label } });
-  }
-
-  formData() {
-    return {
-      description: this.state.description,
-    }
-  }
+  formData = () => this.state;
 
   render() {
     return (
@@ -37,7 +32,9 @@ export class AboutWhatHappenedForm extends Component {
         <PlaceInput
           placeholder="Empresa em que ocorreu"
           value={this.state.establishment.label}
-          onValueChange={this.onEstablishmentChange}
+          onValueChange={item => this.setState({
+            establishment: { value: item.id, label: item.label }
+          })}
           types={['establishment']}
           navigation={this.props.navigation}
           required
@@ -46,6 +43,7 @@ export class AboutWhatHappenedForm extends Component {
         <Picker
           required
           placeholder="Tipo de assédio"
+          onValueChange={value => this.setState({ harassmentType: value })}
           items={this.props.data.formOptions.harassment_type_options}
         />
         <TextInput
@@ -64,10 +62,12 @@ export class AboutWhatHappenedForm extends Component {
         />
         <CheckBoxGroup
           label="Você tomou alguma providência com relação ao ocorrido?"
+          onItemToggle={values => this.setState({ followupActions: values })}
           options={this.props.data.formOptions.followup_actions_options}
         />
         <Picker
           required
+          onValueChange={value => this.setState({ wouldRecommend: value })}
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
           items={this.props.data.formOptions.yes_no_optional_options}
         />
