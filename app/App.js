@@ -34,7 +34,6 @@ const stackNavigationOptions = {
   headerTitleStyle: { color: BLACK },
 };
 
-
 const CreateReportStack = StackNavigator({
   AboutWhatHappened: {
     screen: AboutWhatHappened,
@@ -68,15 +67,9 @@ const MapFeedStack = StackNavigator({
 });
 
 
-const App = TabNavigator(
+const Tabs = TabNavigator(
   {
     Home: { screen: HomeStack },
-    CreateReport: {
-      screen: CreateReportStack,
-      navigationOptions: {
-        tabBarVisible: false,
-      },
-    },
     MapFeed: { screen: MapFeedStack },
   },
   {
@@ -104,5 +97,13 @@ const App = TabNavigator(
     swipeEnabled: false,
   },
 );
+
+const App = StackNavigator({
+  Tabs: { screen: Tabs },
+  CreateReport: { screen: CreateReportStack }
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+});
 
 export default App;

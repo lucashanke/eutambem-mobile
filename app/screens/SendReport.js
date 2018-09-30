@@ -8,7 +8,7 @@ class SendReport extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerTitle: 'Relato',
     headerLeft: null,
-    headerRight: <Button title="Fechar" onPress={() => navigation.navigate('Home')} />,
+    headerRight: <Button title="Fechar" onPress={() => navigation.dismiss()} />,
   })
 
   render() {
