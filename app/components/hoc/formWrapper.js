@@ -1,5 +1,5 @@
 import React from 'react';
-import fetchReportFormConstants from '../../services/reportService';
+import { fetchReportFormConstants } from '../../services/reportService';
 
 export default (WrappedComponent) => {
   return class extends React.Component {
@@ -21,5 +21,4 @@ export default (WrappedComponent) => {
       )
     }
   }
-
 }

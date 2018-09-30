@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
-import sendReport from '../services/reportService';
+import { sendReport } from '../services/reportService';
 import Report from './Report';
 
 export class SendReportForm extends Component {
