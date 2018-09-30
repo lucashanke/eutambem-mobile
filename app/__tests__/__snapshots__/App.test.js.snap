@@ -1,59 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App renders correctly 1`] = `
-<Navigator
+<KeyboardAwareNavigator
   navigation={
     Object {
+      "actions": Object {
+        "dismiss": [Function],
+        "pop": [Function],
+        "popToTop": [Function],
+        "push": [Function],
+        "replace": [Function],
+        "reset": [Function],
+      },
       "addListener": [Function],
+      "dangerouslyGetParent": [Function],
+      "dismiss": [Function],
       "dispatch": [Function],
-      "getParam": [Function],
+      "getChildNavigation": [Function],
+      "getScreenProps": [Function],
       "goBack": [Function],
+      "isFocused": [Function],
       "navigate": [Function],
       "pop": [Function],
       "popToTop": [Function],
       "push": [Function],
       "replace": [Function],
+      "reset": [Function],
+      "router": Object {
+        "childRouters": Object {
+          "CreateReport": Object {
+            "childRouters": Object {
+              "AboutWhatHappened": null,
+              "AboutYou": null,
+              "PlaceScreen": null,
+              "PrivacyPolicy": null,
+              "SendReport": null,
+            },
+            "getActionCreators": [Function],
+            "getActionForPathAndParams": [Function],
+            "getComponentForRouteName": [Function],
+            "getComponentForState": [Function],
+            "getPathAndParamsForState": [Function],
+            "getScreenOptions": [Function],
+            "getStateForAction": [Function],
+          },
+          "Tabs": Object {
+            "childRouters": Object {
+              "Home": Object {
+                "childRouters": Object {
+                  "Home": null,
+                },
+                "getActionCreators": [Function],
+                "getActionForPathAndParams": [Function],
+                "getComponentForRouteName": [Function],
+                "getComponentForState": [Function],
+                "getPathAndParamsForState": [Function],
+                "getScreenOptions": [Function],
+                "getStateForAction": [Function],
+              },
+              "MapFeed": Object {
+                "childRouters": Object {
+                  "MapFeed": null,
+                },
+                "getActionCreators": [Function],
+                "getActionForPathAndParams": [Function],
+                "getComponentForRouteName": [Function],
+                "getComponentForState": [Function],
+                "getPathAndParamsForState": [Function],
+                "getScreenOptions": [Function],
+                "getStateForAction": [Function],
+              },
+            },
+            "getActionCreators": [Function],
+            "getActionForPathAndParams": [Function],
+            "getComponentForRouteName": [Function],
+            "getComponentForState": [Function],
+            "getPathAndParamsForState": [Function],
+            "getScreenOptions": [Function],
+            "getStateForAction": [Function],
+          },
+        },
+        "getActionCreators": [Function],
+        "getActionForPathAndParams": [Function],
+        "getComponentForRouteName": [Function],
+        "getComponentForState": [Function],
+        "getPathAndParamsForState": [Function],
+        "getScreenOptions": [Function],
+        "getStateForAction": [Function],
+      },
       "setParams": [Function],
       "state": Object {
         "index": 0,
         "isTransitioning": false,
+        "key": "StackRouterRoot",
         "routes": Array [
           Object {
             "index": 0,
             "isTransitioning": false,
-            "key": "Home",
-            "params": undefined,
-            "routeName": "Home",
+            "key": "id-1522689340-2",
+            "routeName": "Tabs",
             "routes": Array [
               Object {
-                "key": "id-1522689340-0",
+                "index": 0,
+                "isTransitioning": false,
+                "key": "Home",
+                "params": undefined,
                 "routeName": "Home",
+                "routes": Array [
+                  Object {
+                    "key": "id-1522689340-0",
+                    "routeName": "Home",
+                  },
+                ],
               },
-            ],
-          },
-          Object {
-            "index": 0,
-            "isTransitioning": false,
-            "key": "CreateReport",
-            "params": undefined,
-            "routeName": "CreateReport",
-            "routes": Array [
               Object {
-                "key": "id-1522689340-1",
-                "routeName": "AboutWhatHappened",
-              },
-            ],
-          },
-          Object {
-            "index": 0,
-            "isTransitioning": false,
-            "key": "MapFeed",
-            "params": undefined,
-            "routeName": "MapFeed",
-            "routes": Array [
-              Object {
-                "key": "id-1522689340-2",
+                "index": 0,
+                "isTransitioning": false,
+                "key": "MapFeed",
+                "params": undefined,
                 "routeName": "MapFeed",
+                "routes": Array [
+                  Object {
+                    "key": "id-1522689340-1",
+                    "routeName": "MapFeed",
+                  },
+                ],
               },
             ],
           },
