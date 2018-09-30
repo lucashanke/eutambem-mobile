@@ -31,6 +31,8 @@ export default class CheckBoxGroup extends Component {
     const { values } = this.state;
     values[key] = !values[key];
     this.setState({ values });
+    const selectedValues = Object.keys(values).filter((key) => values[key]);
+    this.props.onItemToggle(selectedValues);
   }
 
   renderOptions() {
@@ -60,4 +62,5 @@ CheckBoxGroup.propTypes = {
     key: PropTypes.string,
   })).isRequired,
   label: PropTypes.string.isRequired,
+  onItemToggle: PropTypes.func.isRequired,
 };
