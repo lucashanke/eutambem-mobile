@@ -6,7 +6,7 @@ import { loading } from './hoc';
 const Report = () => (
   <View>
     <Text>
-      Report enviado!
+      Relato enviado!
     </Text>
   </View>
 );

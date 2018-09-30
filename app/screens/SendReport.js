@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Container from '../components/common/Container';
+import { Button, Container } from '../components/common';
 import SendReportForm from '../components/SendReportForm';
 
-const SendReport = props => (
-  <Container>
-    <SendReportForm navigation={props.navigation} />
-  </Container>
-);
+class SendReport extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerTitle: 'Relato',
+    headerLeft: null,
+    headerRight: <Button title="Fechar" onPress={() => navigation.navigate('Home')} />,
+  })
+
+  render() {
+    return (
+      <Container>
+        <SendReportForm navigation={this.props.navigation} />
+      </Container>
+    );
+  }
+}
 
 SendReport.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
+    goBack: PropTypes.func,
   }).isRequired,
 };
 
