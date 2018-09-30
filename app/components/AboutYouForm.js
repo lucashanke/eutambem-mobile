@@ -82,6 +82,7 @@ const valueLabelShape = PropTypes.arrayOf(PropTypes.shape({
 AboutYouForm.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
+    getParam: PropTypes.func,
   }).isRequired,
   data: PropTypes.shape({
     formOptions: PropTypes.shape({

@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 
 import Container from '../components/common/Container';
+import SendReportForm from '../components/SendReportForm';
 
 const SendReport = props => (
   <Container>
-    <Text>
-      Report enviado!
-    </Text>
+    <SendReportForm navigation={props.navigation} />
   </Container>
 );
 
