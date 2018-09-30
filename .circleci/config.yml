@@ -15,7 +15,6 @@ jobs:
           root: .
           paths:
             - build_number.txt
-            - node_modules
 
   deploy_ios:
     macos:
@@ -26,9 +25,9 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - run: yarn install
       - attach_workspace:
           at: .
-      - run: cd node_modules/react-native && exec ./scripts/ios-install-third-party.sh
       - run: bundle install
       - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
 
