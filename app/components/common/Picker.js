@@ -46,12 +46,15 @@ export default class Picker extends Component {
   onValueChange(itemValue) {
     if (itemValue !== UNSELECTED) {
       const itemLabel = this.props.items.find(item => item.value === itemValue).label;
-      this.setState({ currentItem: { value: itemValue, label: itemLabel } });
+      const selectedItem = { value: itemValue, label: itemLabel };
+      this.setState({ currentItem: selectedItem});
+      this.props.onValueChange(selectedItem.value);
     }
   }
 
   confirm() {
     this.setState({ itemSelected: this.state.currentItem });
+    this.props.onValueChange( this.state.currentItem.value);
     this.closeModal();
   }
 
@@ -148,6 +151,7 @@ Picker.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string,
   })).isRequired,
+  onValueChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
 };
 
