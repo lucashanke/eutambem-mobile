@@ -35,12 +35,7 @@ const stackNavigationOptions = {
 };
 
 const CreateReportStack = StackNavigator({
-  AboutWhatHappened: {
-    screen: AboutWhatHappened,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <Button type="cancel" title="Cancelar" onPress={() => navigation.goBack(null)} />,
-    }),
-  },
+  AboutWhatHappened: { screen: AboutWhatHappened },
   AboutYou: { screen: AboutYou },
   SendReport: { screen: SendReport },
   PrivacyPolicy: { screen: PrivacyPolicy },

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Container from '../components/common/Container';
+import Button from '../components/common/Button';
 import AboutWhatHappenedForm from '../components/AboutWhatHappenedForm';
 
 const AboutWhatHappened = props => (
@@ -10,14 +11,16 @@ const AboutWhatHappened = props => (
   </Container>
 );
 
-AboutWhatHappened.navigationOptions = {
+AboutWhatHappened.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Sobre o que aconteceu',
-};
+  headerLeft: <Button type="cancel" title="Cancelar" onPress={() => navigation.goBack(null)} />,
+});
 
 AboutWhatHappened.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }).isRequired,
 };
+
 
 export default AboutWhatHappened;
