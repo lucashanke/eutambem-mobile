@@ -40,5 +40,8 @@ workflows:
     jobs:
       - build
       - deploy_ios:
+          filters:
+            branches:
+              only: master
           requires:
             - build
