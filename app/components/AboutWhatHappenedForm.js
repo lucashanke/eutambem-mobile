@@ -14,27 +14,35 @@ export class AboutWhatHappenedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      establishment: {},
-      harassmentType: '',
-      description: '',
-      date: null,
-      followupActions: [],
-      wouldRecommend: '',
-      advice: '',
+      formData: {
+        establishment: {},
+        harassmentType: '',
+        description: '',
+        date: null,
+        followupActions: [],
+        wouldRecommend: '',
+        advice: '',
+      },
     };
   }
 
-  formData = () => this.state;
+  updateFormDataValue = (key, value) => {
+    const { formData } = this.state;
+    if (key in formData){
+      formData[key] = value;
+      this.setState({ formData });
+    } else {
+      console.error('Trying to update key that is not present in formData.');
+    }
+  }
 
   render() {
     return (
       <View>
         <PlaceInput
           placeholder="Empresa em que ocorreu"
-          value={this.state.establishment.label}
-          onValueChange={item => this.setState({
-            establishment: { value: item.id, label: item.label }
-          })}
+          value={this.state.formData.establishment.label}
+          onValueChange={item => this.updateFormDataValue('establishment', { value: item.id, label: item.label })}
           types={['establishment']}
           navigation={this.props.navigation}
           required
@@ -43,31 +51,31 @@ export class AboutWhatHappenedForm extends Component {
         <Picker
           required
           placeholder="Tipo de assédio"
-          onValueChange={value => this.setState({ harassmentType: value })}
+          onValueChange={value => this.updateFormDataValue('harassmentType', value)}
           items={this.props.data.formOptions.harassment_type_options}
         />
         <TextInput
           multiline
           required
           placeholder="Conte-nos mais sobre o ocorrido"
-          onChangeText={description => this.setState({ description })}
-          value={this.state.description}
+          onChangeText={value => this.updateFormDataValue('description', value)}
+          value={this.state.formData.description}
         />
         <DatePicker
-          date={this.state.date}
+          date={this.state.formData.date}
           required
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}
-          onDateChange={date => this.setState({ date })}
+          onDateChange={date => this.updateFormDataValue('date', date)}
         />
         <CheckBoxGroup
           label="Você tomou alguma providência com relação ao ocorrido?"
-          onItemToggle={values => this.setState({ followupActions: values })}
+          onItemToggle={values => this.updateFormDataValue('followupActions', values)}
           options={this.props.data.formOptions.followup_actions_options}
         />
         <Picker
           required
-          onValueChange={value => this.setState({ wouldRecommend: value })}
+          onValueChange={value => this.updateFormDataValue('wouldRecommend', value)}
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
           items={this.props.data.formOptions.yes_no_optional_options}
         />
@@ -77,11 +85,11 @@ export class AboutWhatHappenedForm extends Component {
           autoGrow
           maxLength={MAX_TEXT_INPUT_LENGTH}
           placeholder="Qual seu conselho para os gestores?"
-          onChangeText={advice => this.setState({ advice })}
-          value={this.state.advice}
+          onChangeText={advice => this.updateFormDataValue('advice', advice)}
+          value={this.state.formData.advice}
         />
         <Button
-          onPress={() => this.props.navigation.navigate('AboutYou', { formData: this.formData() })}
+          onPress={() => this.props.navigation.navigate('AboutYou', { formData: this.state.formData })}
           title="Prosseguir"
         />
       </View>

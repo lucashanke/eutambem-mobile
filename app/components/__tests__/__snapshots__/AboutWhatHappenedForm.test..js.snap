@@ -47,6 +47,7 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Tipo de assédio"
     required={true}
   />
@@ -66,6 +67,7 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
   />
   <CheckBoxGroup
     label="Você tomou alguma providência com relação ao ocorrido?"
+    onItemToggle={[Function]}
     options={
       Array [
         Object {
@@ -100,6 +102,7 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Você recomendaria essa empresa depois do ocorrido?"
     required={true}
   />
