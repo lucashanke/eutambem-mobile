@@ -17,7 +17,6 @@ const appStyles = StyleSheet.create({
   },
   innerContainer: {
     padding: '5%',
-    height: '100%',
   },
   input: {
     borderBottomColor: SOFT_PURPLE,
