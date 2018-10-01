@@ -94,7 +94,7 @@ const Tabs = TabNavigator(
 
 const App = StackNavigator({
   Tabs: { screen: Tabs },
-  CreateReport: { screen: CreateReportStack }
+  CreateReport: { screen: CreateReportStack },
 }, {
   mode: 'modal',
   headerMode: 'none',

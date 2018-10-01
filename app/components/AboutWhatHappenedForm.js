@@ -28,7 +28,7 @@ export class AboutWhatHappenedForm extends Component {
 
   updateFormDataValue = (key, value) => {
     const { formData } = this.state;
-    if (key in formData){
+    if (key in formData) {
       formData[key] = value;
       this.setState({ formData });
     } else {
