@@ -105,7 +105,7 @@ describe('AboutYouForm', () => {
       }
       return null;
     };
-    
+
     const wrapper = shallow(<AboutYouForm {...props} />);
     const initialFormData = wrapper.state().formData;
     wrapper.setState({
@@ -116,7 +116,7 @@ describe('AboutYouForm', () => {
     });
 
     wrapper.find('Button').simulate('press');
-    
+
     expect(props.navigation.navigate.calledWith('SendReport', {
       formData: {
         description: 'something',

@@ -47,14 +47,14 @@ export default class Picker extends Component {
     if (itemValue !== UNSELECTED) {
       const itemLabel = this.props.items.find(item => item.value === itemValue).label;
       const selectedItem = { value: itemValue, label: itemLabel };
-      this.setState({ currentItem: selectedItem});
+      this.setState({ currentItem: selectedItem });
       this.props.onValueChange(selectedItem.value);
     }
   }
 
   confirm() {
     this.setState({ itemSelected: this.state.currentItem });
-    this.props.onValueChange( this.state.currentItem.value);
+    this.props.onValueChange(this.state.currentItem.value);
     this.closeModal();
   }
 

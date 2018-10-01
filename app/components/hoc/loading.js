@@ -1,11 +1,11 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
+
 import _ from 'lodash';
 import { SOFT_PURPLE } from '../../styles';
 
-
-export default (WrappedComponent) => (props) => {
-  if (_.isNil(props.data)) {
+const loading = WrappedComponent => (props) => {
+  if (_.isNil(props.data)) { // eslint-disable-line react/prop-types
     return (
       <ActivityIndicator size="large" color={SOFT_PURPLE} />
     );
@@ -14,3 +14,5 @@ export default (WrappedComponent) => (props) => {
     <WrappedComponent {...props} />
   );
 };
+
+export default loading;

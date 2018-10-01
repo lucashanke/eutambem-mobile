@@ -31,7 +31,7 @@ export default class CheckBoxGroup extends Component {
     const { values } = this.state;
     values[key] = !values[key];
     this.setState({ values });
-    const selectedValues = Object.keys(values).filter((key) => values[key]);
+    const selectedValues = Object.keys(values).filter(value => values[value]);
     this.props.onItemToggle(selectedValues);
   }
 

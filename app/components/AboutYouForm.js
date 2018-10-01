@@ -23,20 +23,18 @@ export class AboutYouForm extends Component {
     };
   }
 
-  formData = () => {
-    return {
-      ...this.props.navigation.getParam('formData', {}),
-      ...this.state.formData,
-    };
-  }
+  formData = () => ({
+    ...this.props.navigation.getParam('formData', {}),
+    ...this.state.formData,
+  });
 
   updateFormDataValue = (key, value) => {
     const { formData } = this.state;
-    if (key in formData){
+    if (key in formData) {
       formData[key] = value;
       this.setState({ formData });
     } else {
-      console.error('Trying to update key that is not present in formData.')
+      console.error('Trying to update key that is not present in formData.');
     }
   }
 
@@ -107,6 +105,9 @@ AboutYouForm.propTypes = {
   }).isRequired,
   data: PropTypes.shape({
     formOptions: PropTypes.shape({
+      skin_color_options: valueLabelShape,
+      age_options: valueLabelShape,
+      wage_options: valueLabelShape,
       gender_options: valueLabelShape,
       followup_actions_options: valueLabelShape,
       yes_no_optional_options: valueLabelShape,

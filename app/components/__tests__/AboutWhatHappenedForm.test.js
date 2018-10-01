@@ -57,8 +57,8 @@ const props = {
       followup_actions_options: FOLLOWUP_ACTIONS_OPTIONS,
       harassment_type_options: HARASSMENT_TYPE_OPTIONS,
       yes_no_optional_options: YES_NO_OPTIONAL_OPTIONS,
-    }
-  }
+    },
+  },
 };
 
 describe('AboutWhatHappenedForm', () => {
@@ -79,7 +79,7 @@ describe('AboutWhatHappenedForm', () => {
     });
 
     wrapper.find('Button').simulate('press');
-    
+
     expect(props.navigation.navigate.calledWith('AboutYou', {
       formData: {
         ...initialFormData,
