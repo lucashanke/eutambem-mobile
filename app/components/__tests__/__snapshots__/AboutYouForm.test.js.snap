@@ -19,6 +19,7 @@ exports[`AboutYouForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Gênero"
     required={true}
   />
@@ -51,6 +52,7 @@ exports[`AboutYouForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Cor"
     required={true}
   />
@@ -83,6 +85,7 @@ exports[`AboutYouForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Idade"
   />
   <Picker
@@ -114,6 +117,7 @@ exports[`AboutYouForm renders correctly 1`] = `
         },
       ]
     }
+    onValueChange={[Function]}
     placeholder="Renda Aproximada"
   />
   <SectionHeader
@@ -126,15 +130,13 @@ exports[`AboutYouForm renders correctly 1`] = `
     multiline={false}
     onChangeText={[Function]}
     placeholder="Email"
-    required={false}
-    value=""
+    required={true}
   />
   <TextInput
     multiline={false}
     onChangeText={[Function]}
     placeholder="Nome"
     required={false}
-    value=""
   />
   <CheckBox
     isChecked={false}

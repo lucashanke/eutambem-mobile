@@ -69,12 +69,20 @@ describe('AboutWhatHappenedForm', () => {
 
   it('passes the form data to the AboutYou screen', () => {
     const wrapper = shallow(<AboutWhatHappenedForm {...props} />);
+    const initialFormData = wrapper.state().formData;
+
     wrapper.setState({
-      description: 'something',
+      formData: {
+        ...initialFormData,
+        description: 'something',
+      },
     });
+
     wrapper.find('Button').simulate('press');
+    
     expect(props.navigation.navigate.calledWith('AboutYou', {
       formData: {
+        ...initialFormData,
         description: 'something',
       },
     })).toBeTruthy();
