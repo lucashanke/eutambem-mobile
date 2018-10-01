@@ -11,6 +11,10 @@ export class AboutYouForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      gender: '',
+      skinColor: '',
+      age: '',
+      wage: '',
       email: '',
       name: '',
       acceptedPolicies: false,
@@ -20,7 +24,7 @@ export class AboutYouForm extends Component {
   formData() {
     return {
       ...this.props.navigation.getParam('formData', {}),
-      email: this.state.email,
+      ...this.state,
     };
   }
 
@@ -30,25 +34,30 @@ export class AboutYouForm extends Component {
         <Picker
           required
           placeholder="Gênero"
+          onValueChange={value => this.setState({ gender: value })}
           items={this.props.data.formOptions.gender_options}
         />
         <Picker
           required
           placeholder="Cor"
+          onValueChange={value => this.setState({ skinColor: value })}
           items={this.props.data.formOptions.skin_color_options}
         />
         <Picker
           placeholder="Idade"
+          onValueChange={value => this.setState({ age: value })}
           items={this.props.data.formOptions.age_options}
         />
         <Picker
           placeholder="Renda Aproximada"
+          onValueChange={value => this.setState({ wage: value })}
           items={this.props.data.formOptions.wage_options}
         />
         <SectionHeader title="Saiba mais" />
         <SectionText title="Acompanhe relatos da mesma empresa ou cidade." />
         <TextInput
           placeholder="Email"
+          required
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
         />
