@@ -22,25 +22,24 @@ const styles = StyleSheet.create({
 export default class CheckBoxGroup extends Component {
   constructor(props) {
     super(props);
-    const values = {};
-    props.options.forEach((option) => { values[option.value] = false; });
-    this.state = { values };
   }
 
-  onClick(key) {
-    const { values } = this.state;
-    values[key] = !values[key];
-    this.setState({ values });
-    const selectedValues = Object.keys(values).filter(value => values[value]);
-    this.props.onItemToggle(selectedValues);
+  onClick = (key) => {
+    let selectedItems = this.props.values;
+    if (this.props.values.includes(key)) {
+      selectedItems = selectedItems.filter(item => item !== key);
+    } else {
+      selectedItems = selectedItems.concat(key);
+    }
+    this.props.onItemToggle(selectedItems);
   }
 
-  renderOptions() {
+  renderOptions = () => {
     return this.props.options.map(option => (
       <CheckBox
         key={option.value}
         onClick={() => this.onClick(option.value)}
-        value={this.state.values[option.value]}
+        value={this.props.values.includes(option.value)}
         label={option.label}
       />
     ));
