@@ -63,7 +63,7 @@ export class AboutWhatHappenedForm extends Component {
           value={this.state.formData.description}
         />
         <DatePicker
-          date={this.state.formData.date}
+          value={this.state.formData.date}
           required
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}

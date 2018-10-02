@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ExternalDatePicker from 'react-native-datepicker';
 import { StyleSheet } from 'react-native';
 
@@ -26,6 +27,7 @@ export const style = StyleSheet.create({
 const DatePicker = props => (
   <ExternalDatePicker
     {...props}
+    date={props.value}
     mode="date"
     format="DD/MMM/YYYY"
     confirmBtnText="Ok"
@@ -39,5 +41,13 @@ const DatePicker = props => (
     }}
   />
 );
+
+DatePicker.propTypes = {
+  value: PropTypes.string,
+}
+
+DatePicker.defaultProps = {
+  value: null,
+};
 
 export default DatePicker;
