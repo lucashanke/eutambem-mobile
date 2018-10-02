@@ -74,6 +74,7 @@ export default class Picker extends Component {
       ios: (
         <View>
           <TextInput
+            required={this.props.required}
             placeholder={this.props.placeholder}
             value={this.state.itemSelected.label}
             onFocus={() => this.openModal()}
@@ -153,5 +154,9 @@ Picker.propTypes = {
   })).isRequired,
   onValueChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };
 
+Picker.defaultProps = {
+  required: false,
+};
