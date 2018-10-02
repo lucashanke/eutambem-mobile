@@ -69,12 +69,12 @@ export class AboutYouForm extends Component {
           placeholder="Email"
           required
           onChangeText={email => this.updateFormDataValue('email', email)}
-          value={this.state.email}
+          value={this.state.formData.email}
         />
         <TextInput
           placeholder="Nome"
           onChangeText={name => this.updateFormDataValue('name', name)}
-          value={this.state.name}
+          value={this.state.formData.name}
         />
         <CheckBox
           onClick={() => this.updateFormDataValue('acceptedPolicies', !this.state.formData.acceptedPolicies)}
