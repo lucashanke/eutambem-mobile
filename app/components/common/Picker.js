@@ -34,27 +34,30 @@ export default class Picker extends Component {
     super(props);
     this.state = {
       modalVisible: false,
-      itemSelected: {},
-      currentItem: Platform.select({
-        ios: this.props.items[0],
-        android: { value: null },
-      }),
+      currentValue: '',
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
 
+  itemLabel = () => {
+    const item = this.props.items.find(item => item.value === this.props.value)
+    if (item) {
+      return item.label;
+    }
+    return Platform.select({
+      ios: '',
+      android: UNSELECTED,
+    });
+  }
+
   onValueChange(itemValue) {
     if (itemValue !== UNSELECTED) {
-      const itemLabel = this.props.items.find(item => item.value === itemValue).label;
-      const selectedItem = { value: itemValue, label: itemLabel };
-      this.setState({ currentItem: selectedItem });
-      this.props.onValueChange(selectedItem.value);
+      this.setState({ currentValue: itemValue });
     }
   }
 
   confirm() {
-    this.setState({ itemSelected: this.state.currentItem });
-    this.props.onValueChange(this.state.currentItem.value);
+    this.props.onValueChange(this.state.currentValue);
     this.closeModal();
   }
 
@@ -78,7 +81,7 @@ export default class Picker extends Component {
             multiline
             autoGrow
             placeholder={this.props.placeholder}
-            value={this.state.itemSelected.label}
+            value={this.itemLabel()}
             onFocus={() => this.openModal()}
             ref={this.inputRef.bind(this)}
           />
@@ -103,7 +106,7 @@ export default class Picker extends Component {
               <View>
                 <PickerIOS
                   style={{ width: '100%' }}
-                  selectedValue={this.state.currentItem.value}
+                  selectedValue={this.state.currentValue}
                   onValueChange={this.onValueChange}
                 >
                   { this.props.items.map(item => (
@@ -127,7 +130,7 @@ export default class Picker extends Component {
           <PickerAndroid
             style={{ width: '60%' }}
             placeholder={this.props.placeholder}
-            selectedValue={this.state.currentItem.value}
+            selectedValue={this.state.currentValue}
             onValueChange={this.onValueChange}
           >
             <PickerAndroid.Item
