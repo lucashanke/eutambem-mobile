@@ -40,7 +40,7 @@ export default class CheckBoxGroup extends Component {
       <CheckBox
         key={option.value}
         onClick={() => this.onClick(option.value)}
-        isChecked={this.state.values[option.value]}
+        value={this.state.values[option.value]}
         label={option.label}
       />
     ));

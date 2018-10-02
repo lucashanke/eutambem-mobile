@@ -82,7 +82,7 @@ export class AboutYouForm extends Component {
         />
         <CheckBox
           onClick={() => this.updateFormDataValue('acceptedPolicies', !this.state.formData.acceptedPolicies)}
-          isChecked={this.state.formData.acceptedPolicies}
+          value={this.state.formData.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>

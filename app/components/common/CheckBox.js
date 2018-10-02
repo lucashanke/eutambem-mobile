@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
 const CheckBox = props => (
   <ExternalCheckBox
     {...props}
+    isChecked={props.value}
     style={styles.checkbox}
     checkBoxColor={DARK_PURPLE}
     rightText={props.label}
@@ -22,6 +23,11 @@ const CheckBox = props => (
 
 CheckBox.propTypes = {
   label: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+};
+
+CheckBox.defaultProps = {
+  value: false,
 };
 
 export default CheckBox;
