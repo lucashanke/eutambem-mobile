@@ -44,22 +44,26 @@ export class AboutYouForm extends Component {
         <Picker
           required
           placeholder="Gênero"
+          value={this.state.formData.gender}
           onValueChange={value => this.updateFormDataValue('gender', value)}
           items={this.props.data.formOptions.gender_options}
         />
         <Picker
           required
           placeholder="Cor"
+          value={this.state.formData.skinColor}
           onValueChange={value => this.updateFormDataValue('skinColor', value)}
           items={this.props.data.formOptions.skin_color_options}
         />
         <Picker
           placeholder="Idade"
+          value={this.state.formData.age}
           onValueChange={value => this.updateFormDataValue('age', value)}
           items={this.props.data.formOptions.age_options}
         />
         <Picker
           placeholder="Renda Aproximada"
+          value={this.state.formData.wage}
           onValueChange={value => this.updateFormDataValue('wage', value)}
           items={this.props.data.formOptions.wage_options}
         />

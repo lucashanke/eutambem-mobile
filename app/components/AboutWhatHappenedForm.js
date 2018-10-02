@@ -51,6 +51,7 @@ export class AboutWhatHappenedForm extends Component {
         <Picker
           required
           placeholder="Tipo de assédio"
+          value={this.state.formData.harassmentType}
           onValueChange={value => this.updateFormDataValue('harassmentType', value)}
           items={this.props.data.formOptions.harassment_type_options}
         />
@@ -75,6 +76,7 @@ export class AboutWhatHappenedForm extends Component {
         />
         <Picker
           required
+          value={this.state.formData.wouldRecommend}
           onValueChange={value => this.updateFormDataValue('wouldRecommend', value)}
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
           items={this.props.data.formOptions.yes_no_optional_options}
