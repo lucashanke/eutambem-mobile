@@ -70,6 +70,7 @@ export class AboutWhatHappenedForm extends Component {
           onDateChange={date => this.updateFormDataValue('date', date)}
         />
         <CheckBoxGroup
+          values={this.state.formData.followupActions}
           label="Você tomou alguma providência com relação ao ocorrido?"
           onItemToggle={values => this.updateFormDataValue('followupActions', values)}
           options={this.props.data.formOptions.followup_actions_options}
