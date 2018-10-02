@@ -75,6 +75,8 @@ export default class Picker extends Component {
         <View>
           <TextInput
             required={this.props.required}
+            multiline
+            autoGrow
             placeholder={this.props.placeholder}
             value={this.state.itemSelected.label}
             onFocus={() => this.openModal()}
