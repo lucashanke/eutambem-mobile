@@ -62,7 +62,6 @@ export default class Picker extends Component {
   }
 
   openModal() {
-    this.input.blur();
     this.setState({ modalVisible: true });
   }
 
@@ -82,6 +81,7 @@ export default class Picker extends Component {
             autoGrow
             placeholder={this.props.placeholder}
             value={this.itemLabel()}
+            blur={this.state.modalVisible}
             onFocus={() => this.openModal()}
             ref={this.inputRef.bind(this)}
           />
