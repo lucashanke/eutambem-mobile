@@ -5,11 +5,16 @@ import appStyles from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 
 class TextInput extends Component {
-  blur = () => this.input.blur();
 
-  inputRef = (component) => { this.input = component; }
+  inputRef = (component) => { this.input = component; };
 
   placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
+
+  componentDidUpdate = () => {
+    if (this.props.blur) {
+      this.input.blur();
+    }
+  };
 
   render() {
     let style = [appStyles.input];
