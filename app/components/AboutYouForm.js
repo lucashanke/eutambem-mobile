@@ -18,8 +18,8 @@ export class AboutYouForm extends Component {
         wage: '',
         email: '',
         name: '',
-        acceptedPolicies: false,
       },
+      acceptedPolicies: false,
     };
   }
 
@@ -72,17 +72,17 @@ export class AboutYouForm extends Component {
         <TextInput
           placeholder="Email"
           required
-          onChangeText={email => this.updateFormDataValue('email', email)}
+          onValueChange={email => this.updateFormDataValue('email', email)}
           value={this.state.formData.email}
         />
         <TextInput
           placeholder="Nome"
-          onChangeText={name => this.updateFormDataValue('name', name)}
+          onValueChange={name => this.updateFormDataValue('name', name)}
           value={this.state.formData.name}
         />
         <CheckBox
-          onClick={() => this.updateFormDataValue('acceptedPolicies', !this.state.formData.acceptedPolicies)}
-          value={this.state.formData.acceptedPolicies}
+          onValueChange={() => this.updateFormDataValue('acceptedPolicies', !this.state.acceptedPolicies)}
+          value={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>

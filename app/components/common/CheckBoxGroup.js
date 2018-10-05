@@ -31,7 +31,7 @@ export default class CheckBoxGroup extends Component {
     } else {
       selectedItems = selectedItems.concat(key);
     }
-    this.props.onItemToggle(selectedItems);
+    this.props.onValueChange(selectedItems);
   }
 
   renderOptions = () => {
@@ -61,5 +61,5 @@ CheckBoxGroup.propTypes = {
     key: PropTypes.string,
   })).isRequired,
   label: PropTypes.string.isRequired,
-  onItemToggle: PropTypes.func.isRequired,
+  onValueChange: PropTypes.func.isRequired,
 };

@@ -30,6 +30,7 @@ class TextInput extends Component {
         style={style}
         maxLength={MAX_TEXT_INPUT_LENGTH}
         multiline={this.props.multiline}
+        onChangeText={this.props.onValueChange}
         placeholder={this.placeholder()}
         autoGrow={autoGrow}
         ref={this.inputRef}
