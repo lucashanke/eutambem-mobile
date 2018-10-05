@@ -59,20 +59,20 @@ export class AboutWhatHappenedForm extends Component {
           multiline
           required
           placeholder="Conte-nos mais sobre o ocorrido"
-          onChangeText={value => this.updateFormDataValue('description', value)}
+          onValueChange={value => this.updateFormDataValue('description', value)}
           value={this.state.formData.description}
         />
         <DatePicker
-          value={this.state.formData.date}
           required
+          value={this.state.formData.date}
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}
-          onDateChange={date => this.updateFormDataValue('date', date)}
+          onValueChange={date => this.updateFormDataValue('date', date)}
         />
         <CheckBoxGroup
           values={this.state.formData.followupActions}
           label="Você tomou alguma providência com relação ao ocorrido?"
-          onItemToggle={values => this.updateFormDataValue('followupActions', values)}
+          onValueChange={values => this.updateFormDataValue('followupActions', values)}
           options={this.props.data.formOptions.followup_actions_options}
         />
         <Picker
@@ -88,7 +88,7 @@ export class AboutWhatHappenedForm extends Component {
           autoGrow
           maxLength={MAX_TEXT_INPUT_LENGTH}
           placeholder="Qual seu conselho para os gestores?"
-          onChangeText={advice => this.updateFormDataValue('advice', advice)}
+          onValueChange={advice => this.updateFormDataValue('advice', advice)}
           value={this.state.formData.advice}
         />
         <Button

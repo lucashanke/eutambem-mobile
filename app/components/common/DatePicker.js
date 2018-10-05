@@ -27,6 +27,7 @@ export const style = StyleSheet.create({
 const DatePicker = props => (
   <ExternalDatePicker
     {...props}
+    onDateChange={props.onValueChange}
     date={props.value}
     mode="date"
     format="DD/MMM/YYYY"
@@ -44,6 +45,7 @@ const DatePicker = props => (
 
 DatePicker.propTypes = {
   value: PropTypes.string,
+  onValueChange: PropTypes.func.isRequired,
 }
 
 DatePicker.defaultProps = {
