@@ -39,7 +39,7 @@ class CheckBoxGroup extends Component {
     return this.props.options.map(option => (
       <CheckBox
         key={option.value}
-        onClick={() => this.onClick(option.value)}
+        onValueChange={() => this.onClick(option.value)}
         value={this.props.values.includes(option.value)}
         label={option.label}
       />

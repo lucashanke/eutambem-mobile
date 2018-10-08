@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
 const CheckBox = props => (
   <ExternalCheckBox
     {...props}
+    onClick={props.onValueChange}
     isChecked={props.value}
     style={styles.checkbox}
     checkBoxColor={DARK_PURPLE}
