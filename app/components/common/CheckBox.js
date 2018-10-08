@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import ExternalCheckBox from 'react-native-check-box';
 import { DARK_PURPLE } from '../../styles';
+import input from '../hoc/input';
 
 const styles = StyleSheet.create({
   checkbox: {
@@ -30,4 +31,4 @@ CheckBox.defaultProps = {
   value: false,
 };
 
-export default CheckBox;
+export default input(CheckBox);

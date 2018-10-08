@@ -4,6 +4,7 @@ import ExternalDatePicker from 'react-native-datepicker';
 import { StyleSheet } from 'react-native';
 
 import appStyles, { DARK_PURPLE, GREY } from '../../styles';
+import input from '../hoc/input';
 
 export const style = StyleSheet.create({
   btnTextCancel: {
@@ -52,4 +53,4 @@ DatePicker.defaultProps = {
   value: null,
 };
 
-export default DatePicker;
+export default input(DatePicker);

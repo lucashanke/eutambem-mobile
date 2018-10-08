@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import { DARK_PURPLE } from '../../styles';
 import CheckBox from './CheckBox';
+import input from '../hoc/input';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class CheckBoxGroup extends Component {
+class CheckBoxGroup extends Component {
   constructor(props) {
     super(props);
   }
@@ -63,3 +64,5 @@ CheckBoxGroup.propTypes = {
   label: PropTypes.string.isRequired,
   onValueChange: PropTypes.func.isRequired,
 };
+
+export default input(CheckBoxGroup);
