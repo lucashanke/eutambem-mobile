@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TextInput as NativeTextInput } from 'react-native';
 import appStyles from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
+import input from '../hoc/input';
 
 class TextInput extends Component {
 
@@ -50,4 +51,4 @@ TextInput.defaultProps = {
   required: false,
 };
 
-export default TextInput;
+export default input(TextInput);
