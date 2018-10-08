@@ -12,59 +12,85 @@ export class AboutYouForm extends Component {
     super(props);
     this.state = {
       formData: {
-        gender: '',
-        skinColor: '',
-        age: '',
-        wage: '',
-        email: '',
-        name: '',
+        gender: { value: '', valid: false },
+        skinColor: { value: '', valid: false },
+        age: { value: '', valid: true },
+        wage: { value: '', valid: true },
+        email: { value: '', valid: false },
+        name: { value: '', valid: true },
       },
       acceptedPolicies: false,
+      containErrors: false,
     };
   }
 
-  formData = () => ({
-    ...this.props.navigation.getParam('formData', {}),
-    ...this.state.formData,
-  });
-
-  updateFormDataValue = (key, value) => {
+  updateFormDataValue = (key, value, valid) => {
     const { formData } = this.state;
     if (key in formData) {
-      formData[key] = value;
+      formData[key] = { value, valid };
       this.setState({ formData });
     } else {
       console.error('Trying to update key that is not present in formData.');
     }
-  }
+  };
+
+  getThisFormDataValues = () => {
+    const formDataValues = {};
+    Object.keys(this.state.formData).forEach(key => { formDataValues[key] = this.state.formData[key].value; });
+    return formDataValues;
+  };
+
+  formData = () => ({
+    ...this.props.navigation.getParam('formData', {}),
+    ...this.getThisFormDataValues(),
+  });
+
+  isValid = () => {
+    return Object.values(this.state.formData).reduce((valid, currentData) => valid && currentData.valid, true);
+  };
+
+  submit = () => {
+    if (this.isValid()) {
+      this.setState({ containErrors: false });
+      this.props.navigation.navigate('SendReport', { formData: this.formData() })
+    } else {
+      this.setState({ containErrors: true });
+    }
+  };
 
   render() {
+    const validationMessage = (
+      <Text>
+        Existem campos obrigatórios não preenchidos. Por favor, preencha-os e tente novamente.
+      </Text>
+    );
+
     return (
       <View>
         <Picker
           required
           placeholder="Gênero"
-          value={this.state.formData.gender}
-          onValueChange={value => this.updateFormDataValue('gender', value)}
+          value={this.state.formData.gender.value}
+          onValueChange={(value, valid) => this.updateFormDataValue('gender', value, valid)}
           items={this.props.data.formOptions.gender_options}
         />
         <Picker
           required
           placeholder="Cor"
-          value={this.state.formData.skinColor}
-          onValueChange={value => this.updateFormDataValue('skinColor', value)}
+          value={this.state.formData.skinColor.value}
+          onValueChange={(value, valid) => this.updateFormDataValue('skinColor', value, valid)}
           items={this.props.data.formOptions.skin_color_options}
         />
         <Picker
           placeholder="Idade"
-          value={this.state.formData.age}
-          onValueChange={value => this.updateFormDataValue('age', value)}
+          value={this.state.formData.age.value}
+          onValueChange={(value, valid) => this.updateFormDataValue('age', value, valid)}
           items={this.props.data.formOptions.age_options}
         />
         <Picker
           placeholder="Renda Aproximada"
-          value={this.state.formData.wage}
-          onValueChange={value => this.updateFormDataValue('wage', value)}
+          value={this.state.formData.wage.value}
+          onValueChange={(value, valid) => this.updateFormDataValue('wage', value, valid)}
           items={this.props.data.formOptions.wage_options}
         />
         <SectionHeader title="Saiba mais" />
@@ -72,24 +98,25 @@ export class AboutYouForm extends Component {
         <TextInput
           placeholder="Email"
           required
-          onValueChange={email => this.updateFormDataValue('email', email)}
-          value={this.state.formData.email}
+          onValueChange={(email, valid) => this.updateFormDataValue('email', email, valid)}
+          value={this.state.formData.email.value}
         />
         <TextInput
           placeholder="Nome"
-          onValueChange={name => this.updateFormDataValue('name', name)}
-          value={this.state.formData.name}
+          onValueChange={(name, valid) => this.updateFormDataValue('name', name, valid)}
+          value={this.state.formData.name.value}
         />
         <CheckBox
-          onValueChange={() => this.updateFormDataValue('acceptedPolicies', !this.state.acceptedPolicies)}
+          onValueChange={() => this.setState({ acceptedPolicies: !this.state.acceptedPolicies })}
           value={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
           Acessar Política de Privacidade
         </Text>
+        { this.state.containErrors ? validationMessage: null }
         <Button
-          onPress={() => this.props.navigation.navigate('SendReport', { formData: this.formData() })}
+          onPress={() => this.submit()}
           title="Enviar Relato"
         />
       </View>
