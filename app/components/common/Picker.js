@@ -6,7 +6,7 @@ import Modal from 'react-native-modal';
 
 import appStyles from '../../styles';
 import Button from '../common/Button';
-import TextInput from '../common/TextInput';
+import { TextInput } from '../common/TextInput';
 import input from '../hoc/input';
 
 const styles = StyleSheet.create({
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 const UNSELECTED = -1;
 
-class Picker extends Component {
+export class Picker extends Component {
   constructor(props) {
     super(props);
     this.state = {
