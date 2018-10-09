@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
-import appStyles from '../styles';
+import appStyles, { RED } from '../styles';
 
 import { Button, Picker, DatePicker, TextInput, CheckBoxGroup, PlaceInput } from './common';
 
@@ -59,8 +59,8 @@ export class AboutWhatHappenedForm extends Component {
 
   render() {
     const validationMessage = (
-      <Text>
-        Existem campos obrigatórios não preenchidos. Por favor, preencha-os e tente novamente.
+      <Text style={{ color: RED }}>
+        Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente novamente.
       </Text>
     );
 
@@ -69,6 +69,7 @@ export class AboutWhatHappenedForm extends Component {
         <PlaceInput
           required
           placeholder="Empresa em que ocorreu"
+          showValidation={this.state.containErrors}
           value={this.state.formData.establishment.value.label}
           onValueChange={(item, valid) => this.updateFormDataValue('establishment', { value: item.id, label: item.label }, valid)}
           types={['establishment']}
@@ -78,6 +79,7 @@ export class AboutWhatHappenedForm extends Component {
         <Picker
           required
           placeholder="Tipo de assédio"
+          showValidation={this.state.containErrors}
           value={this.state.formData.harassmentType.value}
           onValueChange={(value, valid) => this.updateFormDataValue('harassmentType', value, valid)}
           items={this.props.data.formOptions.harassment_type_options}
@@ -86,17 +88,20 @@ export class AboutWhatHappenedForm extends Component {
           required
           multiline
           placeholder="Conte-nos mais sobre o ocorrido"
+          showValidation={this.state.containErrors}
           onValueChange={(value, valid) => this.updateFormDataValue('description', value, valid)}
           value={this.state.formData.description.value}
         />
         <DatePicker
           required
+          showValidation={this.state.containErrors}
           value={this.state.formData.date.value}
           placeholder="Quando ocorreu"
           maxDate={new Date(Date.now())}
           onValueChange={(date, valid) => this.updateFormDataValue('date', date, valid)}
         />
         <CheckBoxGroup
+          showValidation={this.state.containErrors}
           values={this.state.formData.followupActions.value}
           label="Você tomou alguma providência com relação ao ocorrido?"
           onValueChange={(values, valid) => this.updateFormDataValue('followupActions', values, valid)}
@@ -104,6 +109,7 @@ export class AboutWhatHappenedForm extends Component {
         />
         <Picker
           required
+          showValidation={this.state.containErrors}
           value={this.state.formData.wouldRecommend.value}
           onValueChange={(value, valid) => this.updateFormDataValue('wouldRecommend', value, valid)}
           placeholder="Você recomendaria essa empresa depois do ocorrido?"
@@ -113,6 +119,7 @@ export class AboutWhatHappenedForm extends Component {
           style={[appStyles.input, appStyles.multilineInput]}
           multiline
           autoGrow
+          showValidation={this.state.containErrors}
           maxLength={MAX_TEXT_INPUT_LENGTH}
           placeholder="Qual seu conselho para os gestores?"
           onValueChange={(advice, valid) => this.updateFormDataValue('advice', advice, valid)}

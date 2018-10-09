@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
-import appStyles from '../styles';
+import appStyles, { RED } from '../styles';
 
 import { Button, CheckBox, Picker, TextInput, SectionHeader, SectionText } from './common';
 import { formWrapper, loading } from './hoc';
@@ -60,8 +60,8 @@ export class AboutYouForm extends Component {
 
   render() {
     const validationMessage = (
-      <Text>
-        Existem campos obrigatórios não preenchidos. Por favor, preencha-os e tente novamente.
+      <Text style={{ color: RED }}>
+        Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente novamente.
       </Text>
     );
 
@@ -70,6 +70,7 @@ export class AboutYouForm extends Component {
         <Picker
           required
           placeholder="Gênero"
+          showValidation={this.state.containErrors}
           value={this.state.formData.gender.value}
           onValueChange={(value, valid) => this.updateFormDataValue('gender', value, valid)}
           items={this.props.data.formOptions.gender_options}
@@ -77,18 +78,21 @@ export class AboutYouForm extends Component {
         <Picker
           required
           placeholder="Cor"
+          showValidation={this.state.containErrors}
           value={this.state.formData.skinColor.value}
           onValueChange={(value, valid) => this.updateFormDataValue('skinColor', value, valid)}
           items={this.props.data.formOptions.skin_color_options}
         />
         <Picker
           placeholder="Idade"
+          showValidation={this.state.containErrors}
           value={this.state.formData.age.value}
           onValueChange={(value, valid) => this.updateFormDataValue('age', value, valid)}
           items={this.props.data.formOptions.age_options}
         />
         <Picker
           placeholder="Renda Aproximada"
+          showValidation={this.state.containErrors}
           value={this.state.formData.wage.value}
           onValueChange={(value, valid) => this.updateFormDataValue('wage', value, valid)}
           items={this.props.data.formOptions.wage_options}
@@ -96,13 +100,17 @@ export class AboutYouForm extends Component {
         <SectionHeader title="Saiba mais" />
         <SectionText title="Acompanhe relatos da mesma empresa ou cidade." />
         <TextInput
-          placeholder="Email"
           required
+          placeholder="Email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+          showValidation={this.state.containErrors}
           onValueChange={(email, valid) => this.updateFormDataValue('email', email, valid)}
           value={this.state.formData.email.value}
         />
         <TextInput
           placeholder="Nome"
+          showValidation={this.state.containErrors}
           onValueChange={(name, valid) => this.updateFormDataValue('name', name, valid)}
           value={this.state.formData.name.value}
         />
