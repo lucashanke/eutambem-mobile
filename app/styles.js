@@ -8,6 +8,8 @@ export const WHITE = '#ffffff';
 export const BLACK = '#000000';
 export const DARK_GREY = '#333333';
 export const LIGHT_GREY = '#e6e6e6';
+export const BACKGROUND_GREY = '#fcfcfc';
+export const PLACEHOLDER_GREY = '#707070';
 export const GREY = '#8C8C8C';
 
 const appStyles = StyleSheet.create({
@@ -19,12 +21,13 @@ const appStyles = StyleSheet.create({
     padding: '5%',
   },
   input: {
-    borderBottomColor: SOFT_PURPLE,
+    backgroundColor: BACKGROUND_GREY,
     alignItems: 'flex-start',
+    padding: 5,
+    borderRadius: 5,
     borderWidth: 0,
     ...Platform.select({
       ios: {
-        borderBottomWidth: 1,
         margin: 0,
         marginBottom: 10,
         marginTop: 10,
