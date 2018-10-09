@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Keyboard } from 'react-native';
 
-import TextInput from './TextInput';
+import { TextInput } from './TextInput';
 import input from '../hoc/input';
-
 
 const PlaceInput = (props) => {
   const onPlaceChange = (item) => {

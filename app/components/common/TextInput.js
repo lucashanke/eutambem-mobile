@@ -5,7 +5,7 @@ import appStyles, { PLACEHOLDER_GREY } from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 import input from '../hoc/input';
 
-class TextInput extends Component {
+export class TextInput extends Component {
 
   inputRef = (component) => { this.input = component; };
 
