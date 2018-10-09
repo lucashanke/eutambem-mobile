@@ -53,12 +53,18 @@ class Picker extends Component {
 
   onValueChange(itemValue) {
     if (itemValue !== UNSELECTED) {
-      this.setState({ currentValue: itemValue });
+      this.setState({ currentValue: itemValue }, () => this.props.onValueChange(this.state.currentValue));
     }
   }
 
+  defaultValue = () => Platform.select({
+    ios: this.props.items[0].value,
+    android: null,
+  });
+
   confirm() {
-    this.props.onValueChange(this.state.currentValue);
+    const value = this.state.currentValue || this.defaultValue();
+    this.props.onValueChange(value);
     this.closeModal();
   }
 
