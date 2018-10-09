@@ -15,13 +15,49 @@ describe('input', () => {
     expect(wrapper.find(WrappedComponent)).toHaveLength(1);
   });
 
+  it('initiates valid state attribute with value false when prop required is true', () => {
+    const wrapper = shallow(<Input required/>);
+    expect(wrapper.state('valid')).toBeFalsy();
+  });
+
+  it('initiates valid state attribute with value true when prop required is false', () => {
+    const wrapper = shallow(<Input />);
+    expect(wrapper.state('valid')).toBeTruthy();
+  });
+
+  it('does not show alert icon when showValidation is false', () => {
+    const wrapper = shallow(<Input />);
+    expect(wrapper.find('Icon')).toHaveLength(0);
+  });
+
+  it('shows alert icon when showValidation is true and valid state sttribute is false', () => {
+    const wrapper = shallow(<Input required showValidation/>);
+    expect(wrapper.state('valid')).toBeFalsy();
+    expect(wrapper.find('Icon')).toHaveLength(1);
+  });
+
+  it('does not alert icon when showValidation is true and valid state sttribute is true', () => {
+    const wrapper = shallow(<Input showValidation/>);
+    expect(wrapper.state('valid')).toBeTruthy();
+    expect(wrapper.find('Icon')).toHaveLength(0);
+  });
+
   describe('onValueChange', () => {
 
     let spy = null;
 
     beforeEach(() => {
       spy = sinon.spy();    
-    })
+    });
+
+    it('changes valid state attribute to true when input new value is non empty', () => {
+      const wrapper = shallow(<Input value={undefined} required onValueChange={spy} onValueChange={spy}/>);
+      expect(wrapper.state('valid')).toBeFalsy();
+
+      wrapper.instance().onValueChange('new value');
+
+      expect(wrapper.state('valid')).toBeTruthy();
+    });
 
     it('calls onValueChange callback prop function with new value', () => {
       const wrapper = shallow(<Input value={undefined} required onValueChange={spy} onValueChange={spy}/>);
