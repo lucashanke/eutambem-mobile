@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ExternalDatePicker from 'react-native-datepicker';
 import { StyleSheet } from 'react-native';
 
-import appStyles, { DARK_PURPLE, GREY } from '../../styles';
+import appStyles, { DARK_PURPLE, GREY, PLACEHOLDER_GREY } from '../../styles';
 import input from '../hoc/input';
 
 export const style = StyleSheet.create({
@@ -14,6 +14,9 @@ export const style = StyleSheet.create({
   btnTextConfirm: {
     color: DARK_PURPLE,
     fontSize: 17,
+  },
+  placeholderText: {
+    color: PLACEHOLDER_GREY,
   },
   date: {
     width: '100%',
@@ -38,6 +41,7 @@ const DatePicker = props => (
     style={style.date}
     customStyles={{
       dateInput: appStyles.input,
+      placeholderText: style.placeholderText,
       btnTextCancel: style.btnTextCancel,
       btnTextConfirm: style.btnTextConfirm,
     }}

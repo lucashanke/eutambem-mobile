@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TextInput as NativeTextInput } from 'react-native';
-import appStyles from '../../styles';
+import appStyles, { PLACEHOLDER_GREY } from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 import input from '../hoc/input';
 
@@ -33,6 +33,7 @@ class TextInput extends Component {
         multiline={this.props.multiline}
         onChangeText={this.props.onValueChange}
         placeholder={this.placeholder()}
+        placeholderTextColor={PLACEHOLDER_GREY}
         autoGrow={autoGrow}
         ref={this.inputRef}
       />
