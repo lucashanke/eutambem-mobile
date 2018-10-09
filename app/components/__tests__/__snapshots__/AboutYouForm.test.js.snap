@@ -2,7 +2,7 @@
 
 exports[`AboutYouForm renders correctly 1`] = `
 <ForwardRef(View)>
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -22,8 +22,10 @@ exports[`AboutYouForm renders correctly 1`] = `
     onValueChange={[Function]}
     placeholder="Gênero"
     required={true}
+    showValidation={false}
+    value=""
   />
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -55,8 +57,10 @@ exports[`AboutYouForm renders correctly 1`] = `
     onValueChange={[Function]}
     placeholder="Cor"
     required={true}
+    showValidation={false}
+    value=""
   />
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -87,8 +91,11 @@ exports[`AboutYouForm renders correctly 1`] = `
     }
     onValueChange={[Function]}
     placeholder="Idade"
+    required={false}
+    showValidation={false}
+    value=""
   />
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -119,6 +126,9 @@ exports[`AboutYouForm renders correctly 1`] = `
     }
     onValueChange={[Function]}
     placeholder="Renda Aproximada"
+    required={false}
+    showValidation={false}
+    value=""
   />
   <SectionHeader
     title="Saiba mais"
@@ -126,22 +136,27 @@ exports[`AboutYouForm renders correctly 1`] = `
   <SectionText
     title="Acompanhe relatos da mesma empresa ou cidade."
   />
-  <TextInput
-    multiline={false}
-    onChangeText={[Function]}
+  <Input
+    keyboardType="email-address"
+    onValueChange={[Function]}
     placeholder="Email"
     required={true}
+    showValidation={false}
+    textContentType="emailAddress"
+    value=""
   />
-  <TextInput
-    multiline={false}
-    onChangeText={[Function]}
+  <Input
+    onValueChange={[Function]}
     placeholder="Nome"
     required={false}
+    showValidation={false}
+    value=""
   />
-  <CheckBox
-    isChecked={false}
+  <Input
     label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
-    onClick={[Function]}
+    onValueChange={[Function]}
+    required={false}
+    value={false}
   />
   <ForwardRef(Text)
     onPress={[Function]}

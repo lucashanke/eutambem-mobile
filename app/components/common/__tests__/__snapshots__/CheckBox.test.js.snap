@@ -1,19 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckBox renders correctly 1`] = `
-<CheckBox
-  checkBoxColor="#961687"
-  isChecked={false}
-  isIndeterminate={false}
-  label="Test CheckBox"
-  leftTextStyle={Object {}}
-  onClick={[Function]}
-  rightText="Test CheckBox"
-  rightTextStyle={Object {}}
+<ForwardRef(View)
   style={
     Object {
-      "paddingTop": 10,
+      "flexDirection": "row",
     }
   }
-/>
+>
+  <ForwardRef(View)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <CheckBox
+      label="Test CheckBox"
+      onClick={[Function]}
+      onValueChange={[Function]}
+      required={false}
+      value={false}
+    />
+  </ForwardRef(View)>
+</ForwardRef(View)>
 `;
