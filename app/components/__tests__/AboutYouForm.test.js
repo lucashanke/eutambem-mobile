@@ -108,19 +108,22 @@ describe('AboutYouForm', () => {
 
     const wrapper = shallow(<AboutYouForm {...props} />);
     const initialFormData = wrapper.state().formData;
+    const initialFormDataValues = wrapper.instance().getThisFormDataValues();
     wrapper.setState({
       formData: {
         ...initialFormData,
-        email: 'someone@example.com',
+        email: { value: 'someone@example.com' },
       },
     });
+
+    wrapper.instance().isValid = () => true;
 
     wrapper.find('Button').simulate('press');
 
     expect(props.navigation.navigate.calledWith('SendReport', {
       formData: {
         description: 'something',
-        ...initialFormData,
+        ...initialFormDataValues,
         email: 'someone@example.com',
       },
     })).toBeTruthy();

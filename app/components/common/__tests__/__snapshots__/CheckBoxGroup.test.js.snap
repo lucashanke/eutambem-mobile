@@ -4,30 +4,34 @@ exports[`CheckBoxGroup renders correctly 1`] = `
 <ForwardRef(View)
   style={
     Object {
-      "marginBottom": 10,
-      "marginTop": 10,
+      "flexDirection": "row",
     }
   }
 >
-  <ForwardRef(Text)
+  <ForwardRef(View)
     style={
       Object {
-        "color": "#961687",
-        "fontSize": 14,
+        "flex": 1,
       }
     }
   >
-    Test CheckBoxGroup
-  </ForwardRef(Text)>
-  <CheckBox
-    isChecked={false}
-    label="Label 1"
-    onClick={[Function]}
-  />
-  <CheckBox
-    isChecked={false}
-    label="Label 2"
-    onClick={[Function]}
-  />
+    <CheckBoxGroup
+      label="Test CheckBoxGroup"
+      onValueChange={[Function]}
+      options={
+        Array [
+          Object {
+            "key": "1",
+            "label": "Label 1",
+          },
+          Object {
+            "key": "2",
+            "label": "Label 2",
+          },
+        ]
+      }
+      required={false}
+    />
+  </ForwardRef(View)>
 </ForwardRef(View)>
 `;

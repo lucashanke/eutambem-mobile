@@ -70,11 +70,13 @@ describe('AboutWhatHappenedForm', () => {
   it('passes the form data to the AboutYou screen', () => {
     const wrapper = shallow(<AboutWhatHappenedForm {...props} />);
     const initialFormData = wrapper.state().formData;
+    const initialFormDataValues = wrapper.instance().getFormDataValues();
+    wrapper.instance().isValid = () => true;
 
     wrapper.setState({
       formData: {
         ...initialFormData,
-        description: 'something',
+        description: { value: 'something' },
       },
     });
 
@@ -82,7 +84,7 @@ describe('AboutWhatHappenedForm', () => {
 
     expect(props.navigation.navigate.calledWith('AboutYou', {
       formData: {
-        ...initialFormData,
+        ...initialFormDataValues,
         description: 'something',
       },
     })).toBeTruthy();

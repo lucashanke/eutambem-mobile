@@ -2,7 +2,7 @@
 
 exports[`AboutWhatHappenedForm renders correctly 1`] = `
 <ForwardRef(View)>
-  <PlaceInput
+  <Input
     navigation={
       Object {
         "navigate": [Function],
@@ -12,13 +12,14 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
     placeScreenTitle="Informe a Empresa"
     placeholder="Empresa em que ocorreu"
     required={true}
+    showValidation={false}
     types={
       Array [
         "establishment",
       ]
     }
   />
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -50,24 +51,28 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
     onValueChange={[Function]}
     placeholder="Tipo de assédio"
     required={true}
-  />
-  <TextInput
-    multiline={true}
-    onChangeText={[Function]}
-    placeholder="Conte-nos mais sobre o ocorrido"
-    required={true}
+    showValidation={false}
     value=""
   />
-  <DatePicker
-    date={null}
+  <Input
+    multiline={true}
+    onValueChange={[Function]}
+    placeholder="Conte-nos mais sobre o ocorrido"
+    required={true}
+    showValidation={false}
+    value=""
+  />
+  <Input
     maxDate={1970-01-18T14:58:09.340Z}
-    onDateChange={[Function]}
+    onValueChange={[Function]}
     placeholder="Quando ocorreu"
     required={true}
+    showValidation={false}
+    value={null}
   />
-  <CheckBoxGroup
+  <Input
     label="Você tomou alguma providência com relação ao ocorrido?"
-    onItemToggle={[Function]}
+    onValueChange={[Function]}
     options={
       Array [
         Object {
@@ -84,8 +89,11 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
         },
       ]
     }
+    required={false}
+    showValidation={false}
+    values={Array []}
   />
-  <Picker
+  <Input
     items={
       Array [
         Object {
@@ -105,25 +113,29 @@ exports[`AboutWhatHappenedForm renders correctly 1`] = `
     onValueChange={[Function]}
     placeholder="Você recomendaria essa empresa depois do ocorrido?"
     required={true}
+    showValidation={false}
+    value=""
   />
-  <TextInput
+  <Input
     autoGrow={true}
     maxLength={350}
     multiline={true}
-    onChangeText={[Function]}
+    onValueChange={[Function]}
     placeholder="Qual seu conselho para os gestores?"
     required={false}
+    showValidation={false}
     style={
       Array [
         Object {
           "alignItems": "flex-start",
-          "borderBottomColor": "#91508c",
-          "borderBottomWidth": 1,
+          "backgroundColor": "#fcfcfc",
+          "borderRadius": 5,
           "borderWidth": 0,
           "height": 30,
           "margin": 0,
           "marginBottom": 10,
           "marginTop": 10,
+          "padding": 5,
         },
         Object {
           "height": "auto",

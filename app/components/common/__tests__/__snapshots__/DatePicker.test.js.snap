@@ -1,58 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DatePicker renders correctly 1`] = `
-<DatePicker
-  TouchableComponent={[Function]}
-  allowFontScaling={true}
-  androidMode="default"
-  cancelBtnText="Cancelar"
-  confirmBtnText="Ok"
-  customStyles={
-    Object {
-      "btnTextCancel": Object {
-        "color": "#8C8C8C",
-        "fontSize": 17,
-      },
-      "btnTextConfirm": Object {
-        "color": "#961687",
-        "fontSize": 17,
-      },
-      "dateInput": Object {
-        "alignItems": "flex-start",
-        "borderBottomColor": "#91508c",
-        "borderBottomWidth": 1,
-        "borderWidth": 0,
-        "height": 30,
-        "margin": 0,
-        "marginBottom": 10,
-        "marginTop": 10,
-      },
-    }
-  }
-  date=""
-  disabled={false}
-  duration={300}
-  format="DD/MMM/YYYY"
-  height={259}
-  hideText={false}
-  iconSource={
-    Object {
-      "testUri": "../../react-native-datepicker/date_icon.png",
-    }
-  }
-  modalOnResponderTerminationRequest={[Function]}
-  mode="date"
-  placeholder=""
-  showIcon={false}
+<ForwardRef(View)
   style={
     Object {
-      "alignItems": "flex-start",
-      "height": 30,
-      "justifyContent": "center",
-      "marginBottom": 10,
-      "marginTop": 10,
-      "width": "100%",
+      "flexDirection": "row",
     }
   }
-/>
+>
+  <ForwardRef(View)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <DatePicker
+      onValueChange={[Function]}
+      required={false}
+      value={null}
+    />
+  </ForwardRef(View)>
+</ForwardRef(View)>
 `;

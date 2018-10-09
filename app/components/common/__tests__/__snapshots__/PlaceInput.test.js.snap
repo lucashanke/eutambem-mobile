@@ -1,23 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlaceInput renders correctly 1`] = `
-<TextInput
-  multiline={false}
-  navigation={
+<ForwardRef(View)
+  style={
     Object {
-      "goBack": [Function],
-      "navigate": [Function],
+      "flexDirection": "row",
     }
   }
-  onFocus={[Function]}
-  onValueChange={[Function]}
-  placeScreenTitle="Inform the place"
-  placeholder="Place"
-  required={false}
-  types={
-    Array [
-      "establishment",
-    ]
-  }
-/>
+>
+  <ForwardRef(View)
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <PlaceInput
+      navigation={
+        Object {
+          "goBack": [Function],
+          "navigate": [Function],
+        }
+      }
+      onValueChange={[Function]}
+      placeScreenTitle="Inform the place"
+      placeholder="Place"
+      required={false}
+      types={
+        Array [
+          "establishment",
+        ]
+      }
+    />
+  </ForwardRef(View)>
+</ForwardRef(View)>
 `;
