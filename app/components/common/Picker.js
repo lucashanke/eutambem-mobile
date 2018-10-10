@@ -41,7 +41,7 @@ export class Picker extends Component {
   }
 
   itemLabel = () => {
-    const item = this.props.items.find(item => item.value === this.props.value)
+    const item = this.props.items.find(item => item.value === this.props.value);
     if (item) {
       return item.label;
     }
@@ -52,8 +52,12 @@ export class Picker extends Component {
   }
 
   onValueChange(itemValue) {
+    const callback = Platform.select({
+      android: () => this.props.onValueChange(this.state.currentValue),
+      ios: null,
+    });
     if (itemValue !== UNSELECTED) {
-      this.setState({ currentValue: itemValue }, () => this.props.onValueChange(this.state.currentValue));
+      this.setState({ currentValue: itemValue }, callback);
     }
   }
 
@@ -101,11 +105,13 @@ export class Picker extends Component {
             <View style={styles.innerContainer}>
               <View style={appStyles.modalHeader}>
                 <Button
+                  testID='cancel-button'
                   type="cancel"
                   onPress={() => this.closeModal()}
                   title="Cancelar"
                 />
                 <Button
+                  testID='ok-button'
                   onPress={() => this.confirm()}
                   title="Ok"
                 />
