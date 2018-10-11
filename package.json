@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "lint": "eslint --ext .js .",
-    "test": "jest --runInBand --verbose --forceExit --detectOpenHandles",
+    "test": "jest --runInBand --verbose",
     "jest:update-snapshots": "jest --updateSnapshot",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/EuTambem/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },

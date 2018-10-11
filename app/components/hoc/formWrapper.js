@@ -7,13 +7,12 @@ export default WrappedComponent => (
       data: null,
     }
 
-    componentDidMount() {
-      fetchReportFormConstants().then((results) => {
-        this.setState({
-          data: {
-            formOptions: results.data.constants,
-          },
-        });
+    async componentDidMount() {
+      const response = await fetchReportFormConstants();
+      this.setState({
+        data: {
+          formOptions: response.constants,
+        },
       });
     }
 
