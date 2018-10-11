@@ -12,7 +12,6 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/EuTambem/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.1",
     "react": "16.5.0",
