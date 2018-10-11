@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StyleSheet, Image } from 'react-native';
-import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, TabBarBottom } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import AboutWhatHappened from './screens/AboutWhatHappened';
@@ -33,7 +33,7 @@ const stackNavigationOptions = {
   headerTitleStyle: { color: BLACK },
 };
 
-const CreateReportStack = StackNavigator({
+const CreateReportStack = createStackNavigator({
   AboutWhatHappened: { screen: AboutWhatHappened },
   AboutYou: { screen: AboutYou },
   SendReport: { screen: SendReport },
@@ -45,7 +45,7 @@ const CreateReportStack = StackNavigator({
 });
 
 
-const HomeStack = StackNavigator({
+const HomeStack = createStackNavigator({
   Home: { screen: Home },
 }, {
   navigationOptions: { ...stackNavigationOptions, title: 'Início' },
@@ -53,7 +53,7 @@ const HomeStack = StackNavigator({
 });
 
 
-const MapFeedStack = StackNavigator({
+const MapFeedStack = createStackNavigator({
   MapFeed: { screen: MapFeed },
 }, {
   navigationOptions: { ...stackNavigationOptions, title: 'Mapa de Relatos' },
@@ -61,7 +61,7 @@ const MapFeedStack = StackNavigator({
 });
 
 
-const Tabs = TabNavigator(
+const Tabs = createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
     MapFeed: { screen: MapFeedStack },
@@ -85,14 +85,12 @@ const Tabs = TabNavigator(
       activeTintColor: GREEN,
       inactiveTintColor: GREY,
     },
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: false,
   },
 );
 
-const App = StackNavigator({
+const App = createStackNavigator({
   Tabs: { screen: Tabs },
   CreateReport: { screen: CreateReportStack },
 }, {
