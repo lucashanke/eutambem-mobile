@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "lint": "eslint --ext .js .",
-    "test": "jest --runInBand --verbose",
+    "test": "jest --runInBand --verbose --forceExit --detectOpenHandles",
     "jest:update-snapshots": "jest --updateSnapshot",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/EuTambem/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
-    "babel-jest": "22.1.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
@@ -39,7 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
-    "jest": "22.1.4",
+    "jest": "23.6.0",
     "metro-react-native-babel-preset": "^0.45.0",
     "npm": "^6.4.1",
     "react-addons-test-utils": "^15.6.2",
