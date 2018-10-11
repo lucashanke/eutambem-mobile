@@ -69,6 +69,7 @@ export class AboutYouForm extends Component {
       <View>
         <Picker
           required
+          testID="gender-input"
           placeholder="Gênero"
           showValidation={this.state.containErrors}
           value={this.state.formData.gender.value}
@@ -77,6 +78,7 @@ export class AboutYouForm extends Component {
         />
         <Picker
           required
+          testID="skin-color-input"
           placeholder="Cor"
           showValidation={this.state.containErrors}
           value={this.state.formData.skinColor.value}
@@ -84,6 +86,7 @@ export class AboutYouForm extends Component {
           items={this.props.data.formOptions.skin_color_options}
         />
         <Picker
+          testID="age-input"
           placeholder="Idade"
           showValidation={this.state.containErrors}
           value={this.state.formData.age.value}
@@ -91,6 +94,7 @@ export class AboutYouForm extends Component {
           items={this.props.data.formOptions.age_options}
         />
         <Picker
+          testID="wage-input"
           placeholder="Renda Aproximada"
           showValidation={this.state.containErrors}
           value={this.state.formData.wage.value}
@@ -101,6 +105,7 @@ export class AboutYouForm extends Component {
         <SectionText title="Acompanhe relatos da mesma empresa ou cidade." />
         <TextInput
           required
+          testID="email-input"
           placeholder="Email"
           textContentType="emailAddress"
           keyboardType="email-address"
@@ -109,6 +114,7 @@ export class AboutYouForm extends Component {
           value={this.state.formData.email.value}
         />
         <TextInput
+          testID="name-input"
           placeholder="Nome"
           showValidation={this.state.containErrors}
           onValueChange={(name, valid) => this.updateFormDataValue('name', name, valid)}
@@ -124,6 +130,7 @@ export class AboutYouForm extends Component {
         </Text>
         { this.state.containErrors ? validationMessage: null }
         <Button
+          testID="send-button"
           onPress={() => this.submit()}
           title="Enviar Relato"
         />

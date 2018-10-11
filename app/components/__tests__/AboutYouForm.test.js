@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import { AboutYouForm } from '../AboutYouForm';
+import { Picker, TextInput, Button } from '../common';
 
 export const GENDER_OPTIONS = [{
   value: 'woman',
@@ -78,7 +79,7 @@ export const WAGE_OPTIONS = [{
 
 const props = {
   navigation: {
-    navigate: sinon.spy(),
+    navigate: () => {},
   },
   data: {
     formOptions: {
@@ -91,41 +92,148 @@ const props = {
 };
 
 describe('AboutYouForm', () => {
-  it('renders correctly', () => {
+  it('renders all inputs correctly', () => {
     const wrapper = shallow(<AboutYouForm {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find({ testID: 'gender-input' }).type()).toBe(Picker);
+    expect(wrapper.find({ testID: 'skin-color-input' }).type()).toBe(Picker);
+    expect(wrapper.find({ testID: 'age-input' }).type()).toBe(Picker);
+    expect(wrapper.find({ testID: 'wage-input' }).type()).toBe(Picker);
+    expect(wrapper.find({ testID: 'email-input' }).type()).toBe(TextInput);
+    expect(wrapper.find({ testID: 'name-input' }).type()).toBe(TextInput);
   });
 
-  it('passes the form data to the SendReport screen', () => {
-    props.navigation.getParam = (key) => {
-      if (key === 'formData') {
-        return {
-          description: 'something',
-        };
-      }
-      return null;
-    };
-
+  it('renders a button', () => {
     const wrapper = shallow(<AboutYouForm {...props} />);
-    const initialFormData = wrapper.state().formData;
-    const initialFormDataValues = wrapper.instance().getThisFormDataValues();
-    wrapper.setState({
-      formData: {
-        ...initialFormData,
-        email: { value: 'someone@example.com' },
-      },
+
+    expect(wrapper.find({ testID: 'send-button' }).type()).toBe(Button);
+  });
+
+  describe('input value change', () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = shallow(<AboutYouForm {...props} />);
+    })
+
+    it('gender change reflects the formData gender state attribute', () => {
+      wrapper.find({ testID: 'gender-input' }).props().onValueChange('woman', true);
+
+      expect(wrapper.state('formData').gender.value).toEqual('woman');
+      expect(wrapper.state('formData').gender.valid).toEqual(true);
     });
 
-    wrapper.instance().isValid = () => true;
+    it('skin color type change reflects the formData skin color state attribute', () => {
+      wrapper.find({ testID: 'skin-color-input' }).props().onValueChange('black', true);
 
-    wrapper.find('Button').simulate('press');
+      expect(wrapper.state('formData').skinColor.value).toEqual('black');
+      expect(wrapper.state('formData').skinColor.valid).toEqual(true);
+    });
 
-    expect(props.navigation.navigate.calledWith('SendReport', {
-      formData: {
-        description: 'something',
-        ...initialFormDataValues,
-        email: 'someone@example.com',
-      },
-    })).toBeTruthy();
+    it('age change reflects the formData age state attribute', () => {
+      wrapper.find({ testID: 'age-input' }).props().onValueChange('between36and50', true);
+
+      expect(wrapper.state('formData').age.value).toEqual('between36and50');
+      expect(wrapper.state('formData').age.valid).toEqual(true);
+    });
+
+    it('wage change reflects the formData wage state attribute', () => {
+      wrapper.find({ testID: 'wage-input' }).props().onValueChange('belowOne', true);
+
+      expect(wrapper.state('formData').wage.value).toEqual('belowOne');
+      expect(wrapper.state('formData').wage.valid).toEqual(true);
+    });
+
+    it('email change reflects the formData email state attribute', () => {
+      wrapper.find({ testID: 'email-input' }).props().onValueChange('elenao@eutambem.org', true);
+
+      expect(wrapper.state('formData').email.value).toEqual('elenao@eutambem.org');
+      expect(wrapper.state('formData').email.valid).toEqual(true);
+    });
+
+    it('name change reflects the formData name state attribute', () => {
+      wrapper.find({ testID: 'name-input' }).props().onValueChange('Marielle', true);
+
+      expect(wrapper.state('formData').name.value).toEqual('Marielle');
+      expect(wrapper.state('formData').name.valid).toEqual(true);
+    });
+  });
+
+  describe('button press', () => {
+    it('does not pass the form data values to the SendReport screen when at least one input is invalid', () => {
+      props.navigation.navigate = sinon.spy();
+      const wrapper = shallow(<AboutYouForm {...props} />);
+  
+      const formData = {
+        gender: { value: '', valid: false },
+        skinColor: { value: 'black', valid: true },
+        age: { value: 'between36and50', valid: true },
+        wage: { value: 'belowOne', valid: true },
+        email: { value: 'elenao@eutambem.org', valid: true },
+        name: { value: 'Marielle', valid: true },
+      };
+  
+      wrapper.setState({ formData });
+      wrapper.find('Button').simulate('press');
+
+      expect(props.navigation.navigate.callCount).toEqual(0);
+    });
+
+    it('sets containErrors state of form and the showValidation prop of all inputs to true when at least one input is invalid', () => {
+      props.navigation.navigate = sinon.spy();
+      const wrapper = shallow(<AboutYouForm {...props} />);
+  
+      const formData = {
+        gender: { value: '', valid: false },
+        skinColor: { value: 'black', valid: true },
+        age: { value: 'between36and50', valid: true },
+        wage: { value: 'belowOne', valid: true },
+        email: { value: 'elenao@eutambem.org', valid: true },
+        name: { value: 'Marielle', valid: true },
+      };
+  
+      wrapper.setState({ formData });
+      wrapper.find('Button').simulate('press');
+
+      expect(wrapper.state('containErrors')).toBeTruthy();
+      expect(wrapper.find({ showValidation: true })).toHaveLength(6);
+    });
+
+    it('passes the form data values (including previous ones) to the SendReport screen when all inputs are valid', () => {
+      props.navigation.navigate = sinon.spy();
+      props.navigation.getParam = (key) => {
+        if (key === 'formData') {
+          return {
+            description: 'something',
+          };
+        }
+        return null;
+      };
+
+      const wrapper = shallow(<AboutYouForm {...props} />);
+  
+      const formData = {
+        gender: { value: 'woman', valid: true },
+        skinColor: { value: 'black', valid: true },
+        age: { value: 'between36and50', valid: true },
+        wage: { value: 'belowOne', valid: true },
+        email: { value: 'elenao@eutambem.org', valid: true },
+        name: { value: 'Marielle', valid: true },
+      };
+      const formDataValues = {};
+      Object.keys(formData).forEach((key) => {
+        formDataValues[key] = formData[key].value;
+      });
+  
+      wrapper.setState({ formData });
+      wrapper.find('Button').simulate('press');
+      
+      expect(props.navigation.navigate.callCount).toEqual(1);
+      expect(props.navigation.navigate.calledWith('SendReport', {
+        formData: {
+          description: 'something',
+          ...formDataValues,
+        },
+      })).toBeTruthy();
+    });
   });
 });
