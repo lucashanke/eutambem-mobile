@@ -27,6 +27,14 @@ export class AboutWhatHappenedForm extends Component {
     };
   }
 
+  getFormDataValues = () => {
+    const formDataValues = {};
+    Object.keys(this.state.formData).forEach((key) => {
+      formDataValues[key] = this.state.formData[key].value;
+    });
+    return formDataValues;
+  };
+
   updateFormDataValue = (key, value, valid) => {
     const { formData } = this.state;
     if (key in formData) {
@@ -37,20 +45,13 @@ export class AboutWhatHappenedForm extends Component {
     }
   };
 
-  getFormDataValues = () => {
-    const formDataValues = {};
-    Object.keys(this.state.formData).forEach(key => { formDataValues[key] = this.state.formData[key].value; });
-    return formDataValues;
-  };
-
-  isValid = () => {
-    return Object.values(this.state.formData).reduce((valid, currentData) => valid && currentData.valid, true);
-  };
+  isValid = () => Object.values(this.state.formData).reduce((valid, currentData) => (
+    valid && currentData.valid
+  ), true);
 
   submit = () => {
     if (this.isValid()) {
       this.setState({ containErrors: false });
-      console.log(this.getFormDataValues());
       this.props.navigation.navigate('AboutYou', { formData: this.getFormDataValues() });
     } else {
       this.setState({ containErrors: true });
@@ -60,7 +61,8 @@ export class AboutWhatHappenedForm extends Component {
   render() {
     const validationMessage = (
       <Text style={{ color: RED }}>
-        Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente novamente.
+        Sentimos falta de algumas informações obrigatórias.
+        Por favor, preencha-as e tente novamente.
       </Text>
     );
 
@@ -68,6 +70,7 @@ export class AboutWhatHappenedForm extends Component {
       <View>
         <PlaceInput
           required
+          testID="establishment-input"
           placeholder="Empresa em que ocorreu"
           showValidation={this.state.containErrors}
           value={this.state.formData.establishment.value.label}
@@ -78,6 +81,7 @@ export class AboutWhatHappenedForm extends Component {
         />
         <Picker
           required
+          testID="harassment-input"
           placeholder="Tipo de assédio"
           showValidation={this.state.containErrors}
           value={this.state.formData.harassmentType.value}
@@ -87,6 +91,7 @@ export class AboutWhatHappenedForm extends Component {
         <TextInput
           required
           multiline
+          testID="description-input"
           placeholder="Conte-nos mais sobre o ocorrido"
           showValidation={this.state.containErrors}
           onValueChange={(value, valid) => this.updateFormDataValue('description', value, valid)}
@@ -94,6 +99,7 @@ export class AboutWhatHappenedForm extends Component {
         />
         <DatePicker
           required
+          testID="date-input"
           showValidation={this.state.containErrors}
           value={this.state.formData.date.value}
           placeholder="Quando ocorreu"
@@ -101,6 +107,7 @@ export class AboutWhatHappenedForm extends Component {
           onValueChange={(date, valid) => this.updateFormDataValue('date', date, valid)}
         />
         <CheckBoxGroup
+          testID="followup-input"
           showValidation={this.state.containErrors}
           values={this.state.formData.followupActions.value}
           label="Você tomou alguma providência com relação ao ocorrido?"
@@ -109,6 +116,7 @@ export class AboutWhatHappenedForm extends Component {
         />
         <Picker
           required
+          testID="would-recommend-input"
           showValidation={this.state.containErrors}
           value={this.state.formData.wouldRecommend.value}
           onValueChange={(value, valid) => this.updateFormDataValue('wouldRecommend', value, valid)}
@@ -116,6 +124,7 @@ export class AboutWhatHappenedForm extends Component {
           items={this.props.data.formOptions.yes_no_optional_options}
         />
         <TextInput
+          testID="advice-input"
           style={[appStyles.input, appStyles.multilineInput]}
           multiline
           autoGrow
@@ -125,8 +134,9 @@ export class AboutWhatHappenedForm extends Component {
           onValueChange={(advice, valid) => this.updateFormDataValue('advice', advice, valid)}
           value={this.state.formData.advice.value}
         />
-        { this.state.containErrors ? validationMessage: null }
+        { this.state.containErrors ? validationMessage : null }
         <Button
+          testID="next-button"
           onPress={() => this.submit()}
           title="Prosseguir"
         />
