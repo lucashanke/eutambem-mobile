@@ -28,7 +28,7 @@ export const style = StyleSheet.create({
   },
 });
 
-const DatePicker = props => (
+export const DatePicker = props => (
   <ExternalDatePicker
     {...props}
     onDateChange={props.onValueChange}
