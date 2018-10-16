@@ -5,13 +5,17 @@ import { shallow } from 'enzyme';
 import Container from '../Container';
 
 describe('Container', () => {
-  it('renders correctly', () => {
+  it('renders a SafeAreaView, a KeyboardAvoidingView, a ScrollView and the children', () => {
     const component = (
       <Container>
         <Text>Testing Container</Text>
       </Container>
     );
     const wrapper = shallow(component);
-    expect(wrapper).toMatchSnapshot();
+    
+    const view = wrapper.find('SafeAreaView KeyboardAvoidingView ScrollView');
+    expect(view).toHaveLength(1);
+
+    expect(view.find(Text).children().text()).toEqual('Testing Container');
   });
 });
