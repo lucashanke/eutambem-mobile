@@ -5,7 +5,7 @@ import { Keyboard } from 'react-native';
 import { TextInput } from './TextInput';
 import input from '../hoc/input';
 
-const PlaceInput = (props) => {
+export const PlaceInput = (props) => {
   const onPlaceChange = (item) => {
     props.onValueChange(item);
     props.navigation.goBack(null);
