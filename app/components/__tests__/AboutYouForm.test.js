@@ -77,6 +77,23 @@ export const WAGE_OPTIONS = [{
   label: 'Mais de R$14.480,01',
 }];
 
+export const SEXUAL_ORIENTATION = [{
+  value: 'homosexual',
+  label: 'Homossexual',
+},
+{
+  value: 'bisexual',
+  label: 'Bissexual',
+},
+{
+  value: 'straight',
+  label: 'Heterossexual',
+},
+{
+  value: 'other',
+  label: 'Outro',
+}];
+
 const props = {
   navigation: {
     navigate: () => {},
@@ -87,6 +104,7 @@ const props = {
       age_options: AGE_OPTIONS,
       skin_color_options: SKIN_COLOR_OPTIONS,
       gender_options: GENDER_OPTIONS,
+      sexual_orientation: SEXUAL_ORIENTATION,
     },
   },
 };
@@ -97,6 +115,7 @@ describe('AboutYouForm', () => {
     expect(wrapper.find({ testID: 'gender-input' }).type()).toBe(Picker);
     expect(wrapper.find({ testID: 'skin-color-input' }).type()).toBe(Picker);
     expect(wrapper.find({ testID: 'age-input' }).type()).toBe(Picker);
+    expect(wrapper.find({ testID: 'orientation-input' }).type()).toBe(Picker);
     expect(wrapper.find({ testID: 'wage-input' }).type()).toBe(Picker);
     expect(wrapper.find({ testID: 'email-input' }).type()).toBe(TextInput);
     expect(wrapper.find({ testID: 'name-input' }).type()).toBe(TextInput);
@@ -136,6 +155,13 @@ describe('AboutYouForm', () => {
       expect(wrapper.state('formData').age.valid).toEqual(true);
     });
 
+    it('sexual orientation reflects the formData sexualOrentation state attribute', () => {
+      wrapper.find({ testID: 'orientation-input' }).props().onValueChange('straight', true);
+
+      expect(wrapper.state('formData').sexualOrientation.value).toEqual('straight');
+      expect(wrapper.state('formData').sexualOrientation.valid).toEqual(true);
+    });
+
     it('wage change reflects the formData wage state attribute', () => {
       wrapper.find({ testID: 'wage-input' }).props().onValueChange('belowOne', true);
 
@@ -170,6 +196,7 @@ describe('AboutYouForm', () => {
         wage: { value: 'belowOne', valid: true },
         email: { value: 'elenao@eutambem.org', valid: true },
         name: { value: 'Marielle', valid: true },
+        sexualOrientation: { value: 'other', valid: true },
       };
   
       wrapper.setState({ formData });
@@ -189,13 +216,14 @@ describe('AboutYouForm', () => {
         wage: { value: 'belowOne', valid: true },
         email: { value: 'elenao@eutambem.org', valid: true },
         name: { value: 'Marielle', valid: true },
+        sexualOrientation: { value: 'other', valid: true },
       };
   
       wrapper.setState({ formData });
       wrapper.find('Button').simulate('press');
 
       expect(wrapper.state('containErrors')).toBeTruthy();
-      expect(wrapper.find({ showValidation: true })).toHaveLength(6);
+      expect(wrapper.find({ showValidation: true })).toHaveLength(7);
     });
 
     it('passes the form data values (including previous ones) to the SendReport screen when all inputs are valid', () => {
@@ -218,6 +246,7 @@ describe('AboutYouForm', () => {
         wage: { value: 'belowOne', valid: true },
         email: { value: 'elenao@eutambem.org', valid: true },
         name: { value: 'Marielle', valid: true },
+        sexualOrientation: { value: 'other', valid: true },
       };
       const formDataValues = {};
       Object.keys(formData).forEach((key) => {
