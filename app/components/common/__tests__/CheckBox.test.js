@@ -3,16 +3,36 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import CheckBox from '../CheckBox';
+import { CheckBox } from '../CheckBox';
+import ExternalCheckBox from 'react-native-check-box';
 
 const props = {
   label: 'Test CheckBox',
-  onClick: sinon.spy(),
+  onValueChange: sinon.spy(),
+  value: true,
 };
 
 describe('CheckBox', () => {
-  it('renders correctly', () => {
+  it('renders external checkbox component', () => {
     const wrapper = shallow(<CheckBox {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(ExternalCheckBox)).toHaveLength(1);
+  });
+
+  it('renders title as rightText on external checkbox component', () => {
+    const wrapper = shallow(<CheckBox {...props} />);
+    const checkbox = wrapper.find(ExternalCheckBox);
+    expect(checkbox.props().rightText).toEqual('Test CheckBox');
+  });
+
+  it('passes down value to the external checkbox component as isChecked', () => {
+    const wrapper = shallow(<CheckBox {...props} />);
+    const checkbox = wrapper.find(ExternalCheckBox);
+    expect(checkbox.props().isChecked).toEqual(true);
+  });
+
+  it('calls onValueChange when external checkbox component is clicked', () => {
+    const wrapper = shallow(<CheckBox {...props} />);
+    wrapper.find(ExternalCheckBox).simulate('click');
+    expect(props.onValueChange.callCount).toEqual(1);
   });
 });
