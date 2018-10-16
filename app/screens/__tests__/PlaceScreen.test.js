@@ -18,8 +18,8 @@ const props = {
 };
 
 describe('PlaceScreen', () => {
-  it('renders correctly', () => {
+  it('renders PlacePicker', () => {
     const wrapper = shallow(<PlaceScreen {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('PlacePicker')).toHaveLength(1);
   });
 });

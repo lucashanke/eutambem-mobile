@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import AboutYou from '../AboutYou';
+import AboutYouForm from '../../components/AboutYouForm';
 
 const props = {
   navigation: {
@@ -12,8 +13,8 @@ const props = {
 };
 
 describe('AboutYou', () => {
-  it('renders correctly', () => {
+  it('renders AboutYouForm', () => {
     const wrapper = shallow(<AboutYou {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(AboutYouForm)).toHaveLength(1);
   });
 });

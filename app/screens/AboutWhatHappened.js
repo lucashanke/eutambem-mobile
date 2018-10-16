@@ -12,7 +12,7 @@ const AboutWhatHappened = props => (
 );
 
 AboutWhatHappened.navigationOptions = ({ navigation }) => ({
-  headerTitle: 'Sobre o que aconteceu',
+  headerTitle: 'O que aconteceu',
   headerLeft: <Button type="cancel" title="Cancelar" onPress={() => navigation.goBack(null)} />,
 });
 
