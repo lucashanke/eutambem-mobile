@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CheckBox = props => (
+export const CheckBox = props => (
   <ExternalCheckBox
     {...props}
     onClick={props.onValueChange}
