@@ -13,6 +13,6 @@ const props = {
 describe('SendReport', () => {
   it('renders correctly', () => {
     const wrapper = shallow(<SendReport {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('SendReportForm')).toHaveLength(1);
   });
 });
