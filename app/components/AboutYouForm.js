@@ -18,6 +18,7 @@ export class AboutYouForm extends Component {
         wage: { value: '', valid: true },
         email: { value: '', valid: false },
         name: { value: '', valid: true },
+        sexualOrientation: { value: '', valid: true },
       },
       acceptedPolicies: false,
       containErrors: false,
@@ -94,6 +95,14 @@ export class AboutYouForm extends Component {
           items={this.props.data.formOptions.age_options}
         />
         <Picker
+          testID="orientation-input"
+          placeholder="Orientação Sexual"
+          showValidation={this.state.containErrors}
+          value={this.state.formData.sexualOrientation.value}
+          onValueChange={(value, valid) => this.updateFormDataValue('sexualOrientation', value, valid)}
+          items={this.props.data.formOptions.sexual_orientation}
+        />
+        <Picker
           testID="wage-input"
           placeholder="Renda Aproximada"
           showValidation={this.state.containErrors}
@@ -128,7 +137,7 @@ export class AboutYouForm extends Component {
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
           Acessar Política de Privacidade
         </Text>
-        { this.state.containErrors ? validationMessage: null }
+        { this.state.containErrors ? validationMessage : null }
         <Button
           testID="send-button"
           onPress={() => this.submit()}
@@ -157,6 +166,7 @@ AboutYouForm.propTypes = {
       gender_options: valueLabelShape,
       followup_actions_options: valueLabelShape,
       yes_no_optional_options: valueLabelShape,
+      sexual_orientation: valueLabelShape,
     }).isRequired,
   }).isRequired,
 };
