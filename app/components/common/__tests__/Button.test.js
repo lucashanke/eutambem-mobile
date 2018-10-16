@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import Button from '../Button';
+import ExternalButton from 'react-native-button';
 
 const props = {
   title: 'Test Button',
@@ -11,8 +12,19 @@ const props = {
 };
 
 describe('Button', () => {
-  it('renders correctly', () => {
+  it('renders external button component - react-native-button', () => {
     const wrapper = shallow(<Button {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(ExternalButton)).toHaveLength(1);
+  });
+
+  it('renders title prop as child of external button component', () => {
+    const wrapper = shallow(<Button {...props} />);
+    expect(wrapper.find(ExternalButton).children().text()).toEqual('Test Button');
+  });
+
+  it('press event o external component button calls on press prop function', () => {
+    const wrapper = shallow(<Button {...props} />);
+    wrapper.find(ExternalButton).simulate('press');
+    expect(props.onPress.callCount).toEqual(1);
   });
 });
