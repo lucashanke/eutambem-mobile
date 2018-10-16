@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { DARK_PURPLE } from '../../styles';
-import CheckBox from './CheckBox';
+import { CheckBox } from './CheckBox';
 import input from '../hoc/input';
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class CheckBoxGroup extends Component {
+export class CheckBoxGroup extends Component {
   constructor(props) {
     super(props);
   }
