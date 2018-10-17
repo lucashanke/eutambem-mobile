@@ -87,7 +87,7 @@ platform :android do
   end
 
   desc "Submit a new Beta Build to Google Play"
-  lane :beta do
+  lane :beta do |options|
     unless options[:build_number]
       UI.error "No build_number provided!"
       exit(1)
