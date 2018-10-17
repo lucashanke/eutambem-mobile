@@ -42,9 +42,12 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler
-      - run: bundle install
-      - run: bundle exec fastlane android beta build_number:$(cat build_number.txt)
+      - run:
+          shell: /bin/sh
+          command: bundle install
+      - run:
+          shell: /bin/sh
+          command: bundle exec fastlane android beta build_number:$(cat build_number.txt)
 
 workflows:
   version: 2
