@@ -59,10 +59,6 @@ end
 
 platform :android do
 
-  before_all do
-    setup_circle_ci
-  end
-
   desc "Prepare dependencies for building app"
   lane :prepare_build do |options|
     decrypt_key(file: '../android/app/eutambem.keystore')
