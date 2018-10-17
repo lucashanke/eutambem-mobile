@@ -20,7 +20,6 @@ jobs:
   deploy_ios:
     macos:
       xcode: "10.0.0"
-    steps:
     working_directory: /Users/distiller/project
     environment:
     shell: /bin/bash --login -o pipefail
@@ -33,6 +32,18 @@ jobs:
       - run: bundle install
       - run: bundle exec fastlane ios beta build_number:$(cat build_number.txt)
 
+  deploy_android:
+    docker:
+      - image: circleci/android:api-28-node8-alpha
+    working_directory: ~/project
+    environment:
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: bundle install
+      - run: bundle exec fastlane android beta build_number:$(cat build_number.txt)
 
 workflows:
   version: 2
@@ -40,6 +51,12 @@ workflows:
     jobs:
       - build
       - deploy_ios:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+      - deploy_android:
           filters:
             branches:
               only: master
