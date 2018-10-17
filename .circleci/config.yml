@@ -42,6 +42,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
+      - run: bundle install --path vendor/bundle
       - run: bundle install
       - run: bundle exec fastlane android beta build_number:$(cat build_number.txt)
 

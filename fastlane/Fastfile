@@ -70,13 +70,14 @@ platform :android do
 
   desc "Build app"
   lane :build do
-    version_code = File.read("../build_number.txt").to_i if File.exist?("../build_number.txt")
-    puts "Version code: #{version_code}" if version_code
+    build_number = options[:build_number]
+    puts "Build number: #{build_number}"
     build_properties = ENV['CIRCLECI'] ? {
       'MYAPP_RELEASE_STORE_PASSWORD' => ENV['MYAPP_RELEASE_STORE_PASSWORD'],
       'MYAPP_RELEASE_KEY_PASSWORD' => ENV['MYAPP_RELEASE_KEY_PASSWORD'],
     } : {}
-    build_properties[:VERSION_CODE] = version_code if version_code
+    build_properties[:VERSION_CODE] = build_number
+
     gradle(
       task: 'assemble',
       build_type: 'Release',
@@ -84,14 +85,23 @@ platform :android do
       print_command: false,
     )
 
-    tag_name = "android/#{version_code}"
+    tag_name = "android/#{build_number}"
     add_git_tag(tag: tag_name)
     push_to_git_remote unless options[:skip_push]
   end
 
   desc "Submit a new Beta Build to Google Play"
   lane :beta do
-    build
+    unless options[:build_number]
+      UI.error "No build_number provided!"
+      exit(1)
+    end
+
+    prepare_build
+
+    build(
+      build_number: options[:build_number],
+    )
     upload_to_play_store(
       track: 'internal',
     )
