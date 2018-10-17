@@ -65,7 +65,7 @@ platform :android do
   end
 
   desc "Build app"
-  lane :build do
+  lane :build do |options|
     build_number = options[:build_number]
     puts "Build number: #{build_number}"
     build_properties = ENV['CIRCLECI'] ? {
