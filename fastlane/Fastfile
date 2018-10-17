@@ -1,3 +1,4 @@
+fastlane_require 'aws-sdk-kms'
 default_platform(:ios)
 
 platform :ios do
@@ -48,10 +49,82 @@ platform :ios do
 
     build_number = get_build_number(xcodeproj: "./ios/EuTambem.xcodeproj")
     version_number = get_version_number(xcodeproj: "./ios/EuTambem.xcodeproj")
-    tag_name = "#{version_number}/#{build_number}"
+    tag_name = "ios/#{version_number}/#{build_number}"
     add_git_tag(tag: tag_name)
 
     UI.success("Success! New version: #{tag_name}")
+  end
+  
+end
+
+platform :android do
+
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Prepare dependencies for building app"
+  lane :prepare_build do |options|
+    decrypt_key(file: '../android/app/eutambem.keystore')
+  end
+
+  desc "Build app"
+  lane :build do
+    version_code = File.read("../build_number.txt").to_i if File.exist?("../build_number.txt")
+    puts "Version code: #{version_code}" if version_code
+    build_properties = ENV['CIRCLECI'] ? {
+      'MYAPP_RELEASE_STORE_PASSWORD' => ENV['MYAPP_RELEASE_STORE_PASSWORD'],
+      'MYAPP_RELEASE_KEY_PASSWORD' => ENV['MYAPP_RELEASE_KEY_PASSWORD'],
+    } : {}
+    build_properties[:VERSION_CODE] = version_code if version_code
+    gradle(
+      task: 'assemble',
+      build_type: 'Release',
+      properties: build_properties,
+      print_command: false,
+    )
+
+    tag_name = "android/#{version_code}"
+    add_git_tag(tag: tag_name)
+    push_to_git_remote unless options[:skip_push]
+  end
+
+  desc "Submit a new Beta Build to Google Play"
+  lane :beta do
+    build
+    upload_to_play_store(
+      track: 'internal',
+    )
+  end
+
+  desc "Deploy a new version to Google Play"
+  lane :deploy do
+    build
+    upload_to_play_store
+  end
+
+  desc "Encrypt sensitive key"
+  lane :encrypt_key do |options|
+    file = options[:file]
+    kms = Aws::KMS::Client.new()
+    decrypted_file = IO.read(file)
+    encrypted_data = kms.encrypt(key_id: 'alias/eutambem', plaintext: decrypted_file)
+    encrypted_text = Base64.encode64(encrypted_data.ciphertext_blob)
+    IO.write(file + '.encrypted', encrypted_text)
+
+    UI.success("Successfully encrypted key #{file}")
+  end
+
+  desc "Decrypt sensitive key"
+  lane :decrypt_key do |options|
+    file = options[:file]
+    kms = Aws::KMS::Client.new()
+    encrypted_file = IO.read(file + '.encrypted')
+    encrypted_data = Base64.decode64(encrypted_file)
+    decrypted_data = kms.decrypt(ciphertext_blob: encrypted_data)
+    IO.write(file, decrypted_data.plaintext)
+
+    UI.success("Successfully decrypted key #{file}")
   end
   
 end
