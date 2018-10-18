@@ -79,6 +79,7 @@ platform :android do
       build_type: 'Release',
       properties: build_properties,
       print_command: false,
+      project_dir: '../android',
     )
 
     tag_name = "android/#{build_number}"
