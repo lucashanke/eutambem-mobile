@@ -96,11 +96,18 @@ def enableProguardInReleaseBuilds = false
 android {
     compileSdkVersion 27
 
+    ext.buildVersionCode = {
+        if (!project.hasProperty("versionCode")) {
+            return ""
+        }
+        return Integer.parseInt(versionCode)
+    }
+
     defaultConfig {
         applicationId "org.eutambem"
         minSdkVersion 16
         targetSdkVersion 26
-        versionName "1.0"
+        versionName buildVersionCode() ?: 1
         versionCode 1
         ndk {
             abiFilters "armeabi-v7a", "x86"
