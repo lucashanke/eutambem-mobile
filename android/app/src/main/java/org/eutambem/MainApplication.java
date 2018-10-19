@@ -1,4 +1,4 @@
-package com.eutambem;
+package org.eutambem;
 
 import android.app.Application;
 

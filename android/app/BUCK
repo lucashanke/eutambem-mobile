@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.eutambem",
+    package = "org.eutambem",
 )
 
 android_resource(
     name = "res",
-    package = "com.eutambem",
+    package = "org.eutambem",
     res = "src/main/res",
 )
 
