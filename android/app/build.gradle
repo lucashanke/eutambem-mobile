@@ -107,8 +107,8 @@ android {
         applicationId "org.eutambem"
         minSdkVersion 16
         targetSdkVersion 26
-        versionName buildVersionCode() ?: 1
-        versionCode 1
+        versionName "1.0"
+        versionCode buildVersionCode() ?: 1
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
