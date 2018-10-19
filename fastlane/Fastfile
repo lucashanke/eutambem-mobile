@@ -72,8 +72,8 @@ platform :android do
     build_properties = ENV['CIRCLECI'] ? {
       'MYAPP_RELEASE_STORE_PASSWORD' => ENV['MYAPP_RELEASE_STORE_PASSWORD'],
       'MYAPP_RELEASE_KEY_PASSWORD' => ENV['MYAPP_RELEASE_KEY_PASSWORD'],
-      'versionCode' => build_number,
     } : {}
+    build_properties[:VERSION_CODE] = build_number
 
     gradle(
       task: 'assemble',
