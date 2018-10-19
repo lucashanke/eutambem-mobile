@@ -62,6 +62,7 @@ platform :android do
   desc "Prepare dependencies for building app"
   lane :prepare_build do |options|
     decrypt_key(file: '../android/app/eutambem.keystore')
+    decrypt_key(file: '../android/app/service-account-user-key.json')
   end
 
   desc "Build app"
