@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchReportFormConstants } from '../../services/reportService';
+import { storeOptions, retrieveOptions } from '../../services/storageService';
 
 export default WrappedComponent => (
   class extends React.Component {
@@ -8,12 +9,14 @@ export default WrappedComponent => (
     }
 
     async componentDidMount() {
-      const response = await fetchReportFormConstants();
+      const storedOptions = await retrieveOptions();
+      const options =  storedOptions || (await fetchReportFormConstants()).constants;
       this.setState({
         data: {
-          formOptions: response.constants,
+          formOptions: options,
         },
       });
+      storeOptions(options);
     }
 
     render() {
