@@ -141,7 +141,7 @@ export class AboutYouForm extends Component {
         <Button
           testID="send-button"
           onPress={() => this.submit()}
-          title="Enviar Relato"
+          title="Prosseguir"
         />
       </View>
     );
