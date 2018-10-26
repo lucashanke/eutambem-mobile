@@ -6,7 +6,6 @@ export const fetchReportFormConstants = async () => {
 }
 
 export const sendReport = async report => {
-  debugger;
   const response = await fetch(`${API_ENDPOINT}/report`, {
     method: 'POST',
     headers: {
