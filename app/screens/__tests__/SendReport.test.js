@@ -3,6 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import SendReport from '../SendReport';
+import SendReportForm from '../../components/SendReportForm';
 
 const props = {
   navigation: {
@@ -13,6 +14,6 @@ const props = {
 describe('SendReport', () => {
   it('renders correctly', () => {
     const wrapper = shallow(<SendReport {...props} />);
-    expect(wrapper.find('SendReportForm')).toHaveLength(1);
+    expect(wrapper.find(SendReportForm)).toHaveLength(1);
   });
 });
