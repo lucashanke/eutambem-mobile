@@ -9,3 +9,4 @@ export { default as PlacePicker } from './PlacePicker';
 export { default as SectionHeader } from './SectionHeader';
 export { default as SectionText } from './SectionText';
 export { default as TextInput } from './TextInput';
+export { default as InputReview } from './InputReview';
