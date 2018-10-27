@@ -132,7 +132,7 @@ describe('AboutYouForm', () => {
 
     beforeEach(() => {
       wrapper = shallow(<AboutYouForm {...props} />);
-    })
+    });
 
     it('gender change reflects the formData gender state attribute', () => {
       wrapper.find({ testID: 'gender-input' }).props().onValueChange('woman', true);
@@ -188,7 +188,7 @@ describe('AboutYouForm', () => {
     it('does not pass the form data values to the SendReport screen when at least one input is invalid', () => {
       props.navigation.navigate = sinon.spy();
       const wrapper = shallow(<AboutYouForm {...props} />);
-  
+
       const formData = {
         gender: { value: '', valid: false },
         skinColor: { value: 'black', valid: true },
@@ -198,17 +198,17 @@ describe('AboutYouForm', () => {
         name: { value: 'Marielle', valid: true },
         sexualOrientation: { value: 'other', valid: true },
       };
-  
+
       wrapper.setState({ formData });
       wrapper.find('Button').simulate('press');
 
       expect(props.navigation.navigate.callCount).toEqual(0);
     });
 
-    it('sets containErrors state of form and the showValidation prop of all inputs to true when at least one input is invalid', () => {
+    it("sets triedSubmit when tries to submit when there's at least one error", () => {
       props.navigation.navigate = sinon.spy();
       const wrapper = shallow(<AboutYouForm {...props} />);
-  
+
       const formData = {
         gender: { value: '', valid: false },
         skinColor: { value: 'black', valid: true },
@@ -218,11 +218,12 @@ describe('AboutYouForm', () => {
         name: { value: 'Marielle', valid: true },
         sexualOrientation: { value: 'other', valid: true },
       };
-  
+
       wrapper.setState({ formData });
+      wrapper.setState({ acceptedPolicies: true });
       wrapper.find('Button').simulate('press');
 
-      expect(wrapper.state('containErrors')).toBeTruthy();
+      expect(wrapper.state('triedSubmit')).toBeTruthy();
       expect(wrapper.find({ showValidation: true })).toHaveLength(7);
     });
 
@@ -238,7 +239,7 @@ describe('AboutYouForm', () => {
       };
 
       const wrapper = shallow(<AboutYouForm {...props} />);
-  
+
       const formData = {
         gender: { value: 'woman', valid: true },
         skinColor: { value: 'black', valid: true },
@@ -252,10 +253,11 @@ describe('AboutYouForm', () => {
       Object.keys(formData).forEach((key) => {
         formDataValues[key] = formData[key].value;
       });
-  
+
       wrapper.setState({ formData });
+      wrapper.setState({ acceptedPolicies: true });
       wrapper.find('Button').simulate('press');
-      
+
       expect(props.navigation.navigate.callCount).toEqual(1);
       expect(props.navigation.navigate.calledWith('SendReport', {
         formData: {
