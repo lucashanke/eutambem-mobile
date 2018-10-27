@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
-import appStyles, { RED } from '../styles';
+import appStyles from '../styles';
 
 import { Button, CheckBox, Picker, TextInput, SectionHeader, SectionText } from './common';
 import { formWrapper, loading } from './hoc';
+import ErrorMessage from './ErrorMessage';
 
 export class AboutYouForm extends Component {
   constructor(props) {
@@ -21,9 +22,15 @@ export class AboutYouForm extends Component {
         sexualOrientation: { value: '', valid: true },
       },
       acceptedPolicies: false,
-      containErrors: false,
+      triedSubmit: false,
     };
   }
+
+  getThisFormDataValues = () => Object.entries(this.state.formData)
+    .reduce((formDataValues, [key, { value }]) => ({
+      ...formDataValues,
+      [key]: value,
+    }), {});
 
   updateFormDataValue = (key, value, valid) => {
     const { formData } = this.state;
@@ -35,36 +42,25 @@ export class AboutYouForm extends Component {
     }
   };
 
-  getThisFormDataValues = () => {
-    const formDataValues = {};
-    Object.keys(this.state.formData).forEach(key => { formDataValues[key] = this.state.formData[key].value; });
-    return formDataValues;
-  };
-
   formData = () => ({
     ...this.props.navigation.getParam('formData', {}),
     ...this.getThisFormDataValues(),
   });
 
-  isValid = () => {
-    return Object.values(this.state.formData).reduce((valid, currentData) => valid && currentData.valid, true);
-  };
+  isValid = () => this.state.acceptedPolicies
+    && Object.values(this.state.formData).every(field => field.valid);
 
   submit = () => {
     if (this.isValid()) {
-      this.setState({ containErrors: false });
-      this.props.navigation.navigate('SendReport', { formData: this.formData() })
+      this.setState({ triedSubmit: false });
+      this.props.navigation.navigate('SendReport', { formData: this.formData() });
     } else {
-      this.setState({ containErrors: true });
+      this.setState({ triedSubmit: true });
     }
   };
 
   render() {
-    const validationMessage = (
-      <Text style={{ color: RED }}>
-        Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente novamente.
-      </Text>
-    );
+    const { triedSubmit } = this.state;
 
     return (
       <View>
@@ -72,24 +68,30 @@ export class AboutYouForm extends Component {
           required
           testID="gender-input"
           placeholder="Gênero"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           value={this.state.formData.gender.value}
           onValueChange={(value, valid) => this.updateFormDataValue('gender', value, valid)}
           items={this.props.data.formOptions.gender_options}
         />
+        <ErrorMessage visible={triedSubmit && !this.state.formData.gender.valid}>
+          Por favor, informe seu gênero
+        </ErrorMessage>
         <Picker
           required
           testID="skin-color-input"
           placeholder="Cor"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           value={this.state.formData.skinColor.value}
           onValueChange={(value, valid) => this.updateFormDataValue('skinColor', value, valid)}
           items={this.props.data.formOptions.skin_color_options}
         />
+        <ErrorMessage visible={triedSubmit && !this.state.formData.skinColor.valid}>
+          Por favor, informe sua cor
+        </ErrorMessage>
         <Picker
           testID="age-input"
           placeholder="Idade"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           value={this.state.formData.age.value}
           onValueChange={(value, valid) => this.updateFormDataValue('age', value, valid)}
           items={this.props.data.formOptions.age_options}
@@ -97,7 +99,7 @@ export class AboutYouForm extends Component {
         <Picker
           testID="orientation-input"
           placeholder="Orientação Sexual"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           value={this.state.formData.sexualOrientation.value}
           onValueChange={(value, valid) => this.updateFormDataValue('sexualOrientation', value, valid)}
           items={this.props.data.formOptions.sexual_orientation}
@@ -105,7 +107,7 @@ export class AboutYouForm extends Component {
         <Picker
           testID="wage-input"
           placeholder="Renda Aproximada"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           value={this.state.formData.wage.value}
           onValueChange={(value, valid) => this.updateFormDataValue('wage', value, valid)}
           items={this.props.data.formOptions.wage_options}
@@ -118,14 +120,17 @@ export class AboutYouForm extends Component {
           placeholder="Email"
           textContentType="emailAddress"
           keyboardType="email-address"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           onValueChange={(email, valid) => this.updateFormDataValue('email', email, valid)}
           value={this.state.formData.email.value}
         />
+        <ErrorMessage visible={triedSubmit && !this.state.formData.email.valid}>
+          Por favor, informe seu email
+        </ErrorMessage>
         <TextInput
           testID="name-input"
           placeholder="Nome"
-          showValidation={this.state.containErrors}
+          showValidation={this.state.triedSubmit}
           onValueChange={(name, valid) => this.updateFormDataValue('name', name, valid)}
           value={this.state.formData.name.value}
         />
@@ -134,10 +139,12 @@ export class AboutYouForm extends Component {
           value={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
+        <ErrorMessage visible={triedSubmit && !this.state.formData.skinColor.valid}>
+          Por favor, leia e aceite nossa Política de Privacidade
+        </ErrorMessage>
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
           Acessar Política de Privacidade
         </Text>
-        { this.state.containErrors ? validationMessage : null }
         <Button
           testID="send-button"
           onPress={() => this.submit()}
