@@ -139,7 +139,7 @@ export class AboutYouForm extends Component {
           value={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
-        <ErrorMessage visible={triedSubmit && !this.state.formData.skinColor.valid}>
+        <ErrorMessage visible={triedSubmit && !this.state.formData.acceptedPolicies}>
           Por favor, leia e aceite nossa Política de Privacidade
         </ErrorMessage>
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
