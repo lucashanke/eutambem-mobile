@@ -73,9 +73,6 @@ export class AboutYouForm extends Component {
           onValueChange={(value, valid) => this.updateFormDataValue('gender', value, valid)}
           items={this.props.data.formOptions.gender_options}
         />
-        <ErrorMessage visible={triedSubmit && !this.state.formData.gender.valid}>
-          Por favor, informe seu gênero
-        </ErrorMessage>
         <Picker
           required
           testID="skin-color-input"
@@ -85,9 +82,6 @@ export class AboutYouForm extends Component {
           onValueChange={(value, valid) => this.updateFormDataValue('skinColor', value, valid)}
           items={this.props.data.formOptions.skin_color_options}
         />
-        <ErrorMessage visible={triedSubmit && !this.state.formData.skinColor.valid}>
-          Por favor, informe sua cor
-        </ErrorMessage>
         <Picker
           testID="age-input"
           placeholder="Idade"
@@ -124,9 +118,6 @@ export class AboutYouForm extends Component {
           onValueChange={(email, valid) => this.updateFormDataValue('email', email, valid)}
           value={this.state.formData.email.value}
         />
-        <ErrorMessage visible={triedSubmit && !this.state.formData.email.valid}>
-          Por favor, informe seu email
-        </ErrorMessage>
         <TextInput
           testID="name-input"
           placeholder="Nome"
@@ -145,11 +136,12 @@ export class AboutYouForm extends Component {
         <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
           Acessar Política de Privacidade
         </Text>
-        <Button
-          testID="send-button"
-          onPress={() => this.submit()}
-          title="Prosseguir"
-        />
+        <ErrorMessage visbile={triedSubmit && !this.isValid()}>
+          Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente
+          novamente.
+        </ErrorMessage>
+
+        <Button testID="send-button" onPress={() => this.submit()} title="Prosseguir" />
       </View>
     );
   }
