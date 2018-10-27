@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TextInput as NativeTextInput } from 'react-native';
+import { TextInput as NativeTextInput, View, TouchableOpacity } from 'react-native';
+
 import appStyles, { PLACEHOLDER_GREY } from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 import input from '../hoc/input';
@@ -26,7 +27,7 @@ export class TextInput extends Component {
       autoGrow = true;
     }
 
-    return (
+    const input = (
       <NativeTextInput
         {...this.props}
         style={style}
@@ -39,10 +40,19 @@ export class TextInput extends Component {
         ref={this.inputRef}
       />
     );
+
+    return this.props.editable ? input : (
+      <TouchableOpacity onPress={this.props.onFocus}>
+        <View pointerEvents='none'>
+          {input}
+        </View>
+      </TouchableOpacity>
+    );
   }
 }
 
 TextInput.propTypes = {
+  editable: PropTypes.bool,
   multiline: PropTypes.bool,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
@@ -51,6 +61,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+  editable: true,
   multiline: false,
   required: false,
   blur: false,

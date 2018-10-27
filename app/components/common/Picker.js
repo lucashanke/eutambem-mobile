@@ -89,6 +89,7 @@ export class Picker extends Component {
             required={this.props.required}
             multiline
             autoGrow
+            editable={false}
             placeholder={this.props.placeholder}
             value={this.itemLabel()}
             blur={this.state.modalVisible}

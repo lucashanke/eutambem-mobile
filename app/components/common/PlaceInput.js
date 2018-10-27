@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard } from 'react-native';
 
 import { TextInput } from './TextInput';
 import input from '../hoc/input';
@@ -14,8 +13,8 @@ export const PlaceInput = (props) => {
   return (
     <TextInput
       {...props}
+      editable={false}
       onFocus={() => {
-        Keyboard.dismiss();
         props.navigation.navigate('PlaceScreen', {
           title: props.placeScreenTitle,
           types: props.types,

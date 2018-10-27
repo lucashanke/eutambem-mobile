@@ -93,7 +93,6 @@ export default class PlacePicker extends Component {
     return (
       <View>
         <Search
-          autoFocus
           backgroundColor="transparent"
           cancelButtonTextStyle={{ color: GREY }}
           onChangeText={this.onQueryChange}
