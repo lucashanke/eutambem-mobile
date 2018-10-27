@@ -55,8 +55,9 @@ export class AboutYouForm extends Component {
     ...this.getThisFormDataValues(),
   });
 
-  isValid = () =>
-    this.state.acceptedPolicies && Object.values(this.state.formData).every(field => field.valid);
+  areFieldsValid = () => Object.values(this.state.formData).every(field => field.valid);
+
+  isValid = () => this.state.acceptedPolicies && this.areFieldsValid();
 
   submit = () => {
     if (this.isValid()) {
@@ -140,20 +141,19 @@ export class AboutYouForm extends Component {
           value={this.state.acceptedPolicies}
           label="Ao registrar esse relato eu concordo com a Política de Privacidade do Eu Também."
         />
-        <ErrorMessage visible={triedSubmit && !this.state.formData.acceptedPolicies}>
-          Por favor, leia e aceite nossa Política de Privacidade
-        </ErrorMessage>
         <Text
           style={appStyles.link}
           onPress={() => this.props.navigation.navigate('PrivacyPolicy')}
         >
           Acessar Política de Privacidade
         </Text>
-        <ErrorMessage visible={triedSubmit && !this.isValid()}>
+        <ErrorMessage visible={triedSubmit && !this.areFieldsValid()}>
           Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente
           novamente.
         </ErrorMessage>
-
+        <ErrorMessage visible={triedSubmit && !this.state.acceptedPolicies}>
+          Por favor, leia e aceite nossa Política de Privacidade
+        </ErrorMessage>
         <Button
           testID="send-button"
           onPress={() => this.submit()}
