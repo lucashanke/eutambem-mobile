@@ -253,6 +253,26 @@ describe('AboutYouForm', () => {
       expect(props.navigation.navigate.callCount).toEqual(0);
     });
 
+    it('does not pass the form data values to the SendReport screen when privacy policy was not accepted', () => {
+      props.navigation.navigate = sinon.spy();
+      const wrapper = shallow(<AboutYouForm {...props} />);
+
+      const formData = {
+        gender: { value: '', valid: true },
+        skinColor: { value: 'black', valid: true },
+        age: { value: 'between36and50', valid: true },
+        wage: { value: 'belowOne', valid: true },
+        email: { value: 'elenao@eutambem.org', valid: true },
+        name: { value: 'Marielle', valid: true },
+        sexualOrientation: { value: 'other', valid: true },
+      };
+
+      wrapper.setState({ formData, acceptedPolicies: false });
+      wrapper.find('Button').simulate('press');
+
+      expect(props.navigation.navigate.callCount).toEqual(0);
+    });
+
     it("sets triedSubmit when tries to submit when there's at least one error", () => {
       props.navigation.navigate = sinon.spy();
       const wrapper = shallow(<AboutYouForm {...props} />);
