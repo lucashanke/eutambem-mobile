@@ -12,7 +12,7 @@ const keyboardAvoidingProps = Platform.select({
 const Container = props => (
   <SafeAreaView style={appStyles.container}>
     <KeyboardAvoidingView {...keyboardAvoidingProps}>
-      <ScrollView style={[appStyles.innerContainer, props.innerContainerStyle]}>
+      <ScrollView contentContainerStyle={[appStyles.innerContainer, props.innerContainerStyle]}>
         {props.children}
       </ScrollView>
     </KeyboardAvoidingView>
