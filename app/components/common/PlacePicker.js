@@ -50,7 +50,10 @@ const Item = props => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={style.item}>
       <View style={style.icon}>
-        <Icon name="ios-pin" size={20} />
+        <Icon
+          name="ios-pin"
+          size={20}
+        />
       </View>
       <View>
         <Text style={style.itemLabel}>{props.label}</Text>
@@ -67,29 +70,24 @@ Item.propTypes = {
 };
 
 export default class PlacePicker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      suggestions: [],
-    };
-  }
+  state = { suggestions: [] };
 
   onQueryChange = (query) => {
     if (query.length >= 3) {
       this.setState({
         suggestions: [],
       });
-      fetchPlacesResults(query, this.props.types[0]).then(((response) => {
+      fetchPlacesResults(query, this.props.types[0]).then((response) => {
         this.setState({
           suggestions: response.data.predictions,
         });
-      }));
+      });
     }
-  }
+  };
 
   onPlaceSelect = (id, label) => {
     this.props.onPlaceChange({ id, label });
-  }
+  };
 
   render() {
     return (
@@ -126,4 +124,3 @@ PlacePicker.propTypes = {
   types: PropTypes.arrayOf(PropTypes.string).isRequired,
   onPlaceChange: PropTypes.func.isRequired,
 };
-

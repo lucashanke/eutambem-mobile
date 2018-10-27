@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
 import { StyleSheet, Image } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, TabBarBottom } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import AboutWhatHappened from './screens/AboutWhatHappened';
@@ -15,7 +17,6 @@ import SendReport from './screens/SendReport';
 
 import { GREEN, BLACK, GREY } from './styles';
 
-
 const styles = StyleSheet.create({
   logo: {
     width: '70%',
@@ -26,40 +27,49 @@ const styles = StyleSheet.create({
   },
 });
 
-
 const stackNavigationOptions = {
-  headerTitle: <Image style={styles.logo} source={logo} resizeMode="contain" />,
+  headerTitle: <Image
+    style={styles.logo}
+    source={logo}
+    resizeMode="contain"
+  />,
   headerTintColor: GREEN,
   headerTitleStyle: { color: BLACK },
 };
 
-const CreateReportStack = createStackNavigator({
-  AboutWhatHappened: { screen: AboutWhatHappened },
-  AboutYou: { screen: AboutYou },
-  SendReport: { screen: SendReport },
-  PrivacyPolicy: { screen: PrivacyPolicy },
-  PlaceScreen: { screen: PlaceScreen },
-}, {
-  navigationOptions: { ...stackNavigationOptions, title: 'Criar Relato' },
-  cardStyle: styles.card,
-});
+const CreateReportStack = createStackNavigator(
+  {
+    AboutWhatHappened: { screen: AboutWhatHappened },
+    AboutYou: { screen: AboutYou },
+    SendReport: { screen: SendReport },
+    PrivacyPolicy: { screen: PrivacyPolicy },
+    PlaceScreen: { screen: PlaceScreen },
+  },
+  {
+    navigationOptions: { ...stackNavigationOptions, title: 'Criar Relato' },
+    cardStyle: styles.card,
+  },
+);
 
+const HomeStack = createStackNavigator(
+  {
+    Home: { screen: Home },
+  },
+  {
+    navigationOptions: { ...stackNavigationOptions, title: 'Início' },
+    cardStyle: styles.card,
+  },
+);
 
-const HomeStack = createStackNavigator({
-  Home: { screen: Home },
-}, {
-  navigationOptions: { ...stackNavigationOptions, title: 'Início' },
-  cardStyle: styles.card,
-});
-
-
-const MapFeedStack = createStackNavigator({
-  MapFeed: { screen: MapFeed },
-}, {
-  navigationOptions: { ...stackNavigationOptions, title: 'Mapa de Relatos' },
-  cardStyle: styles.card,
-});
-
+const MapFeedStack = createStackNavigator(
+  {
+    MapFeed: { screen: MapFeed },
+  },
+  {
+    navigationOptions: { ...stackNavigationOptions, title: 'Mapa de Relatos' },
+    cardStyle: styles.card,
+  },
+);
 
 const Tabs = createBottomTabNavigator(
   {
@@ -68,7 +78,7 @@ const Tabs = createBottomTabNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => { // eslint-disable-line react/prop-types
+      tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
@@ -78,7 +88,11 @@ const Tabs = createBottomTabNavigator(
         } else if (routeName === 'MapFeed') {
           iconName = `ios-navigate${focused ? '' : '-outline'}`;
         }
-        return <Icon name={iconName} size={25} color={tintColor} />;
+        return (<Icon
+          name={iconName}
+          size={25}
+          color={tintColor}
+        />);
       },
     }),
     tabBarOptions: {
@@ -90,12 +104,15 @@ const Tabs = createBottomTabNavigator(
   },
 );
 
-const App = createStackNavigator({
-  Tabs: { screen: Tabs },
-  CreateReport: { screen: CreateReportStack },
-}, {
-  mode: 'modal',
-  headerMode: 'none',
-});
+const App = createStackNavigator(
+  {
+    Tabs: { screen: Tabs },
+    CreateReport: { screen: CreateReportStack },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  },
+);
 
 export default App;

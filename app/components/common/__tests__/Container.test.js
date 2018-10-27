@@ -12,10 +12,13 @@ describe('Container', () => {
       </Container>
     );
     const wrapper = shallow(component);
-    
+
     const view = wrapper.find('SafeAreaView KeyboardAvoidingView ScrollView');
     expect(view).toHaveLength(1);
 
-    expect(view.find(Text).children().text()).toEqual('Testing Container');
+    expect(view
+      .find(Text)
+      .children()
+      .text()).toEqual('Testing Container');
   });
 });

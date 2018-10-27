@@ -5,8 +5,18 @@ import { shallow } from 'enzyme';
 import { InputReview } from '../common';
 import { Report } from '../Report';
 
-import { HARASSMENT_TYPE_OPTIONS, FOLLOWUP_ACTIONS_OPTIONS, YES_NO_OPTIONAL_OPTIONS } from './AboutWhatHappenedForm.test';
-import { SKIN_COLOR_OPTIONS, AGE_OPTIONS, WAGE_OPTIONS, GENDER_OPTIONS, SEXUAL_ORIENTATION } from './AboutYouForm.test';
+import {
+  HARASSMENT_TYPE_OPTIONS,
+  FOLLOWUP_ACTIONS_OPTIONS,
+  YES_NO_OPTIONAL_OPTIONS,
+} from './AboutWhatHappenedForm.test';
+import {
+  SKIN_COLOR_OPTIONS,
+  AGE_OPTIONS,
+  WAGE_OPTIONS,
+  GENDER_OPTIONS,
+  SEXUAL_ORIENTATION,
+} from './AboutYouForm.test';
 
 const props = {
   data: {

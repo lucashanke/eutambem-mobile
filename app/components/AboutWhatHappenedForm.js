@@ -11,21 +11,18 @@ import { MAX_TEXT_INPUT_LENGTH } from '../constants';
 import { formWrapper, loading } from './hoc';
 
 export class AboutWhatHappenedForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formData: {
-        establishment: { value: {}, valid: false },
-        harassmentType: { value: '', valid: false },
-        description: { value: '', valid: false },
-        date: { value: null, valid: false },
-        followupActions: { value: [], valid: true },
-        wouldRecommend: { value: '', valid: false },
-        advice: { value: '', valid: true },
-      },
-      containErrors: false,
-    };
-  }
+  state = {
+    formData: {
+      establishment: { value: {}, valid: false },
+      harassmentType: { value: '', valid: false },
+      description: { value: '', valid: false },
+      date: { value: null, valid: false },
+      followupActions: { value: [], valid: true },
+      wouldRecommend: { value: '', valid: false },
+      advice: { value: '', valid: true },
+    },
+    containErrors: false,
+  };
 
   getFormDataValues = () => {
     const formDataValues = {};
@@ -45,9 +42,7 @@ export class AboutWhatHappenedForm extends Component {
     }
   };
 
-  isValid = () => Object.values(this.state.formData).reduce((valid, currentData) => (
-    valid && currentData.valid
-  ), true);
+  isValid = () => Object.values(this.state.formData).every(datum => datum.valid);
 
   submit = () => {
     if (this.isValid()) {
@@ -61,8 +56,8 @@ export class AboutWhatHappenedForm extends Component {
   render() {
     const validationMessage = (
       <Text style={{ color: RED }}>
-        Sentimos falta de algumas informações obrigatórias.
-        Por favor, preencha-as e tente novamente.
+        Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente
+        novamente.
       </Text>
     );
 
@@ -74,7 +69,9 @@ export class AboutWhatHappenedForm extends Component {
           placeholder="Empresa em que ocorreu"
           showValidation={this.state.containErrors}
           value={this.state.formData.establishment.value.label}
-          onValueChange={(item, valid) => this.updateFormDataValue('establishment', { value: item.id, label: item.label }, valid)}
+          onValueChange={(item, valid) =>
+            this.updateFormDataValue('establishment', { value: item.id, label: item.label }, valid)
+          }
           types={['establishment']}
           navigation={this.props.navigation}
           placeScreenTitle="Informe a Empresa"
@@ -111,7 +108,9 @@ export class AboutWhatHappenedForm extends Component {
           showValidation={this.state.containErrors}
           values={this.state.formData.followupActions.value}
           label="Você tomou alguma providência com relação ao ocorrido?"
-          onValueChange={(values, valid) => this.updateFormDataValue('followupActions', values, valid)}
+          onValueChange={(values, valid) =>
+            this.updateFormDataValue('followupActions', values, valid)
+          }
           options={this.props.data.formOptions.followup_actions_options}
         />
         <Picker
@@ -134,7 +133,7 @@ export class AboutWhatHappenedForm extends Component {
           onValueChange={(advice, valid) => this.updateFormDataValue('advice', advice, valid)}
           value={this.state.formData.advice.value}
         />
-        { this.state.containErrors ? validationMessage : null }
+        {this.state.containErrors ? validationMessage : null}
         <Button
           testID="next-button"
           onPress={() => this.submit()}

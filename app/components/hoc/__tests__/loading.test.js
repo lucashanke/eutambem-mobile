@@ -1,11 +1,10 @@
-import 'react-native';
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 
 import loading from '../loading';
 
-const WrappedComponent = () => (<Text>WrappedComponent</Text>);
+const WrappedComponent = () => <Text>WrappedComponent</Text>;
 const Loading = loading(WrappedComponent);
 
 describe('loading', () => {
@@ -16,7 +15,7 @@ describe('loading', () => {
   });
 
   it('renders WrappedComponent when data prop is defined', () => {
-    const wrapper = shallow(<Loading data={'test-data'} />);
+    const wrapper = shallow(<Loading data="test-data" />);
     expect(wrapper.find(WrappedComponent)).toHaveLength(1);
     expect(wrapper.find(ActivityIndicator)).toHaveLength(0);
   });

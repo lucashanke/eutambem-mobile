@@ -1,22 +1,21 @@
-import 'react-native';
-import React, { Component } from 'react';
+import React from 'react';
+import { Text } from 'react-native';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 import input from '../input';
 
-const WrappedComponent = () => (<Text>WrappedComponent</Text>);
+const WrappedComponent = () => <Text>WrappedComponent</Text>;
 const Input = input(WrappedComponent);
 
 describe('input', () => {
-
   it('always renders WrappedComponent', () => {
     const wrapper = shallow(<Input />);
     expect(wrapper.find(WrappedComponent)).toHaveLength(1);
   });
 
   it('initiates valid state attribute with value false when prop required is true', () => {
-    const wrapper = shallow(<Input required/>);
+    const wrapper = shallow(<Input required />);
     expect(wrapper.state('valid')).toBeFalsy();
   });
 
@@ -31,27 +30,33 @@ describe('input', () => {
   });
 
   it('shows alert icon when showValidation is true and valid state sttribute is false', () => {
-    const wrapper = shallow(<Input required showValidation/>);
+    const wrapper = shallow(<Input
+      required
+      showValidation
+    />);
     expect(wrapper.state('valid')).toBeFalsy();
     expect(wrapper.find('Icon')).toHaveLength(1);
   });
 
   it('does not alert icon when showValidation is true and valid state sttribute is true', () => {
-    const wrapper = shallow(<Input showValidation/>);
+    const wrapper = shallow(<Input showValidation />);
     expect(wrapper.state('valid')).toBeTruthy();
     expect(wrapper.find('Icon')).toHaveLength(0);
   });
 
   describe('onValueChange', () => {
-
     let spy = null;
 
     beforeEach(() => {
-      spy = sinon.spy();    
+      spy = sinon.spy();
     });
 
     it('changes valid state attribute to true when input new value is non empty', () => {
-      const wrapper = shallow(<Input value={undefined} required onValueChange={spy} onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        value={undefined}
+        required
+        onValueChange={spy}
+      />);
       expect(wrapper.state('valid')).toBeFalsy();
 
       wrapper.instance().onValueChange('new value');
@@ -60,7 +65,11 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback prop function with new value', () => {
-      const wrapper = shallow(<Input value={undefined} required onValueChange={spy} onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        value={undefined}
+        required
+        onValueChange={spy}
+      />);
 
       wrapper.instance().onValueChange('new value');
 
@@ -68,7 +77,10 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback with valid false if required and value is null', () => {
-      const wrapper = shallow(<Input required onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        required
+        onValueChange={spy}
+      />);
 
       wrapper.instance().onValueChange(null);
 
@@ -76,7 +88,10 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback with valid false if required and value is empty array', () => {
-      const wrapper = shallow(<Input required onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        required
+        onValueChange={spy}
+      />);
 
       wrapper.instance().onValueChange([]);
 
@@ -84,7 +99,10 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback with valid false if required and value is empty string', () => {
-      const wrapper = shallow(<Input required onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        required
+        onValueChange={spy}
+      />);
 
       wrapper.instance().onValueChange('');
 
@@ -92,7 +110,10 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback with valid true if required and value is defined', () => {
-      const wrapper = shallow(<Input required onValueChange={spy}/>);
+      const wrapper = shallow(<Input
+        required
+        onValueChange={spy}
+      />);
 
       wrapper.instance().onValueChange('new value');
 
@@ -100,12 +121,11 @@ describe('input', () => {
     });
 
     it('calls onValueChange callback with valid true if not required', () => {
-      const wrapper = shallow(<Input onValueChange={spy}/>);
+      const wrapper = shallow(<Input onValueChange={spy} />);
 
       wrapper.instance().onValueChange(null);
 
       expect(spy.calledWith(null, true)).toBeTruthy();
     });
   });
-
 });

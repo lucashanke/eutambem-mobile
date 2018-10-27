@@ -1,27 +1,32 @@
-import 'react-native';
 import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
-
-import { Picker } from '../Picker';
 import Modal from 'react-native-modal';
 import { PickerIOS } from 'react-native';
 
+import { Picker } from '../Picker';
+
 const props = {
   placeholder: 'Test Picker',
-  items: [{
-    value: '1',
-    label: 'Label 1',
-  }, {
-    value: '2',
-    label: 'Label 2',
-  }],
+  items: [
+    {
+      value: '1',
+      label: 'Label 1',
+    },
+    {
+      value: '2',
+      label: 'Label 2',
+    },
+  ],
   onValueChange: () => {},
 };
 
 describe('Picker', () => {
   it('renders TextInput with label corresponding to the value passed', () => {
-    const wrapper = shallow(<Picker {...props} value="2"/>);
+    const wrapper = shallow(<Picker
+      {...props}
+      value="2"
+    />);
 
     const textInput = wrapper.find('TextInput');
 
@@ -64,7 +69,10 @@ describe('Picker', () => {
       it('does not change currentValue state attibute if value is -1', () => {
         const wrapper = shallow(<Picker {...props} />);
 
-        wrapper.find(PickerIOS).props().onValueChange(-1);
+        wrapper
+          .find(PickerIOS)
+          .props()
+          .onValueChange(-1);
 
         expect(wrapper.state('currentValue')).toBe('');
       });
@@ -72,7 +80,10 @@ describe('Picker', () => {
       it('changes currentValue state attibute if value is not -1 ', () => {
         const wrapper = shallow(<Picker {...props} />);
 
-        wrapper.find(PickerIOS).props().onValueChange(2);
+        wrapper
+          .find(PickerIOS)
+          .props()
+          .onValueChange(2);
 
         expect(wrapper.state('currentValue')).toBe(2);
       });
@@ -83,7 +94,10 @@ describe('Picker', () => {
     describe('Ok button', () => {
       it('calls onValueChange prop function with default value (first item for IOS) when no current value is defined', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<Picker {...props} onValueChange={spy} />);
+        const wrapper = shallow(<Picker
+          {...props}
+          onValueChange={spy}
+        />);
 
         wrapper.find({ testID: 'ok-button' }).simulate('press');
 
@@ -92,7 +106,10 @@ describe('Picker', () => {
 
       it('calls onValueChange prop function with current value if is defined', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<Picker {...props} onValueChange={spy} />);
+        const wrapper = shallow(<Picker
+          {...props}
+          onValueChange={spy}
+        />);
         wrapper.setState({ currentValue: '2' });
 
         wrapper.find({ testID: 'ok-button' }).simulate('press');
@@ -104,7 +121,10 @@ describe('Picker', () => {
     describe('Cancel button', () => {
       it('does not call onValueChange prop function', () => {
         const spy = sinon.spy();
-        const wrapper = shallow(<Picker {...props} onValueChange={spy} />);
+        const wrapper = shallow(<Picker
+          {...props}
+          onValueChange={spy}
+        />);
         wrapper.setState({ modalVisible: true });
 
         const modal = wrapper.find(Modal);

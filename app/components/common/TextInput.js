@@ -6,16 +6,17 @@ import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 import input from '../hoc/input';
 
 export class TextInput extends Component {
-
-  inputRef = (component) => { this.input = component; };
-
-  placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
-
-  componentDidUpdate = () => {
+  componentDidUpdate() {
     if (this.props.blur) {
       this.input.blur();
     }
+  }
+
+  inputRef = (component) => {
+    this.input = component;
   };
+
+  placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
 
   render() {
     let style = [appStyles.input];
@@ -45,11 +46,15 @@ TextInput.propTypes = {
   multiline: PropTypes.bool,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
+  blur: PropTypes.func,
+  onValueChange: PropTypes.func,
 };
 
 TextInput.defaultProps = {
   multiline: false,
   required: false,
+  blur: () => {},
+  onValueChange: () => {},
 };
 
 export default input(TextInput);

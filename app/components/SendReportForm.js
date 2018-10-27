@@ -11,33 +11,34 @@ import { loading, formWrapper } from './hoc';
 const Result = loading(() => <Text>Relato Enviado!</Text>);
 
 export class SendReportForm extends Component {
+  state = {
+    preview: true,
+    report: this.props.navigation.getParam('formData', {}),
+    response: null,
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      preview: true,
-      report: props.navigation.getParam('formData', {}),
-      response: null,
-    };
-  }
-
-  submit() {
+  submit = () => {
     const { report } = this.state;
     console.log('Sending report:', report);
     this.setState({ preview: false });
-    sendReport(report).then((response) => {
-      this.setState({
-        response,
+    sendReport(report)
+      .then((response) => {
+        this.setState({
+          response,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+  };
 
   render() {
     const preview = (
       <View>
-        <Report data={this.state.report} options={this.props.data.formOptions}/>
+        <Report
+          data={this.state.report}
+          options={this.props.data.formOptions}
+        />
         <Button
           testID="send-button"
           onPress={() => this.submit()}
@@ -46,7 +47,7 @@ export class SendReportForm extends Component {
       </View>
     );
 
-    const result = (<Result data={this.state.response}/>);
+    const result = <Result data={this.state.response} />;
 
     return this.state.preview ? preview : result;
   }

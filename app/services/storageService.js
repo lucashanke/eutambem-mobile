@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native"
+import { AsyncStorage } from 'react-native';
 
 export const retrieveOptions = async () => {
   try {

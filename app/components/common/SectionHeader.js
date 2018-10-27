@@ -16,9 +16,7 @@ const style = StyleSheet.create({
 
 const SectionHeader = props => (
   <View style={style.container}>
-    <Text style={style.text}>
-      {props.title.toUpperCase()}
-    </Text>
+    <Text style={style.text}>{props.title.toUpperCase()}</Text>
   </View>
 );
 

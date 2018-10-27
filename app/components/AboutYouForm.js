@@ -9,28 +9,36 @@ import { formWrapper, loading } from './hoc';
 import ErrorMessage from './ErrorMessage';
 
 export class AboutYouForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formData: {
-        gender: { value: '', valid: false },
-        skinColor: { value: '', valid: false },
-        age: { value: '', valid: true },
-        wage: { value: '', valid: true },
-        email: { value: '', valid: false },
-        name: { value: '', valid: true },
-        sexualOrientation: { value: '', valid: true },
-      },
-      acceptedPolicies: false,
-      triedSubmit: false,
-    };
-  }
+  state = {
+    formData: {
+      gender: { value: '', valid: false },
+      skinColor: { value: '', valid: false },
+      age: { value: '', valid: true },
+      wage: { value: '', valid: true },
+      email: { value: '', valid: false },
+      name: { value: '', valid: true },
+      sexualOrientation: { value: '', valid: true },
+    },
+    acceptedPolicies: false,
+    triedSubmit: false,
+  };
 
-  getThisFormDataValues = () => Object.entries(this.state.formData)
-    .reduce((formDataValues, [key, { value }]) => ({
-      ...formDataValues,
-      [key]: value,
-    }), {});
+  getThisFormDataValues = () => {
+    const formDataValues = {};
+    Object.keys(this.state.formData).forEach((key) => {
+      formDataValues[key] = this.state.formData[key].value;
+    });
+    return formDataValues;
+  };
+
+  getThisFormDataValues = () =>
+    Object.entries(this.state.formData).reduce(
+      (formDataValues, [key, { value }]) => ({
+        ...formDataValues,
+        [key]: value,
+      }),
+      {},
+    );
 
   updateFormDataValue = (key, value, valid) => {
     const { formData } = this.state;
@@ -47,8 +55,8 @@ export class AboutYouForm extends Component {
     ...this.getThisFormDataValues(),
   });
 
-  isValid = () => this.state.acceptedPolicies
-    && Object.values(this.state.formData).every(field => field.valid);
+  isValid = () =>
+    this.state.acceptedPolicies && Object.values(this.state.formData).every(field => field.valid);
 
   submit = () => {
     if (this.isValid()) {
@@ -95,7 +103,9 @@ export class AboutYouForm extends Component {
           placeholder="Orientação Sexual"
           showValidation={this.state.triedSubmit}
           value={this.state.formData.sexualOrientation.value}
-          onValueChange={(value, valid) => this.updateFormDataValue('sexualOrientation', value, valid)}
+          onValueChange={(value, valid) =>
+            this.updateFormDataValue('sexualOrientation', value, valid)
+          }
           items={this.props.data.formOptions.sexual_orientation}
         />
         <Picker
@@ -133,15 +143,22 @@ export class AboutYouForm extends Component {
         <ErrorMessage visible={triedSubmit && !this.state.formData.acceptedPolicies}>
           Por favor, leia e aceite nossa Política de Privacidade
         </ErrorMessage>
-        <Text style={appStyles.link} onPress={() => this.props.navigation.navigate('PrivacyPolicy')}>
+        <Text
+          style={appStyles.link}
+          onPress={() => this.props.navigation.navigate('PrivacyPolicy')}
+        >
           Acessar Política de Privacidade
         </Text>
-        <ErrorMessage visbile={triedSubmit && !this.isValid()}>
+        <ErrorMessage visible={triedSubmit && !this.isValid()}>
           Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente
           novamente.
         </ErrorMessage>
 
-        <Button testID="send-button" onPress={() => this.submit()} title="Prosseguir" />
+        <Button
+          testID="send-button"
+          onPress={() => this.submit()}
+          title="Prosseguir"
+        />
       </View>
     );
   }

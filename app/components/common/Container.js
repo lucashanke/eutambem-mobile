@@ -20,14 +20,9 @@ const Container = props => (
 );
 
 Container.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]).isRequired,
-  innerContainerStyle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.object,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element])
+    .isRequired,
+  innerContainerStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 };
 
 Container.defaultProps = {

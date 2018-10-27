@@ -9,7 +9,13 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 
-const { Response, Request, Headers, fetch } = require('whatwg-fetch');
+const {
+  fetch,
+  Headers,
+  Request,
+  Response,
+} = require('whatwg-fetch');
+
 global.Response = Response;
 global.Request = Request;
 global.Headers = Headers;

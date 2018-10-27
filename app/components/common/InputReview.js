@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   wrapper: {
@@ -21,5 +22,10 @@ const InputReview = props => (
     <Text style={style.value}>{props.value}</Text>
   </Text>
 );
+
+InputReview.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default InputReview;

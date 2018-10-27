@@ -31,27 +31,12 @@ const styles = StyleSheet.create({
 const UNSELECTED = -1;
 
 export class Picker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: false,
-      currentValue: '',
-    };
-    this.onValueChange = this.onValueChange.bind(this);
-  }
+  state = {
+    modalVisible: false,
+    currentValue: '',
+  };
 
-  itemLabel = () => {
-    const item = this.props.items.find(item => item.value === this.props.value);
-    if (item) {
-      return item.label;
-    }
-    return Platform.select({
-      ios: '',
-      android: UNSELECTED,
-    });
-  }
-
-  onValueChange(itemValue) {
+  onValueChange = (itemValue) => {
     const callback = Platform.select({
       android: () => this.props.onValueChange(this.state.currentValue),
       ios: null,
@@ -59,28 +44,42 @@ export class Picker extends Component {
     if (itemValue !== UNSELECTED) {
       this.setState({ currentValue: itemValue }, callback);
     }
-  }
+  };
 
-  defaultValue = () => Platform.select({
-    ios: this.props.items[0].value,
-    android: null,
-  });
+  itemLabel = () => {
+    const selected = this.props.items.find(item => item.value === this.props.value);
+    if (selected) {
+      return selected.label;
+    }
+    return Platform.select({
+      ios: '',
+      android: UNSELECTED,
+    });
+  };
 
-  confirm() {
+  defaultValue = () =>
+    Platform.select({
+      ios: this.props.items[0].value,
+      android: null,
+    });
+
+  confirm = () => {
     const value = this.state.currentValue || this.defaultValue();
     this.props.onValueChange(value);
     this.closeModal();
-  }
+  };
 
-  openModal() {
+  openModal = () => {
     this.setState({ modalVisible: true });
-  }
+  };
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalVisible: false });
-  }
+  };
 
-  inputRef(component) { this.input = component; }
+  inputRef = (component) => {
+    this.input = component;
+  };
 
   render() {
     return Platform.select({
@@ -94,7 +93,7 @@ export class Picker extends Component {
             value={this.itemLabel()}
             blur={this.state.modalVisible}
             onFocus={() => this.openModal()}
-            ref={this.inputRef.bind(this)}
+            ref={this.inputRef}
           />
           <Modal
             transparent
@@ -105,13 +104,13 @@ export class Picker extends Component {
             <View style={styles.innerContainer}>
               <View style={appStyles.modalHeader}>
                 <Button
-                  testID='cancel-button'
+                  testID="cancel-button"
                   type="cancel"
                   onPress={() => this.closeModal()}
                   title="Cancelar"
                 />
                 <Button
-                  testID='ok-button'
+                  testID="ok-button"
                   onPress={() => this.confirm()}
                   title="Ok"
                 />
@@ -122,7 +121,7 @@ export class Picker extends Component {
                   selectedValue={this.state.currentValue}
                   onValueChange={this.onValueChange}
                 >
-                  { this.props.items.map(item => (
+                  {this.props.items.map(item => (
                     <PickerIOS.Item
                       key={item.value}
                       label={item.label}
@@ -137,9 +136,7 @@ export class Picker extends Component {
       ),
       android: (
         <View style={styles.row}>
-          <Text style={{ width: '40%' }}>
-            {this.props.placeholder}
-          </Text>
+          <Text style={{ width: '40%' }}>{this.props.placeholder}</Text>
           <PickerAndroid
             style={{ width: '60%' }}
             placeholder={this.props.placeholder}
@@ -151,7 +148,7 @@ export class Picker extends Component {
               color="gray"
               value={UNSELECTED}
             />
-            { this.props.items.map(item => (
+            {this.props.items.map(item => (
               <PickerAndroid.Item
                 key={item.value}
                 label={item.label}
@@ -173,6 +170,7 @@ Picker.propTypes = {
   onValueChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
+  value: PropTypes.string.isRequired,
 };
 
 Picker.defaultProps = {

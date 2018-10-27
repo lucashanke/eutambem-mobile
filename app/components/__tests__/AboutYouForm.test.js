@@ -6,93 +6,120 @@ import sinon from 'sinon';
 import { AboutYouForm } from '../AboutYouForm';
 import { Picker, TextInput, Button } from '../common';
 
-export const GENDER_OPTIONS = [{
-  value: 'woman',
-  label: 'Mulher',
-}, {
-  value: 'man',
-  label: 'Homem',
-}, {
-  value: 'nonbinary',
-  label: 'Não binário',
-}];
+export const GENDER_OPTIONS = [
+  {
+    value: 'woman',
+    label: 'Mulher',
+  },
+  {
+    value: 'man',
+    label: 'Homem',
+  },
+  {
+    value: 'nonbinary',
+    label: 'Não binário',
+  },
+];
 
-export const SKIN_COLOR_OPTIONS = [{
-  value: 'black',
-  label: 'Negra',
-}, {
-  value: 'white',
-  label: 'Branca',
-}, {
-  value: 'brown',
-  label: 'Parda',
-}, {
-  value: 'asian',
-  label: 'Amarela',
-}, {
-  value: 'indian',
-  label: 'Indígena',
-}, {
-  value: 'notInformed',
-  label: 'Prefiro não dizer',
-}];
+export const SKIN_COLOR_OPTIONS = [
+  {
+    value: 'black',
+    label: 'Negra',
+  },
+  {
+    value: 'white',
+    label: 'Branca',
+  },
+  {
+    value: 'brown',
+    label: 'Parda',
+  },
+  {
+    value: 'asian',
+    label: 'Amarela',
+  },
+  {
+    value: 'indian',
+    label: 'Indígena',
+  },
+  {
+    value: 'notInformed',
+    label: 'Prefiro não dizer',
+  },
+];
 
-export const AGE_OPTIONS = [{
-  value: 'lessThan18',
-  label: 'Menor de 18 anos',
-}, {
-  value: 'between18and25',
-  label: 'Entre 18 e 25 anos',
-}, {
-  value: 'between26and35',
-  label: 'Entre 26 e 35 anos',
-}, {
-  value: 'between36and50',
-  label: 'Entre 36 e 50 anos',
-}, {
-  value: 'between51and65',
-  label: 'Entre 51 e 65 anos',
-}, {
-  value: 'over65',
-  label: 'Maior de 65 anos',
-}];
+export const AGE_OPTIONS = [
+  {
+    value: 'lessThan18',
+    label: 'Menor de 18 anos',
+  },
+  {
+    value: 'between18and25',
+    label: 'Entre 18 e 25 anos',
+  },
+  {
+    value: 'between26and35',
+    label: 'Entre 26 e 35 anos',
+  },
+  {
+    value: 'between36and50',
+    label: 'Entre 36 e 50 anos',
+  },
+  {
+    value: 'between51and65',
+    label: 'Entre 51 e 65 anos',
+  },
+  {
+    value: 'over65',
+    label: 'Maior de 65 anos',
+  },
+];
 
-export const WAGE_OPTIONS = [{
-  value: 'belowOne',
-  label: 'Até R$724,00',
-}, {
-  value: 'fromOneToThree',
-  label: 'De R$724,01 a R$2.172,00',
-}, {
-  value: 'fromThreeToFive',
-  label: 'De R$2.172,01 a R$3.620,00',
-}, {
-  value: 'fromFiveToTen',
-  label: 'De R$3.620,01 a R$7.240,00',
-}, {
-  value: 'fromTenToTwenty',
-  label: 'De R$7.240,01 a R$14.480,00',
-}, {
-  value: 'overTwenty',
-  label: 'Mais de R$14.480,01',
-}];
+export const WAGE_OPTIONS = [
+  {
+    value: 'belowOne',
+    label: 'Até R$724,00',
+  },
+  {
+    value: 'fromOneToThree',
+    label: 'De R$724,01 a R$2.172,00',
+  },
+  {
+    value: 'fromThreeToFive',
+    label: 'De R$2.172,01 a R$3.620,00',
+  },
+  {
+    value: 'fromFiveToTen',
+    label: 'De R$3.620,01 a R$7.240,00',
+  },
+  {
+    value: 'fromTenToTwenty',
+    label: 'De R$7.240,01 a R$14.480,00',
+  },
+  {
+    value: 'overTwenty',
+    label: 'Mais de R$14.480,01',
+  },
+];
 
-export const SEXUAL_ORIENTATION = [{
-  value: 'homosexual',
-  label: 'Homossexual',
-},
-{
-  value: 'bisexual',
-  label: 'Bissexual',
-},
-{
-  value: 'straight',
-  label: 'Heterossexual',
-},
-{
-  value: 'other',
-  label: 'Outro',
-}];
+export const SEXUAL_ORIENTATION = [
+  {
+    value: 'homosexual',
+    label: 'Homossexual',
+  },
+  {
+    value: 'bisexual',
+    label: 'Bissexual',
+  },
+  {
+    value: 'straight',
+    label: 'Heterossexual',
+  },
+  {
+    value: 'other',
+    label: 'Outro',
+  },
+];
 
 const props = {
   navigation: {
@@ -135,49 +162,70 @@ describe('AboutYouForm', () => {
     });
 
     it('gender change reflects the formData gender state attribute', () => {
-      wrapper.find({ testID: 'gender-input' }).props().onValueChange('woman', true);
+      wrapper
+        .find({ testID: 'gender-input' })
+        .props()
+        .onValueChange('woman', true);
 
       expect(wrapper.state('formData').gender.value).toEqual('woman');
       expect(wrapper.state('formData').gender.valid).toEqual(true);
     });
 
     it('skin color type change reflects the formData skin color state attribute', () => {
-      wrapper.find({ testID: 'skin-color-input' }).props().onValueChange('black', true);
+      wrapper
+        .find({ testID: 'skin-color-input' })
+        .props()
+        .onValueChange('black', true);
 
       expect(wrapper.state('formData').skinColor.value).toEqual('black');
       expect(wrapper.state('formData').skinColor.valid).toEqual(true);
     });
 
     it('age change reflects the formData age state attribute', () => {
-      wrapper.find({ testID: 'age-input' }).props().onValueChange('between36and50', true);
+      wrapper
+        .find({ testID: 'age-input' })
+        .props()
+        .onValueChange('between36and50', true);
 
       expect(wrapper.state('formData').age.value).toEqual('between36and50');
       expect(wrapper.state('formData').age.valid).toEqual(true);
     });
 
     it('sexual orientation reflects the formData sexualOrentation state attribute', () => {
-      wrapper.find({ testID: 'orientation-input' }).props().onValueChange('straight', true);
+      wrapper
+        .find({ testID: 'orientation-input' })
+        .props()
+        .onValueChange('straight', true);
 
       expect(wrapper.state('formData').sexualOrientation.value).toEqual('straight');
       expect(wrapper.state('formData').sexualOrientation.valid).toEqual(true);
     });
 
     it('wage change reflects the formData wage state attribute', () => {
-      wrapper.find({ testID: 'wage-input' }).props().onValueChange('belowOne', true);
+      wrapper
+        .find({ testID: 'wage-input' })
+        .props()
+        .onValueChange('belowOne', true);
 
       expect(wrapper.state('formData').wage.value).toEqual('belowOne');
       expect(wrapper.state('formData').wage.valid).toEqual(true);
     });
 
     it('email change reflects the formData email state attribute', () => {
-      wrapper.find({ testID: 'email-input' }).props().onValueChange('elenao@eutambem.org', true);
+      wrapper
+        .find({ testID: 'email-input' })
+        .props()
+        .onValueChange('elenao@eutambem.org', true);
 
       expect(wrapper.state('formData').email.value).toEqual('elenao@eutambem.org');
       expect(wrapper.state('formData').email.valid).toEqual(true);
     });
 
     it('name change reflects the formData name state attribute', () => {
-      wrapper.find({ testID: 'name-input' }).props().onValueChange('Marielle', true);
+      wrapper
+        .find({ testID: 'name-input' })
+        .props()
+        .onValueChange('Marielle', true);
 
       expect(wrapper.state('formData').name.value).toEqual('Marielle');
       expect(wrapper.state('formData').name.valid).toEqual(true);
