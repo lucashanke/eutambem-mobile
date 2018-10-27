@@ -46,14 +46,14 @@ TextInput.propTypes = {
   multiline: PropTypes.bool,
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
-  blur: PropTypes.func,
+  blur: PropTypes.bool,
   onValueChange: PropTypes.func,
 };
 
 TextInput.defaultProps = {
   multiline: false,
   required: false,
-  blur: () => {},
+  blur: false,
   onValueChange: () => {},
 };
 
