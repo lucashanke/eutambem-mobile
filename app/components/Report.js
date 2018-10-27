@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 
 import { InputReview, SectionHeader } from './common';
 
-const getLabel = (key, value, options) => options[key].find(option => option.value === value) || '';
+const getLabel = (key, value, options) => {
+  const item = options[key].find(option => option.value === value);
+
+  if (item) {
+    return item.label;
+  }
+
+  return '';
+};
 
 export const Report = (props) => {
   const { data, options } = props;
@@ -29,8 +37,9 @@ export const Report = (props) => {
       />
       <InputReview
         label="Providências tomadas"
-        value={data.followupActions.map(action =>
-          getLabel('followup_actions_options', action, options))}
+        value={data.followupActions
+          .map(action => getLabel('followup_actions_options', action, options))
+          .join(', ')}
       />
       <InputReview
         label="Recomendaria essa empresa"
