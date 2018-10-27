@@ -92,7 +92,6 @@ export class Picker extends Component {
             editable={false}
             placeholder={this.props.placeholder}
             value={this.itemLabel()}
-            blur={this.state.modalVisible}
             onFocus={() => this.openModal()}
             ref={this.inputRef}
           />

@@ -32,6 +32,18 @@ describe('TextInput', () => {
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
   });
 
+  it('does not add Optional label if required is true', () => {
+    const wrapper = shallow(<TextInput {...props} required/>);
+
+    expect(wrapper.find(NativeTextInput).props().placeholder.trim()).toEqual('Test TextInput');
+  });
+
+  it('adds Optional label if required is false', () => {
+    const wrapper = shallow(<TextInput {...props} />);
+
+    expect(wrapper.find(NativeTextInput).props().placeholder).toEqual('Test TextInput (Opcional)');
+  });
+
   it('calls onFocus prop when TouchableOpacity is pressed and editable is false', () => {
     const spy = sinon.spy();
     const wrapper = shallow(<TextInput
