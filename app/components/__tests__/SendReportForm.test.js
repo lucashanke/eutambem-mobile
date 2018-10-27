@@ -9,8 +9,18 @@ import Report from '../Report';
 import { Button } from '../common';
 import * as reportService from '../../services/reportService';
 
-import { HARASSMENT_TYPE_OPTIONS, FOLLOWUP_ACTIONS_OPTIONS, YES_NO_OPTIONAL_OPTIONS } from './AboutWhatHappenedForm.test';
-import { SKIN_COLOR_OPTIONS, AGE_OPTIONS, WAGE_OPTIONS, GENDER_OPTIONS, SEXUAL_ORIENTATION } from './AboutYouForm.test';
+import {
+  HARASSMENT_TYPE_OPTIONS,
+  FOLLOWUP_ACTIONS_OPTIONS,
+  YES_NO_OPTIONAL_OPTIONS,
+} from './AboutWhatHappenedForm.test';
+import {
+  SKIN_COLOR_OPTIONS,
+  AGE_OPTIONS,
+  WAGE_OPTIONS,
+  GENDER_OPTIONS,
+  SEXUAL_ORIENTATION,
+} from './AboutYouForm.test';
 
 const props = {
   navigation: {
@@ -66,7 +76,7 @@ describe('SendReportForm', () => {
       const wrapper = shallow(<SendReportForm {...props} />);
 
       wrapper.find(Button).simulate('press');
-      
+
       expect(stub.callCount).toEqual(1);
       expect(wrapper.find(Report)).toHaveLength(0);
     });

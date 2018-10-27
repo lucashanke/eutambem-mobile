@@ -2,9 +2,9 @@ import 'react-native';
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
+import ExternalButton from 'react-native-button';
 
 import Button from '../Button';
-import ExternalButton from 'react-native-button';
 
 const props = {
   title: 'Test Button',
@@ -19,7 +19,10 @@ describe('Button', () => {
 
   it('renders title prop as child of external button component', () => {
     const wrapper = shallow(<Button {...props} />);
-    expect(wrapper.find(ExternalButton).children().text()).toEqual('Test Button');
+    expect(wrapper
+      .find(ExternalButton)
+      .children()
+      .text()).toEqual('Test Button');
   });
 
   it('press event o external component button calls on press prop function', () => {

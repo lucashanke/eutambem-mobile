@@ -2,9 +2,9 @@ import 'react-native';
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
+import ExternalCheckBox from 'react-native-check-box';
 
 import { CheckBox } from '../CheckBox';
-import ExternalCheckBox from 'react-native-check-box';
 
 const props = {
   label: 'Test CheckBox',

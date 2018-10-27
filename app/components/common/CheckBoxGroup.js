@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
 });
 
 export class CheckBoxGroup extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   onClick = (key) => {
     let selectedItems = this.props.values;
     if (this.props.values.includes(key)) {
@@ -33,10 +29,10 @@ export class CheckBoxGroup extends Component {
       selectedItems = selectedItems.concat(key);
     }
     this.props.onValueChange(selectedItems);
-  }
+  };
 
-  renderOptions = () => {
-    return this.props.options.map(option => (
+  renderOptions = () =>
+    this.props.options.map(option => (
       <CheckBox
         key={option.value}
         onValueChange={() => this.onClick(option.value)}
@@ -44,7 +40,6 @@ export class CheckBoxGroup extends Component {
         label={option.label}
       />
     ));
-  }
 
   render() {
     return (
@@ -63,6 +58,7 @@ CheckBoxGroup.propTypes = {
   })).isRequired,
   label: PropTypes.string.isRequired,
   onValueChange: PropTypes.func.isRequired,
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default input(CheckBoxGroup);

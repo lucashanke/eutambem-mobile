@@ -13,7 +13,11 @@ const AboutWhatHappened = props => (
 
 AboutWhatHappened.navigationOptions = ({ navigation }) => ({
   headerTitle: 'O que aconteceu',
-  headerLeft: <Button type="cancel" title="Cancelar" onPress={() => navigation.goBack(null)} />,
+  headerLeft: <Button
+    type="cancel"
+    title="Cancelar"
+    onPress={() => navigation.goBack(null)}
+  />,
 });
 
 AboutWhatHappened.propTypes = {
@@ -21,6 +25,5 @@ AboutWhatHappened.propTypes = {
     navigate: PropTypes.func,
   }).isRequired,
 };
-
 
 export default AboutWhatHappened;

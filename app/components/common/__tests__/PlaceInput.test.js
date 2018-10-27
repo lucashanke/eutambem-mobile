@@ -26,7 +26,7 @@ describe('PlaceInput', () => {
     const wrapper = shallow(<PlaceInput {...props} />);
 
     wrapper.find('TextInput').simulate('focus');
-   
+
     expect(props.navigation.navigate.calledWith('PlaceScreen')).toBeTruthy();
   });
 
@@ -34,11 +34,12 @@ describe('PlaceInput', () => {
     const wrapper = shallow(<PlaceInput {...props} />);
 
     const { onPlaceChange } = wrapper.props().navigation.navigate.args[0][1];
-    onPlaceChange({ id: 'testPlace', label: 'place for testing' })
-   
+    onPlaceChange({ id: 'testPlace', label: 'place for testing' });
+
     expect(props.onValueChange.callCount).toEqual(1);
     expect(props.onValueChange.calledWith({
-      id: 'testPlace', label: 'place for testing',
+      id: 'testPlace',
+      label: 'place for testing',
     })).toBeTruthy();
     expect(props.navigation.goBack.callCount).toEqual(1);
   });

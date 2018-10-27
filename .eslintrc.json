@@ -1,17 +1,16 @@
 {
-    "extends": "airbnb",
-    "plugins": [
-        "jest",
-        "react",
-        "react-native"
-    ],
-    "parser": "babel-eslint",
-    "env": {
-        "jest/globals": true,
-        "react-native/react-native": true
-    },
-    "rules": {
-        "import/no-named-as-default": "off",
-        "react/jsx-filename-extension": "off"
-    }
+  "extends": "airbnb",
+  "plugins": ["jest", "react", "react-native"],
+  "parser": "babel-eslint",
+  "env": {
+    "jest/globals": true,
+    "react-native/react-native": true
+  },
+  "rules": {
+    "import/no-named-as-default": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
+    "react/no-did-mount-set-state": "off",
+    "no-console": "off"
+  }
 }

@@ -1,18 +1,14 @@
 import { API_ENDPOINT } from 'react-native-dotenv';
 
-export const fetchReportFormConstants = async () => {
-  const response = await fetch(`${API_ENDPOINT}/report/constants`);
-  return await response.json();
-}
+export const fetchReportFormConstants = () =>
+  fetch(`${API_ENDPOINT}/report/constants`).then(response => response.json());
 
-export const sendReport = async report => {
-  const response = await fetch(`${API_ENDPOINT}/report`, {
+export const sendReport = report =>
+  fetch(`${API_ENDPOINT}/report`, {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(report),
-  });
-  return await response.text();
-};
+  }).then(response => response.text());

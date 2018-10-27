@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+
 import _ from 'lodash';
 import { RED } from '../../styles';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -17,25 +18,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 10,
   },
-})
+});
 
-const input = (WrappedComponent) => (
+const input = WrappedComponent =>
   class Input extends React.Component {
     static displayName = 'Input';
 
     static defaultProps = {
       required: false,
+      showValidation: false,
     };
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        valid: props.required ? false : true,
-      };
-    }
+    static propTypes = {
+      required: PropTypes.bool,
+      onValueChange: PropTypes.func.isRequired,
+      showValidation: PropTypes.bool,
+    };
 
-    isValid = (value) => {
-      return !this.props.required || (this.props.required && !_.isNil(value) && !_.isEmpty(value));
+    state = {
+      valid: !this.props.required,
     };
 
     onValueChange = (value) => {
@@ -44,12 +45,19 @@ const input = (WrappedComponent) => (
       this.setState({ valid });
     };
 
+    isValid = value =>
+      !this.props.required || (this.props.required && !_.isNil(value) && !_.isEmpty(value));
+
     render() {
       let alert = null;
       if (this.props.showValidation && !this.state.valid) {
         alert = (
           <View style={styles.iconWrapper}>
-            <Icon name="md-alert" size={20} color={RED} />
+            <Icon
+              name="md-alert"
+              size={20}
+              color={RED}
+            />
           </View>
         );
       }
@@ -66,7 +74,6 @@ const input = (WrappedComponent) => (
         </View>
       );
     }
-  }
-);
+  };
 
 export default input;

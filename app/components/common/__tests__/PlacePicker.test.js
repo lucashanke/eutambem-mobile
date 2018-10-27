@@ -13,19 +13,22 @@ const props = {
 
 sinon.stub(axios, 'get').resolves({
   data: {
-    predictions: [{
-      place_id: 'testplace1',
-      structured_formatting: {
-        main_text: 'Test Place 1',
-        secondary_text: 'Test Place 1 Description',
+    predictions: [
+      {
+        place_id: 'testplace1',
+        structured_formatting: {
+          main_text: 'Test Place 1',
+          secondary_text: 'Test Place 1 Description',
+        },
       },
-    }, {
-      place_id: 'testplace2',
-      structured_formatting: {
-        main_text: 'Test Place 2',
-        secondary_text: 'Test Place 2 Description',
+      {
+        place_id: 'testplace2',
+        structured_formatting: {
+          main_text: 'Test Place 2',
+          secondary_text: 'Test Place 2 Description',
+        },
       },
-    }],
+    ],
   },
 });
 
@@ -76,14 +79,15 @@ describe('PlacePicker', () => {
     await search.props().onChangeText('tes');
 
     const flatList = wrapper.find('FlatList');
-    const data = flatList.props().data;
+    const { data } = flatList.props();
 
     const item = shallow(flatList.props().renderItem({ item: data[0] }));
     item.simulate('press');
 
     expect(props.onPlaceChange.callCount).toEqual(1);
-    expect(props.onPlaceChange.calledWith({ 
-      id: 'testplace1', label: 'Test Place 1',
+    expect(props.onPlaceChange.calledWith({
+      id: 'testplace1',
+      label: 'Test Place 1',
     })).toBeTruthy();
   });
 });

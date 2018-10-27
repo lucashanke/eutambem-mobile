@@ -16,9 +16,7 @@ const style = StyleSheet.create({
 
 const SectionText = props => (
   <View style={style.container}>
-    <Text style={style.text}>
-      {props.title}
-    </Text>
+    <Text style={style.text}>{props.title}</Text>
   </View>
 );
 
