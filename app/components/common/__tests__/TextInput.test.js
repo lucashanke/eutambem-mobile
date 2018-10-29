@@ -37,7 +37,10 @@ describe('TextInput', () => {
   });
 
   it('does not add Optional label if required is true', () => {
-    const wrapper = shallow(<TextInput {...props} required/>);
+    const wrapper = shallow(<TextInput
+      {...props}
+      required
+    />);
 
     expect(wrapper.find(NativeTextInput).props().placeholder.trim()).toEqual('Test TextInput');
   });
@@ -88,7 +91,10 @@ describe('TextInput', () => {
 
     describe('email', () => {
       it('onChangeText of native TextInput calls onValueChange with valid set to false when text is not an email', () => {
-        const wrapper = shallow(<TextInput format="email" {...props} />);
+        const wrapper = shallow(<TextInput
+          format="email"
+          {...props}
+        />);
 
         wrapper
           .find(NativeTextInput)
@@ -99,7 +105,10 @@ describe('TextInput', () => {
       });
 
       it('onChangeText of native TextInput calls onValueChange with valid set to true when text is an email', () => {
-        const wrapper = shallow(<TextInput format="email" {...props} />);
+        const wrapper = shallow(<TextInput
+          format="email"
+          {...props}
+        />);
 
         wrapper
           .find(NativeTextInput)
