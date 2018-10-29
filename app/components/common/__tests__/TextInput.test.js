@@ -11,6 +11,10 @@ const props = {
 };
 
 describe('TextInput', () => {
+  afterEach(() => {
+    props.onValueChange.resetHistory();
+  });
+
   it('renders native TextInput', () => {
     const wrapper = shallow(<TextInput {...props} />);
 
@@ -66,6 +70,45 @@ describe('TextInput', () => {
       .onChangeText('new text');
 
     expect(props.onValueChange.calledWith('new text')).toBeTruthy();
+  });
+
+  describe('format prop', () => {
+    describe('none', () => {
+      it('onChangeText of native TextInput calls onValueChange with valid set to true', () => {
+        const wrapper = shallow(<TextInput {...props} />);
+
+        wrapper
+          .find(NativeTextInput)
+          .props()
+          .onChangeText('new text');
+
+        expect(props.onValueChange.calledWith('new text', true)).toBeTruthy();
+      });
+    });
+
+    describe('email', () => {
+      it('onChangeText of native TextInput calls onValueChange with valid set to false when text is not an email', () => {
+        const wrapper = shallow(<TextInput format="email" {...props} />);
+
+        wrapper
+          .find(NativeTextInput)
+          .props()
+          .onChangeText('new text');
+
+        expect(props.onValueChange.calledWith('new text', false)).toBeTruthy();
+      });
+
+      it('onChangeText of native TextInput calls onValueChange with valid set to true when text is an email', () => {
+        const wrapper = shallow(<TextInput format="email" {...props} />);
+
+        wrapper
+          .find(NativeTextInput)
+          .props()
+          .onChangeText('elenao@elenunca.com');
+
+        expect(props.onValueChange.calledWith('elenao@elenunca.com', true)).toBeTruthy();
+      });
+    });
   });
 
   it('sets multiline and autoGrow to true in native input if multiline prop is true', () => {
