@@ -8,16 +8,15 @@ import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
 import input from '../hoc/input';
 
 export class TextInput extends Component {
-
-  placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
-
   onChangeText = (value) => {
-    let errors = undefined;
+    let errors;
     if (this.props.format === 'email') {
       errors = validate.single(value, { email: true });
     }
-    this.props.onValueChange(value, errors ? false : true);
+    this.props.onValueChange(value, !errors);
   };
+
+  placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
 
   render() {
     let style = [appStyles.input];
@@ -27,7 +26,7 @@ export class TextInput extends Component {
       autoGrow = true;
     }
 
-    const input = (
+    const nativeInput = (
       <NativeTextInput
         {...this.props}
         style={style}
@@ -41,10 +40,10 @@ export class TextInput extends Component {
       />
     );
 
-    return this.props.editable ? input : (
+    return this.props.editable ? nativeInput : (
       <TouchableOpacity onPress={this.props.onFocus}>
-        <View pointerEvents='none'>
-          {input}
+        <View pointerEvents="none">
+          {nativeInput}
         </View>
       </TouchableOpacity>
     );
@@ -57,6 +56,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
   onValueChange: PropTypes.func,
+  onFocus: PropTypes.func,
   format: PropTypes.string,
 };
 
@@ -64,6 +64,7 @@ TextInput.defaultProps = {
   editable: true,
   multiline: false,
   required: false,
+  onFocus: () => {},
   onValueChange: () => {},
   format: 'none',
 };
