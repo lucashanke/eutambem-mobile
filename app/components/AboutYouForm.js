@@ -125,6 +125,7 @@ export class AboutYouForm extends Component {
           placeholder="Email"
           textContentType="emailAddress"
           keyboardType="email-address"
+          format="email"
           showValidation={this.state.triedSubmit}
           onValueChange={(email, valid) => this.updateFormDataValue('email', email, valid)}
           value={this.state.formData.email.value}
@@ -148,8 +149,8 @@ export class AboutYouForm extends Component {
           Acessar Política de Privacidade
         </Text>
         <ErrorMessage visible={triedSubmit && !this.areFieldsValid()}>
-          Sentimos falta de algumas informações obrigatórias. Por favor, preencha-as e tente
-          novamente.
+          Sentimos falta de algumas informações ou as mesmas estão incorretamente preenchidas.
+          Por favor, preencha-as e tente novamente.
         </ErrorMessage>
         <ErrorMessage visible={triedSubmit && !this.state.acceptedPolicies}>
           Por favor, leia e aceite nossa Política de Privacidade
