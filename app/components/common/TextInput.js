@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TextInput as NativeTextInput, View, TouchableOpacity } from 'react-native';
+import validate from 'validate.js';
 
 import appStyles, { PLACEHOLDER_GREY } from '../../styles';
 import { MAX_TEXT_INPUT_LENGTH } from '../../constants';
@@ -9,6 +10,14 @@ import input from '../hoc/input';
 export class TextInput extends Component {
 
   placeholder = () => `${this.props.placeholder} ${!this.props.required ? '(Opcional)' : ''}`;
+
+  onChangeText = (value) => {
+    let errors = undefined;
+    if (this.props.format === 'email') {
+      errors = validate.single(value, { email: true });
+    }
+    this.props.onValueChange(value, errors ? false : true);
+  };
 
   render() {
     let style = [appStyles.input];
@@ -24,7 +33,7 @@ export class TextInput extends Component {
         style={style}
         maxLength={MAX_TEXT_INPUT_LENGTH}
         multiline={this.props.multiline}
-        onChangeText={this.props.onValueChange}
+        onChangeText={this.onChangeText}
         placeholder={this.placeholder()}
         placeholderTextColor={PLACEHOLDER_GREY}
         autoGrow={autoGrow}
@@ -48,6 +57,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,
   onValueChange: PropTypes.func,
+  format: PropTypes.string,
 };
 
 TextInput.defaultProps = {
@@ -55,6 +65,7 @@ TextInput.defaultProps = {
   multiline: false,
   required: false,
   onValueChange: () => {},
+  format: 'none',
 };
 
 export default input(TextInput);
