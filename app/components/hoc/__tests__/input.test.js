@@ -51,7 +51,7 @@ describe('input', () => {
       spy = sinon.spy();
     });
 
-    it('changes valid state attribute to true when input new value is non empty', () => {
+    it('does not change valid state attribute to true when valid param is false', () => {
       const wrapper = shallow(<Input
         value={undefined}
         required
@@ -59,7 +59,20 @@ describe('input', () => {
       />);
       expect(wrapper.state('valid')).toBeFalsy();
 
-      wrapper.instance().onValueChange('new value');
+      wrapper.instance().onValueChange('new value', false);
+
+      expect(wrapper.state('valid')).toBeFalsy();
+    });
+
+    it('changes valid state attribute to true when input new value is non empty and valid param is true', () => {
+      const wrapper = shallow(<Input
+        value={undefined}
+        required
+        onValueChange={spy}
+      />);
+      expect(wrapper.state('valid')).toBeFalsy();
+
+      wrapper.instance().onValueChange('new value', true);
 
       expect(wrapper.state('valid')).toBeTruthy();
     });

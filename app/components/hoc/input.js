@@ -39,10 +39,10 @@ const input = WrappedComponent =>
       valid: !this.props.required,
     };
 
-    onValueChange = (value) => {
-      const valid = this.isValid(value);
-      this.props.onValueChange(value, valid);
-      this.setState({ valid });
+    onValueChange = (value, valid=true) => {
+      const isInputValid = valid && this.isValid(value);
+      this.props.onValueChange(value, isInputValid);
+      this.setState({ valid: isInputValid });
     };
 
     isValid = value =>
